@@ -1,0 +1,7 @@
+packages:
+  - templates/*
+
+onlyBuiltDependencies:
+  - esbuild
+  - puppeteer
+  - unrs-resolver

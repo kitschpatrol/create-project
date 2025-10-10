@@ -1,0 +1,50 @@
+{
+	"name": "@kitschpatrol/create-project",
+	"version": "0.0.0",
+	"description": "Kitschpatrol's TypeScript project templates.",
+	"keywords": [
+		"cli",
+		"template",
+		"bingo"
+	],
+	"homepage": "https://github.com/kitschpatrol/create-project",
+	"bugs": "https://github.com/kitschpatrol/create-project/issues",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/kitschpatrol/create-project.git"
+	},
+	"license": "MIT",
+	"author": {
+		"name": "Eric Mika",
+		"email": "eric@ericmika.com",
+		"url": "https://ericmika.com"
+	},
+	"type": "module",
+	"bin": "dist/index.js",
+	"scripts": {
+		"build": "tsdown",
+		"clean": "git rm -f pnpm-lock.yaml ; git clean -fdX",
+		"fix": "ksc fix",
+		"lint": "ksc lint",
+		"release": "bumpp --commit 'Release: %s' && pnpm run build && pnpm publish --otp $(op read 'op://Personal/Npmjs/one-time password?attribute=otp')"
+	},
+	"dependencies": {
+		"bingo": "^0.5.16",
+		"bingo-fs": "^0.5.5",
+		"bingo-handlebars": "^0.1.0"
+	},
+	"devDependencies": {
+		"@kitschpatrol/shared-config": "^5.7.2",
+		"bumpp": "^10.3.1",
+		"tsdown": "^0.15.7",
+		"typescript": "~5.9.3",
+		"zod": "^3.25.76"
+	},
+	"packageManager": "pnpm@10.18.3",
+	"engines": {
+		"node": ">=20.19.0"
+	},
+	"publishConfig": {
+		"access": "public"
+	}
+}

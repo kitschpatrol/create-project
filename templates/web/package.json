@@ -1,0 +1,52 @@
+{
+	"name": "{{github-repository}}",
+	"version": "0.0.0",
+	"private": true,
+	"description": "A {{type}} project.",
+	"keywords": [
+		"{{type}}"
+	],
+	"homepage": "https://github.com/{{github-owner}}/{{github-repository}}",
+	"bugs": "https://github.com/{{github-owner}}/{{github-repository}}/issues",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/{{github-owner}}/{{github-repository}}.git"
+	},
+	"license": "MIT",
+	"author": {
+		"name": "{{author-name}}",
+		"email": "{{author-email}}",
+		"url": "{{author-url}}"
+	},
+	"type": "module",
+	"scripts": {
+		"build": "tsc -p tsconfig.build.json && vite build",
+		"clean": "git rm -f pnpm-lock.yaml ; git clean -fdX",
+		"dev": "vite",
+		"fix": "ksc fix",
+		"lint": "ksc lint",
+		"preview": "vite preview",
+		"release": "bumpp --commit 'Release: %s'",
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"dependencies": {
+		"@types/node": "^20.19.21",
+		"@types/yargs": "^17.0.33",
+		"yargs": "^17.7.2"
+	},
+	"devDependencies": {
+		"@kitschpatrol/shared-config": "^5.7.2",
+		"bumpp": "^10.3.1",
+		"typescript": "~5.9.3",
+		"vite": "npm:rolldown-vite@7.1.14"
+	},
+	"packageManager": "pnpm@10.18.3",
+	"engines": {
+		"node": ">=20.19.0"
+	},
+	"pnpm": {
+		"overrides": {
+			"vite": "npm:rolldown-vite@7.1.14"
+		}
+	}
+}
