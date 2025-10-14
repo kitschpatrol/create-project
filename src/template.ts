@@ -65,7 +65,13 @@ export default createTemplate({
 				{
 					commands: ['pnpm install', 'pnpm run build', 'pnpm run fix'],
 					phase: 0,
+					silent: true,
 				},
+				// TODO: This runs before initial commit, needs to run after...
+				// {
+				// 	commands: ["git commit --amend -m 'Initial commit.'"],
+				// 	phase: 1,
+				// },
 			],
 		}
 	},

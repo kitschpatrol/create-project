@@ -21,6 +21,10 @@
 	},
 	"type": "module",
 	"bin": "dist/index.js",
+	"files": [
+		"dist",
+		"templates"
+	],
 	"scripts": {
 		"build": "tsdown",
 		"clean": "git rm -f pnpm-lock.yaml ; git clean -fdX",
