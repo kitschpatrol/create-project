@@ -15,12 +15,26 @@ await yargsInstance
 		description: 'Run with verbose logging',
 		type: 'boolean',
 	})
-	.command(['$0', 'do-something'], 'Run the do-something command.', () => {
-		process.stdout.write('Did something!\n')
-	})
-	.command('do-something-else', 'Run the do-something-else command.', () => {
-		process.stdout.write('Did something else!\n')
-	})
+	.command(
+		['$0', 'do-something'],
+		'Run the do-something command.',
+		() => {
+			// Options go here
+		},
+		() => {
+			process.stdout.write('Did something!\n')
+		},
+	)
+	.command(
+		'do-something-else',
+		'Run the do-something-else command.',
+		() => {
+			// Options go here
+		},
+		() => {
+			process.stdout.write('Did something else!\n')
+		},
+	)
 	.alias('h', 'help')
 	.version(version)
 	.alias('v', 'version')

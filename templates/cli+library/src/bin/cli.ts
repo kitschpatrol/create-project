@@ -20,16 +20,20 @@ await yargsInstance
 	.command(
 		['$0', 'do-something'],
 		'Run the do-something command.',
-		() => {},
-		async () => {
+		() => {
+			// Options go here
+		},
+		() => {
 			process.stdout.write(doSomething())
 		},
 	)
 	.command(
 		'do-something-else',
 		'Run the do-something-else command.',
-		() => {},
-		async () => {
+		() => {
+			// Options go here
+		},
+		() => {
 			process.stdout.write(doSomethingElse())
 		},
 	)

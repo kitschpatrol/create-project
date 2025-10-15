@@ -73,7 +73,7 @@ export default createTemplate({
 				// 	phase: 1,
 				// },
 			],
-			suggestions: ["git commit --amend -m 'Initial commit.'"]
+			suggestions: ["git commit --amend -m 'Initial commit.'"],
 		}
 	},
 })
