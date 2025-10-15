@@ -32,7 +32,8 @@
 		"clean": "git rm -f pnpm-lock.yaml ; git clean -fdX",
 		"fix": "ksc fix",
 		"lint": "ksc lint",
-		"release": "bumpp --commit 'Release: %s' && pnpm run build && pnpm publish --otp $(op read 'op://Personal/Npmjs/one-time password?attribute=otp')"
+		"release": "bumpp --commit 'Release: %s' && pnpm run build && pnpm publish --otp $(op read 'op://Personal/Npmjs/one-time password?attribute=otp')",
+		"test": "vitest run"
 	},
 	"dependencies": {
 		"bingo": "^0.5.16",
@@ -41,9 +42,11 @@
 	},
 	"devDependencies": {
 		"@kitschpatrol/shared-config": "^5.7.4",
+		"@types/node": "^20.19.21",
 		"bumpp": "^10.3.1",
 		"tsdown": "^0.15.7",
 		"typescript": "~5.9.3",
+		"vitest": "^3.2.4",
 		"zod": "^3.25.76"
 	},
 	"packageManager": "pnpm@10.18.3",

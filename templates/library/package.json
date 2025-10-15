@@ -38,9 +38,7 @@
 		"test": "echo \"Error: no test specified\" && exit 1"
 	},
 	"dependencies": {
-		"@types/node": "^20.19.21",
-		"@types/yargs": "^17.0.33",
-		"yargs": "^17.7.2"
+		"@types/node": "^20.19.21"
 	},
 	"devDependencies": {
 		"@kitschpatrol/shared-config": "^5.7.4",
