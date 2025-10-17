@@ -1,0 +1,60 @@
+{
+	"name": "{{github-repository}}",
+	"version": "0.0.0",
+	"private": true,
+	"description": "An {{type}} project.",
+	"keywords": [
+		"{{type}}"
+	],
+	"homepage": "https://github.com/{{github-owner}}/{{github-repository}}",
+	"bugs": "https://github.com/{{github-owner}}/{{github-repository}}/issues",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/{{github-owner}}/{{github-repository}}.git"
+	},
+	"license": "MIT",
+	"author": {
+		"name": "{{author-name}}",
+		"email": "{{author-email}}",
+		"url": "{{author-url}}"
+	},
+	"type": "module",
+	"main": "dist-electron/main.js",
+	"scripts": {
+		"build": "vite build && electron-builder",
+		"clean": "git rm -f pnpm-lock.yaml ; git clean -fdX",
+		"dev": "vite",
+		"fix": "ksc fix",
+		"lint": "ksc lint",
+		"release": "bumpp --commit 'Release: %s' && pnpm run build && electron-builder build --publish always",
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"dependencies": {
+		"@types/node": "^20.19.21"
+	},
+	"devDependencies": {
+		"@kitschpatrol/shared-config": "^5.7.4",
+		"bumpp": "^10.3.1",
+		"electron": "^38.3.0",
+		"electron-builder": "^26.0.12",
+		"typescript": "~5.9.3",
+		"vite": "npm:rolldown-vite@7.1.17",
+		"vite-plugin-electron": "^0.29.0"
+	},
+	"packageManager": "pnpm@10.18.3",
+	"engines": {
+		"node": ">=22.18.0"
+	},
+	"pnpm": {
+		"onlyBuiltDependencies": [
+			"electron",
+			"electron-winstaller",
+			"esbuild",
+			"puppeteer",
+			"unrs-resolver"
+		],
+		"overrides": {
+			"vite": "npm:rolldown-vite@7.1.17"
+		}
+	}
+}

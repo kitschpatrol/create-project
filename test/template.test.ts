@@ -4,9 +4,7 @@ import fs from 'node:fs'
 import os from 'node:os'
 import path from 'node:path'
 import { afterAll, beforeAll, describe, expect, it } from 'vitest'
-import template from '../src/template'
-
-const TEMPLATE_TYPES = ['minimal', 'web', 'cli', 'library', 'cli+library'] as const
+import template, { TEMPLATE_TYPES } from '../src/template'
 
 describe('Template Generation and Build Tests', () => {
 	for (const templateType of TEMPLATE_TYPES) {

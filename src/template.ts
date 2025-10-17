@@ -6,9 +6,20 @@ import { handlebars } from 'bingo-handlebars'
 import path from 'node:path'
 import { z } from 'zod'
 
+export const TEMPLATE_TYPES = [
+	'minimal',
+	'web',
+	'cli',
+	'library',
+	'cli+library',
+	'electron',
+] as const
+
 export default createTemplate({
 	about: {
-		name: 'Kitschpatrol Create Project',
+		description:
+			"Create a new TypeScript library, CLI, or web project with Kitschpatrol's shared configuration.",
+		name: 'Create Kitschpatrol Project',
 		// Show template origin in GitHub... don't want this right now
 		// repository: {
 		// 	owner: 'kitschpatrol',
@@ -17,10 +28,7 @@ export default createTemplate({
 	},
 	options: {
 		/* eslint-disable perfectionist/sort-objects */
-		type: z
-			.enum(['minimal', 'web', 'cli', 'library', 'cli+library'])
-			.default('minimal')
-			.describe('The type of project to create'),
+		type: z.enum(TEMPLATE_TYPES).default('minimal').describe('The type of project to create'),
 		'author-name': z.string().default('Eric Mika').describe('The name of the author'),
 		'author-email': z.string().default('eric@ericmika.com').describe('The email of the author'),
 		'author-url': z.string().default('https://ericmika.com').describe('The URL of the author'),
