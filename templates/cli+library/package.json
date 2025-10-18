@@ -38,7 +38,7 @@
 		"clean": "git rm -f pnpm-lock.yaml ; git clean -fdX",
 		"fix": "ksc fix",
 		"lint": "ksc lint",
-		"release": "bumpp --commit 'Release: %s' && pnpm run build && pnpm publish --otp $({{npm-otp-command}})",
+		"release": "bumpp --commit 'Release: %s' && pnpm run build && NPM_AUTH_TOKEN=$({{npm-auth-command}}) && pnpm publish",
 		"test": "echo \"Error: no test specified\" && exit 1"
 	},
 	"dependencies": {
