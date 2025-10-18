@@ -42,9 +42,9 @@
 	},
 	"devDependencies": {
 		"@kitschpatrol/shared-config": "^5.7.4",
-		"@types/node": "^20.19.21",
+		"@types/node": "^20.19.22",
 		"bumpp": "^10.3.1",
-		"tsdown": "^0.15.7",
+		"tsdown": "^0.15.8",
 		"typescript": "~5.9.3",
 		"vitest": "^3.2.4",
 		"zod": "^3.25.76"
