@@ -21,8 +21,8 @@
 	"type": "module",
 	"exports": {
 		".": {
-			"import": "./dist/lib/index.js",
-			"types": "./dist/lib/index.d.ts"
+			"types": "./dist/lib/index.d.ts",
+			"import": "./dist/lib/index.js"
 		}
 	},
 	"main": "./dist/lib/index.js",
