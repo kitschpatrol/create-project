@@ -3,8 +3,10 @@
 import yargs from 'yargs'
 import { hideBin } from 'yargs/helpers'
 import { version, bin } from '../../package.json'
+import { log, setDefaultLogOptions } from 'lognow'
+import { doSomething, doSomethingElse, setLogger } from '../lib'
 
-import { doSomething, doSomethingElse } from '../lib'
+setLogger(log)
 
 const cliCommandName = Object.keys(bin).at(0)!
 const yargsInstance = yargs(hideBin(process.argv))
@@ -17,6 +19,10 @@ await yargsInstance
 		description: 'Run with verbose logging',
 		type: 'boolean',
 	})
+	.middleware((argv) => {
+		// Set log level globally based on verbose flag
+		setDefaultLogOptions({ verbose: argv.verbose })
+	})
 	.command(
 		['$0', 'do-something'],
 		'Run the do-something command.',
@@ -24,7 +30,8 @@ await yargsInstance
 			// Options go here
 		},
 		() => {
-			process.stdout.write(doSomething())
+			log.debug('Running command...')
+			process.stdout.write(doSomething() + '\n')
 		},
 	)
 	.command(
@@ -34,7 +41,8 @@ await yargsInstance
 			// Options go here
 		},
 		() => {
-			process.stdout.write(doSomethingElse())
+			log.debug('Running command...')
+			process.stdout.write(doSomethingElse() + '\n')
 		},
 	)
 	.alias('h', 'help')

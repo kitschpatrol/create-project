@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 
+import { log, setDefaultLogOptions } from 'lognow'
 import yargs from 'yargs'
 import { hideBin } from 'yargs/helpers'
 import { bin, version } from '../package.json'
@@ -12,8 +13,13 @@ await yargsInstance
 	.scriptName(cliCommandName)
 	.usage('$0 [command]', `Run a ${cliCommandName} command.`)
 	.option('verbose', {
+		default: false,
 		description: 'Run with verbose logging',
 		type: 'boolean',
+	})
+	.middleware((argv) => {
+		// Set log level globally based on verbose flag
+		setDefaultLogOptions({ verbose: argv.verbose })
 	})
 	.command(
 		['$0', 'do-something'],
@@ -22,6 +28,7 @@ await yargsInstance
 			// Options go here
 		},
 		() => {
+			log.debug('Running command...')
 			process.stdout.write('Did something!\n')
 		},
 	)
@@ -32,6 +39,7 @@ await yargsInstance
 			// Options go here
 		},
 		() => {
+			log.debug('Running command...')
 			process.stdout.write('Did something else!\n')
 		},
 	)

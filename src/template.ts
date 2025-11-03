@@ -73,7 +73,10 @@ export default createTemplate({
 			},
 			scripts: [
 				{
-					commands: ['pnpm install', 'pnpm run build', 'pnpm run fix'],
+					commands:
+						options.type === 'electron'
+							? ['pnpm install', 'pnpm run fix']
+							: ['pnpm install', 'pnpm run build', 'pnpm run fix'],
 					phase: 0,
 					silent: true,
 				},

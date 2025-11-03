@@ -2,6 +2,7 @@
 /* eslint-disable unicorn/prefer-dom-node-remove */
 /* eslint-disable unicorn/prefer-dom-node-append */
 import { contextBridge, ipcRenderer } from 'electron'
+import 'lognow/electron/preload'
 
 // --------- Expose some API to the Renderer process ---------
 contextBridge.exposeInMainWorld('ipcRenderer', {

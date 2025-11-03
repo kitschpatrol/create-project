@@ -73,6 +73,12 @@ Kitschpatrol Create Project options:
   --github-repository (string): The name of the future repository / package.
 ```
 
+## Development Notes
+
+```sh
+./dist/index.js --directory ~/Desktop/test
+```
+
 ## Maintainers
 
 [@kitschpatrol](https://github.com/kitschpatrol)

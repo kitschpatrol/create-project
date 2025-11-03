@@ -33,7 +33,8 @@
 		"fix": "ksc fix",
 		"lint": "ksc lint",
 		"release": "bumpp --commit 'Release: %s' && pnpm run build && NPM_AUTH_TOKEN=$(op read 'op://Personal/npm/token') && pnpm publish",
-		"test": "vitest run"
+		"test": "vitest run",
+		"update-templates": "for dir in ./templates/*; do taze -w --cwd \"$dir\"; done"
 	},
 	"dependencies": {
 		"bingo": "^0.5.16",
@@ -41,15 +42,16 @@
 		"bingo-handlebars": "^0.1.0"
 	},
 	"devDependencies": {
-		"@kitschpatrol/shared-config": "^5.7.4",
-		"@types/node": "^20.19.22",
+		"@kitschpatrol/shared-config": "^5.8.0",
+		"@types/node": "^20.19.24",
 		"bumpp": "^10.3.1",
-		"tsdown": "^0.15.8",
+		"taze": "^19.9.0",
+		"tsdown": "^0.15.12",
 		"typescript": "~5.9.3",
-		"vitest": "^3.2.4",
+		"vitest": "^4.0.6",
 		"zod": "^3.25.76"
 	},
-	"packageManager": "pnpm@10.18.3",
+	"packageManager": "pnpm@10.20.0",
 	"engines": {
 		"node": ">=20.19.0"
 	},

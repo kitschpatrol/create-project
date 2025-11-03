@@ -1,7 +1,10 @@
 import './style.css'
+import { log } from 'lognow/electron'
 import { setupCounter } from './counter.ts'
 import typescriptLogo from './typescript.svg'
 import viteLogo from '/vite.svg'
+
+log.info('Hello from Renderer!')
 
 document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
   <div>

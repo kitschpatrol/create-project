@@ -1,7 +1,10 @@
+import { log } from './log'
+
 /**
  * Do something.
  */
 export function doSomething(): string {
+	log.info('Doing something...')
 	return 'Something happened'
 }
 
@@ -9,5 +12,8 @@ export function doSomething(): string {
  * Do something else.
  */
 export function doSomethingElse(): string {
+	log.info('Doing something else...')
 	return 'Something else happened'
 }
+
+export { setLogger } from './log'

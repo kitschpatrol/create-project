@@ -5,5 +5,4 @@ onlyBuiltDependencies:
   - electron
   - electron-winstaller
   - esbuild
-  - puppeteer
   - unrs-resolver

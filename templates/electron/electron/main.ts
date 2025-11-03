@@ -1,4 +1,5 @@
 import { app, BrowserWindow } from 'electron'
+import { log } from 'lognow/electron'
 import path from 'node:path'
 
 process.env.ELECTRON_DISABLE_SECURITY_WARNINGS = 'true'
@@ -35,6 +36,8 @@ async function createWindow() {
 		// win.loadFile('dist/index.html')
 		await win.loadFile(path.join(process.env.DIST, 'index.html'))
 	}
+
+	log.info('Hello from Main!')
 }
 
 app.on('window-all-closed', () => {

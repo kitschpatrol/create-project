@@ -34,17 +34,19 @@
 		"test": "echo \"Error: no test specified\" && exit 1"
 	},
 	"dependencies": {
-		"@types/node": "^20.19.21",
-		"@types/yargs": "^17.0.33",
+		"@types/node": "^20.19.24",
+		"@types/yargs": "^17.0.34",
+		"lognow": "^0.2.1",
 		"yargs": "^17.7.2"
 	},
 	"devDependencies": {
-		"@kitschpatrol/shared-config": "^5.7.4",
+		"@kitschpatrol/shared-config": "^5.8.0",
 		"bumpp": "^10.3.1",
-		"tsdown": "^0.15.7",
+		"mdat-plugin-cli-help": "^1.0.1",
+		"tsdown": "^0.15.12",
 		"typescript": "~5.9.3"
 	},
-	"packageManager": "pnpm@10.18.3",
+	"packageManager": "pnpm@10.20.0",
 	"engines": {
 		"node": ">=20.19.0"
 	},
