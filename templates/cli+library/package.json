@@ -28,7 +28,7 @@
 	"main": "./dist/lib/index.js",
 	"module": "./dist/lib/index.js",
 	"bin": {
-		"{{cli-command-name}}": "dist/bin/cli.js"
+		"{{cli-command-name}}": "dist/bin/cli.mjs"
 	},
 	"files": [
 		"dist/*"
@@ -48,10 +48,10 @@
 		"yargs": "^17.7.2"
 	},
 	"devDependencies": {
-		"@kitschpatrol/shared-config": "^5.8.0",
+		"@kitschpatrol/shared-config": "^5.8.1",
 		"bumpp": "^10.3.1",
 		"mdat-plugin-cli-help": "^1.0.1",
-		"tsdown": "^0.15.12",
+		"tsdown": "^0.16.0",
 		"typescript": "~5.9.3"
 	},
 	"packageManager": "pnpm@10.20.0",

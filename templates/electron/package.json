@@ -34,7 +34,7 @@
 		"lognow": "^0.2.1"
 	},
 	"devDependencies": {
-		"@kitschpatrol/shared-config": "^5.8.0",
+		"@kitschpatrol/shared-config": "^5.8.1",
 		"bumpp": "^10.3.1",
 		"electron": "^38.5.0",
 		"electron-builder": "^26.0.12",

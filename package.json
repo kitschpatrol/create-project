@@ -20,7 +20,7 @@
 		"url": "https://ericmika.com"
 	},
 	"type": "module",
-	"bin": "dist/index.js",
+	"bin": "dist/index.mjs",
 	"files": [
 		"dist",
 		"templates",
@@ -42,13 +42,13 @@
 		"bingo-handlebars": "^0.1.0"
 	},
 	"devDependencies": {
-		"@kitschpatrol/shared-config": "^5.8.0",
+		"@kitschpatrol/shared-config": "^5.8.1",
 		"@types/node": "^20.19.24",
 		"bumpp": "^10.3.1",
 		"taze": "^19.9.0",
-		"tsdown": "^0.15.12",
+		"tsdown": "^0.16.0",
 		"typescript": "~5.9.3",
-		"vitest": "^4.0.6",
+		"vitest": "^4.0.7",
 		"zod": "^3.25.76"
 	},
 	"packageManager": "pnpm@10.20.0",

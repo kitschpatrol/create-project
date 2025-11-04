@@ -38,7 +38,7 @@ The templates use [tsdown](https://tsdown.dev/) for building TypeScript librarie
 ### Create a new project
 
 ```sh
-pnpm create @kitschpatrol/project
+pnpm create @kitschpatrol/project@latest
 ```
 
 ### CLI options
