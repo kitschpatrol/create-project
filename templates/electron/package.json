@@ -31,7 +31,7 @@
 	},
 	"dependencies": {
 		"@types/node": "^20.19.24",
-		"lognow": "^0.2.1"
+		"lognow": "^0.2.2"
 	},
 	"devDependencies": {
 		"@kitschpatrol/shared-config": "^5.8.1",

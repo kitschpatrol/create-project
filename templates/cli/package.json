@@ -20,13 +20,13 @@
 	},
 	"type": "module",
 	"bin": {
-		"{{cli-command-name}}": "dist/index.mjs"
+		"{{cli-command-name}}": "dist/index.js"
 	},
 	"files": [
 		"dist/*"
 	],
 	"scripts": {
-		"build": "tsdown --dts false",
+		"build": "tsdown --no-fixed-extension --dts false",
 		"clean": "git rm -f pnpm-lock.yaml ; git clean -fdX",
 		"fix": "ksc fix",
 		"lint": "ksc lint",
@@ -36,13 +36,13 @@
 	"dependencies": {
 		"@types/node": "^20.19.24",
 		"@types/yargs": "^17.0.34",
-		"lognow": "^0.2.1",
+		"lognow": "^0.3.1",
 		"yargs": "^17.7.2"
 	},
 	"devDependencies": {
 		"@kitschpatrol/shared-config": "^5.8.1",
 		"bumpp": "^10.3.1",
-		"mdat-plugin-cli-help": "^1.0.1",
+		"mdat-plugin-cli-help": "^1.0.2",
 		"tsdown": "^0.16.0",
 		"typescript": "~5.9.3"
 	},

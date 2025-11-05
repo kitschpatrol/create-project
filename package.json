@@ -20,7 +20,7 @@
 		"url": "https://ericmika.com"
 	},
 	"type": "module",
-	"bin": "dist/index.mjs",
+	"bin": "dist/index.js",
 	"files": [
 		"dist",
 		"templates",
@@ -28,7 +28,7 @@
 		"templates/**/.npmrc"
 	],
 	"scripts": {
-		"build": "tsdown",
+		"build": "tsdown --no-fixed-extension",
 		"clean": "git rm -f pnpm-lock.yaml ; git clean -fdX",
 		"fix": "ksc fix",
 		"lint": "ksc lint",
