@@ -31,7 +31,7 @@
 		"build": "tsdown --no-fixed-extension",
 		"clean": "git rm -f pnpm-lock.yaml ; git clean -fdX",
 		"fix": "ksc fix",
-		"lint": "ksc lint",
+		"lint": "ksc-repo lint ; mdat readme check readme.md ; ksc-typescript lint ; ksc-eslint lint ; ksc-stylelint lint ; ksc-cspell lint ; ksc-knip lint ; ksc-prettier lint",
 		"release": "bumpp --commit 'Release: %s' && pnpm run build && NPM_AUTH_TOKEN=$(op read 'op://Personal/npm/token') && pnpm publish",
 		"test": "vitest run",
 		"update-templates": "for dir in ./templates/*; do taze -w --cwd \"$dir\"; done"
@@ -45,6 +45,7 @@
 		"@kitschpatrol/shared-config": "^5.8.3",
 		"@types/node": "~20.19.24",
 		"bumpp": "^10.3.1",
+		"mdat": "^1.2.3",
 		"taze": "^19.9.0",
 		"tsdown": "^0.16.1",
 		"typescript": "~5.9.3",

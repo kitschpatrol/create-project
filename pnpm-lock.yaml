@@ -27,6 +27,9 @@ importers:
       bumpp:
         specifier: ^10.3.1
         version: 10.3.1
+      mdat:
+        specifier: ^1.2.3
+        version: 1.2.3(typescript@5.9.3)
       taze:
         specifier: ^19.9.0
         version: 19.9.0
@@ -179,6 +182,9 @@ importers:
 
   templates/unplugin:
     dependencies:
+      '@types/node':
+        specifier: ~22.16.5
+        version: 22.16.5
       unplugin:
         specifier: ^2.3.10
         version: 2.3.10
@@ -192,9 +198,6 @@ importers:
       '@sxzz/test-utils':
         specifier: ^0.5.12
         version: 0.5.12(esbuild@0.25.12)(rolldown@1.0.0-beta.47)(rollup@4.53.1)(typescript@5.9.3)(vitest@4.0.8(@types/debug@4.1.12)(@types/node@22.16.5)(jiti@2.6.1)(lightningcss@1.30.2)(tsx@4.20.6)(yaml@2.8.1))
-      '@types/node':
-        specifier: ~22.16.5
-        version: 22.16.5
       bumpp:
         specifier: ^10.3.1
         version: 10.3.1
@@ -3746,8 +3749,8 @@ packages:
     resolution: {integrity: sha512-4gd7VpWNQNB4UKKCFFVcp1AVv+FMOgs9NKzjHKusc8jTMhd5eL1NqQqOpE0KzMds804/yHlglp3uxgluOqAPLw==}
     engines: {node: '>= 0.4'}
 
-  ip-address@10.0.1:
-    resolution: {integrity: sha512-NWv9YLW4PoW2B7xtzaS3NCot75m6nK7Icdv0o3lfMceJVRfSoQwqD4wEH5rLwoKJwUiZ/rfpiVBhnaF0FK4HoA==}
+  ip-address@10.1.0:
+    resolution: {integrity: sha512-XXADHxXmvT9+CRxhXg56LJovE+bmWnEWB78LB83VZTprKTmaC5QfruXocxzTZ2Kl0DNwKuBdlIhjL8LeY8Sf8Q==}
     engines: {node: '>= 12'}
 
   is-alphabetical@2.0.1:
@@ -8659,7 +8662,7 @@ snapshots:
 
   '@types/concat-stream@2.0.3':
     dependencies:
-      '@types/node': 20.19.24
+      '@types/node': 22.19.0
 
   '@types/debug@4.1.12':
     dependencies:
@@ -11162,7 +11165,7 @@ snapshots:
       hasown: 2.0.2
       side-channel: 1.1.0
 
-  ip-address@10.0.1: {}
+  ip-address@10.1.0: {}
 
   is-alphabetical@2.0.1: {}
 
@@ -13503,7 +13506,7 @@ snapshots:
 
   socks@2.8.7:
     dependencies:
-      ip-address: 10.0.1
+      ip-address: 10.1.0
       smart-buffer: 4.2.0
 
   sort-keys@5.1.0:
