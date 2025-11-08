@@ -13,6 +13,7 @@ export const TEMPLATE_TYPES = [
 	'library',
 	'cli+library',
 	'electron',
+	'unplugin',
 ] as const
 
 export default createTemplate({

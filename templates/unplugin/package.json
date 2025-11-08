@@ -1,0 +1,90 @@
+{
+	"name": "{{github-repository}}",
+	"version": "0.0.0",
+	"description": "An unplugin project",
+	"keywords": [
+		"photos",
+		"aphex",
+		"apple-photos",
+		"unplugin",
+		"vite",
+		"webpack",
+		"rspack",
+		"rollup",
+		"rolldown",
+		"esbuild",
+		"farm",
+		"transform",
+		"npm-package"
+	],
+	"homepage": "https://github.com/{{github-owner}}/{{github-repository}}",
+	"bugs": "https://github.com/{{github-owner}}/{{github-repository}}/issues",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/{{github-owner}}/{{github-repository}}.git"
+	},
+	"license": "MIT",
+	"author": {
+		"name": "{{author-name}}",
+		"email": "{{author-email}}",
+		"url": "{{author-url}}"
+	},
+	"type": "module",
+	"exports": {
+		".": "./dist/index.js",
+		"./*": "./*",
+		"./api": "./dist/api.js",
+		"./esbuild": "./dist/esbuild.js",
+		"./farm": "./dist/farm.js",
+		"./rolldown": "./dist/rolldown.js",
+		"./rollup": "./dist/rollup.js",
+		"./rspack": "./dist/rspack.js",
+		"./vite": "./dist/vite.js",
+		"./webpack": "./dist/webpack.js"
+	},
+	"main": "./dist/index.js",
+	"module": "./dist/index.js",
+	"types": "./dist/index.d.ts",
+	"typesVersions": {
+		"*": {
+			"*": [
+				"./dist/*",
+				"./*"
+			]
+		}
+	},
+	"files": [
+		"dist"
+	],
+	"scripts": {
+		"build": "tsdown",
+		"clean": "git rm -f pnpm-lock.yaml ; git clean -fdX",
+		"dev": "tsdown --watch",
+		"fix": "ksc fix",
+		"lint": "ksc lint",
+		"release": "bumpp --commit 'Release: %s' && pnpm run build && NPM_AUTH_TOKEN=$(op read 'op://Personal/npm/token') && pnpm publish",
+		"test": "vitest"
+	},
+	"dependencies": {
+		"unplugin": "^2.3.10",
+		"unplugin-utils": "^0.3.1"
+	},
+	"devDependencies": {
+		"@kitschpatrol/shared-config": "^5.8.3",
+		"@sxzz/test-utils": "^0.5.12",
+		"@types/node": "^20.19.24",
+		"bumpp": "^10.3.1",
+		"tsdown": "^0.16.1",
+		"tsx": "^4.20.6",
+		"typescript": "~5.9.3",
+		"vite": "^7.2.2",
+		"vitest": "^4.0.8"
+	},
+	"packageManager": "pnpm@10.20.0",
+	"engines": {
+		"node": ">=20.19.0"
+	},
+	"publishConfig": {
+		"access": "public"
+	}
+}
