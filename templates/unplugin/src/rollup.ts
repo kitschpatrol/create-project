@@ -10,7 +10,7 @@ import { starter } from './index'
  * @example
  * ```ts
  * // rollup.config.js
- * import starter from '{{github-repository}}/rollup'
+ * import starter from '{{{github-repository}}}/rollup'
  *
  * export default {
  *   plugins: [starter()],

@@ -2,7 +2,7 @@
 
 exports[`rollup > basic.js 1`] = `
 "// basic.js
-// {{github-repository}} injected
+// {{{github-repository}}} injected
 const someValue = 10;
 
 export { someValue };

@@ -1,22 +1,22 @@
 {
-	"name": "{{github-repository}}",
+	"name": "{{{github-repository}}}",
 	"version": "0.0.0",
 	"private": true,
-	"description": "An {{type}} project.",
+	"description": "An {{{type}}} project.",
 	"keywords": [
-		"{{type}}"
+		"{{{type}}}"
 	],
-	"homepage": "https://github.com/{{github-owner}}/{{github-repository}}",
-	"bugs": "https://github.com/{{github-owner}}/{{github-repository}}/issues",
+	"homepage": "https://github.com/{{{github-owner}}}/{{{github-repository}}}",
+	"bugs": "https://github.com/{{{github-owner}}}/{{{github-repository}}}/issues",
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/{{github-owner}}/{{github-repository}}.git"
+		"url": "git+https://github.com/{{{github-owner}}}/{{{github-repository}}}.git"
 	},
 	"license": "MIT",
 	"author": {
-		"name": "{{author-name}}",
-		"email": "{{author-email}}",
-		"url": "{{author-url}}"
+		"name": "{{{author-name}}}",
+		"email": "{{{author-email}}}",
+		"url": "{{{author-url}}}"
 	},
 	"type": "module",
 	"main": "dist-electron/main.js",

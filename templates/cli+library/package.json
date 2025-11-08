@@ -1,22 +1,22 @@
 {
-	"name": "{{github-repository}}",
+	"name": "{{{github-repository}}}",
 	"version": "0.0.0",
-	"description": "A {{type}} project.",
+	"description": "A {{{type}}} project.",
 	"keywords": [
 		"cli",
 		"npm-package"
 	],
-	"homepage": "https://github.com/{{github-owner}}/{{github-repository}}",
-	"bugs": "https://github.com/{{github-owner}}/{{github-repository}}/issues",
+	"homepage": "https://github.com/{{{github-owner}}}/{{{github-repository}}}",
+	"bugs": "https://github.com/{{{github-owner}}}/{{{github-repository}}}/issues",
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/{{github-owner}}/{{github-repository}}.git"
+		"url": "git+https://github.com/{{{github-owner}}}/{{{github-repository}}}.git"
 	},
 	"license": "MIT",
 	"author": {
-		"name": "{{author-name}}",
-		"email": "{{author-email}}",
-		"url": "{{author-url}}"
+		"name": "{{{author-name}}}",
+		"email": "{{{author-email}}}",
+		"url": "{{{author-url}}}"
 	},
 	"type": "module",
 	"exports": {
@@ -28,7 +28,7 @@
 	"main": "./dist/lib/index.js",
 	"module": "./dist/lib/index.js",
 	"bin": {
-		"{{cli-command-name}}": "dist/bin/cli.js"
+		"{{{cli-command-name}}}": "dist/bin/cli.js"
 	},
 	"files": [
 		"dist/*"
@@ -38,7 +38,7 @@
 		"clean": "git rm -f pnpm-lock.yaml ; git clean -fdX",
 		"fix": "ksc fix",
 		"lint": "ksc lint",
-		"release": "bumpp --commit 'Release: %s' && pnpm run build && NPM_AUTH_TOKEN=$({{npm-auth-command}}) && pnpm publish",
+		"release": "bumpp --commit 'Release: %s' && pnpm run build && NPM_AUTH_TOKEN=$({{{npm-auth-command}}}) && pnpm publish",
 		"test": "echo \"Error: no test specified\" && exit 1"
 	},
 	"dependencies": {

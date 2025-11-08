@@ -8662,7 +8662,7 @@ snapshots:
 
   '@types/concat-stream@2.0.3':
     dependencies:
-      '@types/node': 22.19.0
+      '@types/node': 20.19.24
 
   '@types/debug@4.1.12':
     dependencies:

@@ -10,7 +10,7 @@ import { starter } from './index'
  * @example
  * ```ts
  * // vite.config.ts
- * import starter from '{{github-repository}}/vite'
+ * import starter from '{{{github-repository}}}/vite'
  *
  * export default defineConfig({
  *   plugins: [starter()],

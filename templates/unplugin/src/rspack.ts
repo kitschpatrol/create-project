@@ -10,7 +10,7 @@ import { starter } from './index'
  * @example
  * ```js
  * // rspack.config.js
- * import starter from '{{github-repository}}/rspack'
+ * import starter from '{{{github-repository}}}/rspack'
  *
  * export default {
  *   plugins: [starter()],

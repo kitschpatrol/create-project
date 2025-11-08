@@ -10,7 +10,7 @@ import { starter } from './index'
  * @example
  * ```ts
  * // farm.config.js
- * import starter from '{{github-repository}}/farm'
+ * import starter from '{{{github-repository}}}/farm'
  *
  * export default {
  *   plugins: [starter()],

@@ -12,12 +12,12 @@ export const starter: UnpluginInstance<Options | undefined, false> = createUnplu
 		const options = resolveOptions(rawOptions)
 		const filter = createFilter(options.include, options.exclude)
 
-		const name = '{{github-repository}}'
+		const name = '{{{github-repository}}}'
 		return {
 			enforce: options.enforce,
 			name,
 			transform(code, _id) {
-				return `// {{github-repository}} injected\n${code}`
+				return `// {{{github-repository}}} injected\n${code}`
 			},
 			transformInclude(id) {
 				return filter(id)

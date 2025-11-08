@@ -10,7 +10,7 @@ import { starter } from './index'
  * @example
  * ```ts
  * // rolldown.config.js
- * import starter from '{{github-repository}}/rolldown'
+ * import starter from '{{{github-repository}}}/rolldown'
  *
  * export default {
  *   plugins: [starter()],

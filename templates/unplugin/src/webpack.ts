@@ -12,7 +12,7 @@ import { starter } from './index'
  * @example
  * ```js
  * // webpack.config.js
- * import starter from '{{github-repository}}/webpack'
+ * import starter from '{{{github-repository}}}/webpack'
  *
  * export default {
  *   plugins: [starter()],
