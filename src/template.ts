@@ -58,19 +58,48 @@ export default createTemplate({
 	async produce(params) {
 		const { options } = params
 
+		// Add some calculated options to the template
+		const extraOptions = {
+			...options,
+			year: new Date().getFullYear(),
+		}
+
+		async function handlebarsHelper(...paths: string[]) {
+			const result: Record<string, Awaited<ReturnType<typeof handlebars>>> = {}
+			for (const filePath of paths) {
+				result[filePath] = await handlebars(
+					path.join(import.meta.dirname, `../templates/${options.type}/${filePath}`),
+					extraOptions,
+				)
+			}
+			return result
+		}
+
 		return {
 			files: {
 				...(await intakeDirectory(path.join(import.meta.dirname, `../templates/${options.type}`), {
 					exclude: /node_modules|pnpm-lock\.yaml/,
 				})),
-				'license.txt': await handlebars(
-					path.join(import.meta.dirname, `../templates/${options.type}/license.txt`),
-					options,
-				),
-				'package.json': await handlebars(
-					path.join(import.meta.dirname, `../templates/${options.type}/package.json`),
-					options,
-				),
+				...(await handlebarsHelper(
+					'license.txt',
+					'package.json',
+					// Crude per-template handlebars file expansion conditional
+					// TODO better
+					...(options.type === 'unplugin'
+						? [
+								'src/esbuild.ts',
+								'src/farm.ts',
+								'src/index.ts',
+								'src/rolldown.ts',
+								'src/rollup.ts',
+								'src/rspack.ts',
+								'src/vite.ts',
+								'src/webpack.ts',
+								'src/webpack.ts',
+								'tests/__snapshots__/rollup.test.ts.snap',
+							]
+						: []),
+				)),
 			},
 			scripts: [
 				{

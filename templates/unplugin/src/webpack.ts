@@ -1,24 +1,24 @@
 /**
  * This entry file is for webpack plugin.
- *
  * @module
  */
 
-import { Starter } from './index'
+import { starter } from './index'
+
+// @case-police-ignore webpack
 
 /**
  * Webpack plugin
- *
  * @example
  * ```js
  * // webpack.config.js
- * import Starter from 'unplugin-aphex/webpack'
+ * import starter from '{{github-repository}}/webpack'
  *
  * export default {
- *   plugins: [Starter()],
+ *   plugins: [starter()],
  * }
  * ```
  */
-const webpack = Starter.webpack as typeof Starter.webpack
+const { webpack } = starter
 export default webpack
 export { webpack as 'module.exports' }

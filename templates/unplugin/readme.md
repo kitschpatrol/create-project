@@ -2,21 +2,9 @@
 
 <!-- title -->
 
-# {{github-repository}}
-
-<!-- /title -->
-
 <!-- badges -->
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-
-<!-- /badges -->
-
 <!-- short-description -->
-
-**An unplugin project.**
-
-<!-- /short-description -->
 
 ## Overview
 
@@ -36,16 +24,4 @@ _State anyone or anything that significantly helped with the development of your
 
 <!-- contributing -->
 
-## Contributing
-
-[Issues](https://github.com/kitschpatrol/{{github-repository}}/issues) and pull requests are welcome.
-
-<!-- /contributing -->
-
 <!-- license -->
-
-## License
-
-[MIT](license.txt) © Eric Mika
-
-<!-- /license -->

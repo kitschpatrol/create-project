@@ -1,24 +1,22 @@
 /**
  * This entry file is for Rolldown plugin.
- *
  * @module
  */
 
-import { Starter } from './index'
+import { starter } from './index'
 
 /**
  * Rolldown plugin
- *
  * @example
  * ```ts
  * // rolldown.config.js
- * import Starter from 'unplugin-aphex/rolldown'
+ * import starter from '{{github-repository}}/rolldown'
  *
  * export default {
- *   plugins: [Starter()],
+ *   plugins: [starter()],
  * }
  * ```
  */
-const rolldown = Starter.rolldown as typeof Starter.rolldown
+const { rolldown } = starter
 export default rolldown
 export { rolldown as 'module.exports' }

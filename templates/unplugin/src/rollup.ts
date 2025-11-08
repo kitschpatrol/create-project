@@ -1,24 +1,22 @@
 /**
  * This entry file is for Rollup plugin.
- *
  * @module
  */
 
-import { Starter } from './index'
+import { starter } from './index'
 
 /**
  * Rollup plugin
- *
  * @example
  * ```ts
  * // rollup.config.js
- * import Starter from 'unplugin-aphex/rollup'
+ * import starter from '{{github-repository}}/rollup'
  *
  * export default {
- *   plugins: [Starter()],
+ *   plugins: [starter()],
  * }
  * ```
  */
-const rollup = Starter.rollup as typeof Starter.rollup
+const { rollup } = starter
 export default rollup
 export { rollup as 'module.exports' }

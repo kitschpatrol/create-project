@@ -1,22 +1,22 @@
 /**
  * This entry file is for esbuild plugin.
- *
  * @module
  */
 
-import { Starter } from './index'
+import { starter } from './index'
+
+// @case-police-ignore esbuild
 
 /**
  * Esbuild plugin
- *
  * @example
  * ```ts
  * import { build } from 'esbuild'
- * import Starter from 'unplugin-aphex/esbuild'
+ * import starter from '{{github-repository}}/esbuild'
  * 
- * build({ plugins: [Starter()] })
+ * build({ plugins: [starter()] })
 ```
  */
-const esbuild = Starter.esbuild as typeof Starter.esbuild
+const { esbuild } = starter
 export default esbuild
 export { esbuild as 'module.exports' }

@@ -1,24 +1,22 @@
 /**
  * This entry file is for Farm plugin.
- *
  * @module
  */
 
-import { Starter } from './index'
+import { starter } from './index'
 
 /**
  * Farm plugin
- *
  * @example
  * ```ts
  * // farm.config.js
- * import Starter from 'unplugin-aphex/farm'
+ * import starter from '{{github-repository}}/farm'
  *
  * export default {
- *   plugins: [Starter()],
+ *   plugins: [starter()],
  * }
  * ```
  */
-const farm = Starter.farm as typeof Starter.farm
+const { farm } = starter
 export default farm
 export { farm as 'module.exports' }

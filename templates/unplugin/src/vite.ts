@@ -1,24 +1,22 @@
 /**
  * This entry file is for Vite plugin.
- *
  * @module
  */
 
-import { Starter } from './index'
+import { starter } from './index'
 
 /**
  * Vite plugin
- *
  * @example
  * ```ts
  * // vite.config.ts
- * import Starter from 'unplugin-aphex/vite'
+ * import starter from '{{github-repository}}/vite'
  *
  * export default defineConfig({
- *   plugins: [Starter()],
+ *   plugins: [starter()],
  * })
  * ```
  */
-const vite = Starter.vite as typeof Starter.vite
+const { vite } = starter
 export default vite
 export { vite as 'module.exports' }

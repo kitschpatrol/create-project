@@ -3,9 +3,6 @@
 	"version": "0.0.0",
 	"description": "An unplugin project",
 	"keywords": [
-		"photos",
-		"aphex",
-		"apple-photos",
 		"unplugin",
 		"vite",
 		"webpack",
@@ -66,23 +63,21 @@
 		"test": "vitest"
 	},
 	"dependencies": {
+		"@types/node": "~22.16.5",
 		"unplugin": "^2.3.10",
 		"unplugin-utils": "^0.3.1"
 	},
 	"devDependencies": {
 		"@kitschpatrol/shared-config": "^5.8.3",
 		"@sxzz/test-utils": "^0.5.12",
-		"@types/node": "^20.19.24",
 		"bumpp": "^10.3.1",
 		"tsdown": "^0.16.1",
-		"tsx": "^4.20.6",
 		"typescript": "~5.9.3",
-		"vite": "^7.2.2",
 		"vitest": "^4.0.8"
 	},
 	"packageManager": "pnpm@10.20.0",
 	"engines": {
-		"node": ">=20.19.0"
+		"node": ">=22.16.0"
 	},
 	"publishConfig": {
 		"access": "public"
