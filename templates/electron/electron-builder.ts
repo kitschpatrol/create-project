@@ -15,6 +15,8 @@ const config: Configuration = {
 		entitlementsInherit: 'electron/resources/mac/entitlements.mac.plist',
 		gatekeeperAssess: false,
 		hardenedRuntime: true,
+		// Delete this when you're ready to sign the app
+		identity: null,
 		icon: 'electron/resources/icons/mac/icon.icns',
 		target: 'zip',
 	},

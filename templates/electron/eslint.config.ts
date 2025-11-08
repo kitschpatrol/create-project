@@ -15,6 +15,7 @@ export default eslintConfig({
 					],
 				},
 			],
+			'unicorn/no-null': 'off',
 			'unicorn/no-process-exit': 'off',
 		},
 	},

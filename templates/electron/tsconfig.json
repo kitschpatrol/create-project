@@ -5,5 +5,5 @@
 	},
 	// Includes project dot-files files for typescript-eslint integration
 	"include": ["**/*", "**/**.*"],
-	"exclude": ["**/dist/", "**/bin/"]
+	"exclude": ["**/bin/", "**/dist/", "**/dist-electron/"]
 }

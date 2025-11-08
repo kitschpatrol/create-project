@@ -102,3 +102,18 @@ Thanks to [Josh Goldberg](https://www.joshuakgoldberg.com/) for creating the [Bi
 [MIT](license.txt) © Eric Mika
 
 <!-- /license -->
+
+---
+
+Test scratch:
+
+Build failures:
+
+- electron
+
+Lint failures:
+
+- electron
+- cli+library
+- cli
+- library
