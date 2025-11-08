@@ -27,6 +27,7 @@ function templateOverrides(): TypedFlatConfigItem[] {
 			'mdx/remark': 'off',
 			'ts/consistent-type-definitions': 'off',
 			'unicorn/no-abusive-eslint-disable': 'off',
+			'unicorn/no-null': 'off',
 			'unicorn/no-process-exit': 'off',
 		},
 	}))
