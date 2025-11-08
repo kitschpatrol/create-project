@@ -42,7 +42,7 @@
 		"test": "echo \"Error: no test specified\" && exit 1"
 	},
 	"dependencies": {
-		"@types/node": "^20.19.24",
+		"@types/node": "~20.19.24",
 		"@types/yargs": "^17.0.34",
 		"lognow": "^0.3.2",
 		"yargs": "^18.0.0"

@@ -30,7 +30,7 @@
 		"test": "echo \"Error: no test specified\" && exit 1"
 	},
 	"dependencies": {
-		"@types/node": "^22.19.0",
+		"@types/node": "~22.19.0",
 		"lognow": "^0.3.2"
 	},
 	"devDependencies": {
