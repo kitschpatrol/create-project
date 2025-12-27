@@ -1,15 +1,14 @@
 :root {
 	font-family: system-ui, Helvetica, Arial, sans-serif;
 	font-weight: 400;
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
+	font-synthesis: none;
 	line-height: 1.5;
 	color: rgb(255 255 255 / 87%);
 	text-rendering: optimizelegibility;
 	color-scheme: light dark;
 	background-color: #242424;
-
-	font-synthesis: none;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
 }
 
 a {
