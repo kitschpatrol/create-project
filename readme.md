@@ -69,8 +69,8 @@ Create Kitschpatrol Project options:
   --author-email (string): The email of the author.
   --author-url (string): The URL of the author.
   --cli-command-name (string): CLI command name (if applicable).
-  --github-owner (string): The owner of the future repository.
-  --github-repository (string): The name of the future repository / package.
+  --github-owner (string): The owner of the repository.
+  --github-repository (string): The name of the repository / package.
   --npm-auth-command (string): A shell command that sets the NPM_AUTH_TOKEN env variable with a granular token for publishing to npm.
 ```
 

@@ -37,16 +37,11 @@ export default createTemplate({
 			.string()
 			.default('new-project')
 			.describe('CLI command name (if applicable)'),
-		// "Future" prefix prevents Bingo from creating a GitHub repository
-		// Pending resolution of https://github.com/bingo-js/bingo/issues/365
-		'github-owner': z
-			.string()
-			.default('kitschpatrol')
-			.describe('The owner of the future repository'),
+		'github-owner': z.string().default('kitschpatrol').describe('The owner of the repository'),
 		'github-repository': z
 			.string()
 			.default(`new-project`)
-			.describe('The name of the future repository / package'),
+			.describe('The name of the repository / package'),
 		'npm-auth-command': z
 			.string()
 			.default("op read 'op://Personal/npm/token'")
