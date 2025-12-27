@@ -55,9 +55,7 @@ export default createTemplate({
 			),
 		/* eslint-enable perfectionist/sort-objects */
 	},
-	async produce(params) {
-		const { options } = params
-
+	async produce({ options }) {
 		// Add some calculated options to the template
 		const extraOptions = {
 			...options,

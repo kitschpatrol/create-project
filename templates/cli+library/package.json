@@ -42,19 +42,19 @@
 		"test": "echo \"Error: no test specified\" && exit 1"
 	},
 	"dependencies": {
-		"@types/node": "~20.19.24",
-		"@types/yargs": "^17.0.34",
+		"@types/node": "~20.19.27",
+		"@types/yargs": "^17.0.35",
 		"lognow": "^0.3.2",
 		"yargs": "^18.0.0"
 	},
 	"devDependencies": {
-		"@kitschpatrol/shared-config": "^5.8.3",
-		"bumpp": "^10.3.1",
-		"mdat-plugin-cli-help": "^1.0.2",
-		"tsdown": "^0.16.1",
+		"@kitschpatrol/shared-config": "^5.10.0",
+		"bumpp": "^10.3.2",
+		"mdat-plugin-cli-help": "^1.0.4",
+		"tsdown": "^0.18.3",
 		"typescript": "~5.9.3"
 	},
-	"packageManager": "pnpm@10.20.0",
+	"packageManager": "pnpm@10.26.2",
 	"engines": {
 		"node": ">=20.19.0"
 	},

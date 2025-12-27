@@ -38,16 +38,16 @@
 		"test": "echo \"Error: no test specified\" && exit 1"
 	},
 	"dependencies": {
-		"@types/node": "~20.19.24",
+		"@types/node": "~20.19.27",
 		"lognow": "^0.2.2"
 	},
 	"devDependencies": {
-		"@kitschpatrol/shared-config": "^5.8.3",
-		"bumpp": "^10.3.1",
-		"tsdown": "^0.16.1",
+		"@kitschpatrol/shared-config": "^5.10.0",
+		"bumpp": "^10.3.2",
+		"tsdown": "^0.18.3",
 		"typescript": "~5.9.3"
 	},
-	"packageManager": "pnpm@10.20.0",
+	"packageManager": "pnpm@10.26.2",
 	"engines": {
 		"node": ">=20.19.0"
 	},

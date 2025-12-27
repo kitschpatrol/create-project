@@ -37,22 +37,22 @@
 		"update-templates": "for dir in ./templates/*; do taze -w --cwd \"$dir\"; done"
 	},
 	"dependencies": {
-		"bingo": "^0.5.16",
-		"bingo-fs": "^0.5.5",
+		"bingo": "^0.9.2",
+		"bingo-fs": "^0.5.6",
 		"bingo-handlebars": "^0.1.0"
 	},
 	"devDependencies": {
-		"@kitschpatrol/shared-config": "^5.8.3",
-		"@types/node": "~20.19.24",
-		"bumpp": "^10.3.1",
-		"mdat": "^1.2.3",
-		"taze": "^19.9.0",
-		"tsdown": "^0.16.1",
+		"@kitschpatrol/shared-config": "^5.10.0",
+		"@types/node": "~20.19.27",
+		"bumpp": "^10.3.2",
+		"mdat": "^1.3.3",
+		"taze": "^19.9.2",
+		"tsdown": "^0.18.3",
 		"typescript": "~5.9.3",
-		"vitest": "^4.0.8",
+		"vitest": "^4.0.16",
 		"zod": "^3.25.76"
 	},
-	"packageManager": "pnpm@10.20.0",
+	"packageManager": "pnpm@10.26.2",
 	"engines": {
 		"node": ">=20.19.0"
 	},

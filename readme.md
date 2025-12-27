@@ -23,7 +23,7 @@
 
 This repository contains very basic starter templates for TypeScript projects integrating [@kitschpatrol/shared-config](https://github.com/kitschpatrol/shared-config).
 
-The lint tools and rules that come along with [@kitschpatrol/shared-config](https://github.com/kitschpatrol/shared-config) are quite opinionated and draconian, and won't be to everyone's taste.
+The lint tools and rules that come along with [@kitschpatrol/shared-config](https://github.com/kitschpatrol/shared-config) are opinionated and draconian, and won't be to everyone's taste.
 
 The templates use [tsdown](https://tsdown.dev/) for building TypeScript libraries and Node-based CLI tools, and [Vite](https://vite.dev/) for web projects. [Bingo](https://www.create.bingo/) is used for the project templating system itself.
 
@@ -47,22 +47,22 @@ pnpm create @kitschpatrol/project@latest
 Bingo template options:
 
   --directory (string): What local directory path to run under
-      npx new-project --directory my-fancy-project
+      npx @kitschpatrol/create-project --directory my-fancy-project
 
   --help (string): Prints help text.
-      npx new-project --help
+      npx @kitschpatrol/create-project --help
 
   --mode ("setup" | "transition"): Which mode to run in.
-      npx new-project --mode setup
-      npx new-project --mode transition
+      npx @kitschpatrol/create-project --mode setup
+      npx @kitschpatrol/create-project --mode transition
 
   --offline (boolean): Whether to run in an "offline" mode that skips network requests.
-      npx new-project --offline
+      npx @kitschpatrol/create-project --offline
 
   --version (boolean): Prints package versions.
-      npx new-project --version
+      npx @kitschpatrol/create-project --version
 
-Kitschpatrol Create Project options:
+Create Kitschpatrol Project options:
 
   --type (enum): The type of project to create.
   --author-name (string): The name of the author.
@@ -71,6 +71,7 @@ Kitschpatrol Create Project options:
   --cli-command-name (string): CLI command name (if applicable).
   --github-owner (string): The owner of the future repository.
   --github-repository (string): The name of the future repository / package.
+  --npm-auth-command (string): A shell command that sets the NPM_AUTH_TOKEN env variable with a granular token for publishing to npm.
 ```
 
 ## Development Notes

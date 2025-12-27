@@ -45,7 +45,7 @@
 	"explorer.fileNesting.enabled": true,
 	"explorer.fileNesting.expand": false,
 	"explorer.fileNesting.patterns": {
-		".env": ".env.*",
+		".env": ".env.*, .template.env",
 		"*.js": "${basename}.ts.map, ${basename}.js.map, ${basename}.d.ts, ${basename}.d.ts.map, ${basename}.d.js.map",
 		"*.ts": "${basename}.ts.map, ${basename}.d.ts, ${basename}.d.ts.map",
 		"package.json": ".*ignore, .*rc, .*.js, .*.mjs, .*.cjs, .*.ts, .*.mts, .*.cts, .*.json, .*.jsonc, .*.json5, .*.yml, .*.yaml, *config.js, *config.mjs, *config.cjs, *config.ts, *config.mts, *config.cts, *config.json, *config.jsonc, *config.json5, *config.yml, *config.yaml, pnpm*, workspace*, yarn*, lerna.json, netlify.toml, package-lock.json, turbo.json, vercel.json, wrangler.toml, yarn.lock",

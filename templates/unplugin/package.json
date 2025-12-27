@@ -64,18 +64,18 @@
 	},
 	"dependencies": {
 		"@types/node": "~22.16.5",
-		"unplugin": "^2.3.10",
+		"unplugin": "^2.3.11",
 		"unplugin-utils": "^0.3.1"
 	},
 	"devDependencies": {
-		"@kitschpatrol/shared-config": "^5.8.3",
-		"@sxzz/test-utils": "^0.5.12",
-		"bumpp": "^10.3.1",
-		"tsdown": "^0.16.1",
+		"@kitschpatrol/shared-config": "^5.10.0",
+		"@sxzz/test-utils": "^0.5.15",
+		"bumpp": "^10.3.2",
+		"tsdown": "^0.18.3",
 		"typescript": "~5.9.3",
-		"vitest": "^4.0.8"
+		"vitest": "^4.0.16"
 	},
-	"packageManager": "pnpm@10.20.0",
+	"packageManager": "pnpm@10.26.2",
 	"engines": {
 		"node": ">=22.16.0"
 	},
