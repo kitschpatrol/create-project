@@ -29,15 +29,15 @@
 		"test": "echo \"Error: no test specified\" && exit 1"
 	},
 	"dependencies": {
-		"@types/node": "~20.19.27"
+		"@types/node": "~20.19.30"
 	},
 	"devDependencies": {
-		"@kitschpatrol/shared-config": "^5.10.0",
-		"bumpp": "^10.3.2",
+		"@kitschpatrol/shared-config": "^5.12.0",
+		"bumpp": "^10.4.0",
 		"tsx": "^4.21.0",
 		"typescript": "~5.9.3"
 	},
-	"packageManager": "pnpm@10.26.2",
+	"packageManager": "pnpm@10.28.1",
 	"engines": {
 		"node": ">=20.19.0"
 	}
