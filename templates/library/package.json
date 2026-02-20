@@ -30,7 +30,7 @@
 		"dist/*"
 	],
 	"scripts": {
-		"build": "tsdown --minify --platform neutral --tsconfig tsconfig.build.json",
+		"build": "tsdown",
 		"clean": "git rm -f pnpm-lock.yaml ; git clean -fdX",
 		"fix": "ksc fix",
 		"lint": "ksc lint",
@@ -38,16 +38,18 @@
 		"test": "echo \"Error: no test specified\" && exit 1"
 	},
 	"dependencies": {
-		"@types/node": "~20.19.30",
+		"@types/node": "~20.19.33",
 		"lognow": "^0.4.1"
 	},
 	"devDependencies": {
+		"@arethetypeswrong/core": "^0.18.2",
 		"@kitschpatrol/shared-config": "^5.13.0",
-		"bumpp": "^10.4.0",
-		"tsdown": "^0.20.1",
+		"bumpp": "^10.4.1",
+		"publint": "^0.3.17",
+		"tsdown": "^0.20.3",
 		"typescript": "~5.9.3"
 	},
-	"packageManager": "pnpm@10.28.1",
+	"packageManager": "pnpm@10.30.1",
 	"engines": {
 		"node": ">=20.19.0"
 	}

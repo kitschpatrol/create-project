@@ -43,16 +43,16 @@
 	},
 	"devDependencies": {
 		"@kitschpatrol/shared-config": "^5.13.0",
-		"@types/node": "~20.19.30",
-		"bumpp": "^10.4.0",
+		"@types/node": "~20.19.33",
+		"bumpp": "^10.4.1",
 		"mdat": "^1.3.4",
 		"taze": "^19.9.2",
-		"tsdown": "^0.20.1",
+		"tsdown": "^0.20.3",
 		"typescript": "~5.9.3",
 		"vitest": "^4.0.18",
 		"zod": "^3.25.76"
 	},
-	"packageManager": "pnpm@10.28.1",
+	"packageManager": "pnpm@10.30.1",
 	"engines": {
 		"node": ">=20.19.0"
 	},
