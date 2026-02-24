@@ -27,6 +27,7 @@
 	},
 	"main": "./dist/lib/index.js",
 	"module": "./dist/lib/index.js",
+	"types": "./dist/lib/index.d.ts",
 	"bin": {
 		"{{{cli-command-name}}}": "dist/bin/cli.js"
 	},
@@ -49,14 +50,14 @@
 	},
 	"devDependencies": {
 		"@arethetypeswrong/core": "^0.18.2",
-		"@kitschpatrol/shared-config": "^5.13.0",
+		"@kitschpatrol/shared-config": "^6.0.0",
 		"bumpp": "^10.4.1",
-		"mdat-plugin-cli-help": "^1.0.6",
+		"mdat-plugin-cli-help": "^1.0.7",
 		"publint": "^0.3.17",
 		"tsdown": "^0.20.3",
 		"typescript": "~5.9.3"
 	},
-	"packageManager": "pnpm@10.30.1",
+	"packageManager": "pnpm@10.30.2",
 	"engines": {
 		"node": ">=20.19.0"
 	}

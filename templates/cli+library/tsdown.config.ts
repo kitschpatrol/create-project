@@ -6,6 +6,7 @@ export default defineConfig([
 		dts: false,
 		entry: 'src/bin/cli.ts',
 		fixedExtension: false,
+		minify: true,
 		outDir: 'dist/bin',
 		platform: 'node',
 	},
