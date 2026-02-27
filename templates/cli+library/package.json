@@ -18,6 +18,7 @@
 		"email": "{{{author-email}}}",
 		"url": "{{{author-url}}}"
 	},
+	"sideEffects": false,
 	"type": "module",
 	"exports": {
 		".": {
@@ -43,21 +44,21 @@
 		"test": "echo \"Error: no test specified\" && exit 1"
 	},
 	"dependencies": {
-		"@types/node": "~20.19.33",
+		"@types/node": "~20.19.35",
 		"@types/yargs": "^17.0.35",
 		"lognow": "^0.4.1",
 		"yargs": "^18.0.0"
 	},
 	"devDependencies": {
 		"@arethetypeswrong/core": "^0.18.2",
-		"@kitschpatrol/shared-config": "^6.0.0",
+		"@kitschpatrol/shared-config": "^6.0.1",
 		"bumpp": "^10.4.1",
 		"mdat-plugin-cli-help": "^1.0.7",
 		"publint": "^0.3.17",
 		"tsdown": "^0.20.3",
 		"typescript": "~5.9.3"
 	},
-	"packageManager": "pnpm@10.30.2",
+	"packageManager": "pnpm@10.30.3",
 	"engines": {
 		"node": ">=20.19.0"
 	}

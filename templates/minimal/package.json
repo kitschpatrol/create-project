@@ -18,6 +18,7 @@
 		"email": "{{{author-email}}}",
 		"url": "{{{author-url}}}"
 	},
+	"sideEffects": false,
 	"type": "module",
 	"scripts": {
 		"build": "tsx script.ts",
@@ -29,15 +30,15 @@
 		"test": "echo \"Error: no test specified\" && exit 1"
 	},
 	"dependencies": {
-		"@types/node": "~20.19.33"
+		"@types/node": "~20.19.35"
 	},
 	"devDependencies": {
-		"@kitschpatrol/shared-config": "^6.0.0",
+		"@kitschpatrol/shared-config": "^6.0.1",
 		"bumpp": "^10.4.1",
 		"tsx": "^4.21.0",
 		"typescript": "~5.9.3"
 	},
-	"packageManager": "pnpm@10.30.2",
+	"packageManager": "pnpm@10.30.3",
 	"engines": {
 		"node": ">=20.19.0"
 	}
