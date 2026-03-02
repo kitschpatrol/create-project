@@ -44,7 +44,7 @@
 		"zod": "^3.25.76"
 	},
 	"devDependencies": {
-		"@kitschpatrol/shared-config": "^6.0.1",
+		"@kitschpatrol/shared-config": "^6.0.2",
 		"@types/node": "~20.19.35",
 		"bumpp": "^10.4.1",
 		"mdat": "^1.3.5",

@@ -27,7 +27,7 @@
 		"dist/*"
 	],
 	"scripts": {
-		"build": "tsdown --no-fixed-extension --dts false",
+		"build": "tsdown",
 		"clean": "git rm -f pnpm-lock.yaml ; git clean -fdX",
 		"fix": "ksc fix",
 		"lint": "ksc lint",
@@ -41,9 +41,10 @@
 		"yargs": "^18.0.0"
 	},
 	"devDependencies": {
-		"@kitschpatrol/shared-config": "^6.0.1",
+		"@kitschpatrol/shared-config": "^6.0.2",
 		"bumpp": "^10.4.1",
 		"mdat-plugin-cli-help": "^1.0.7",
+		"publint": "^0.3.18",
 		"tsdown": "^0.20.3",
 		"typescript": "~5.9.3"
 	},

@@ -33,7 +33,7 @@
 		"@types/node": "~20.19.35"
 	},
 	"devDependencies": {
-		"@kitschpatrol/shared-config": "^6.0.1",
+		"@kitschpatrol/shared-config": "^6.0.2",
 		"bumpp": "^10.4.1",
 		"tsx": "^4.21.0",
 		"typescript": "~5.9.3"
