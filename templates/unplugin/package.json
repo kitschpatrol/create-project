@@ -72,12 +72,12 @@
 		"@kitschpatrol/shared-config": "^6.0.2",
 		"@sxzz/test-utils": "^0.5.15",
 		"bumpp": "^10.4.1",
-		"tsdown": "^0.20.3",
+		"tsdown": "^0.21.0",
 		"typescript": "~5.9.3",
 		"vitest": "^4.0.18"
 	},
 	"packageManager": "pnpm@10.30.3",
 	"engines": {
-		"node": ">=22.16.0"
+		"node": ">=22.18.0"
 	}
 }

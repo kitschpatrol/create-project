@@ -1,5 +1,3 @@
-# Required by @kitschpatrol/shared-config
-
 onlyBuiltDependencies:
   - electron
   - electron-winstaller
