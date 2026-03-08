@@ -3,7 +3,7 @@
 import { log, setDefaultLogOptions } from 'lognow'
 import yargs from 'yargs'
 import { hideBin } from 'yargs/helpers'
-import { bin, version } from '../package.json'
+import { bin, version } from '../package.json' with { type: 'json' }
 
 const cliCommandName = Object.keys(bin).at(0)!
 const yargsInstance = yargs(hideBin(process.argv))
