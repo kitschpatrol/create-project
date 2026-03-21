@@ -5,10 +5,8 @@ export default defineConfig({
 		alwaysBundle: /.+/,
 	},
 	dts: false,
-	entry: 'src/bin/cli.ts',
 	fixedExtension: false,
 	minify: true,
-	outDir: 'dist/bin',
 	platform: 'node',
 	publint: true,
 })
