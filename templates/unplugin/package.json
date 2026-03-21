@@ -11,6 +11,7 @@
 		"rolldown",
 		"esbuild",
 		"farm",
+		"bun",
 		"transform",
 		"npm-package"
 	],
@@ -32,6 +33,7 @@
 		".": "./dist/index.js",
 		"./*": "./*",
 		"./api": "./dist/api.js",
+		"./bun": "./dist/bun.js",
 		"./esbuild": "./dist/esbuild.js",
 		"./farm": "./dist/farm.js",
 		"./rolldown": "./dist/rolldown.js",
@@ -65,8 +67,7 @@
 	},
 	"dependencies": {
 		"@types/node": "~22.16.5",
-		"unplugin": "^3.0.0",
-		"unplugin-utils": "^0.3.1"
+		"unplugin": "^3.0.0"
 	},
 	"devDependencies": {
 		"@kitschpatrol/shared-config": "^6.0.3",

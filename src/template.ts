@@ -80,6 +80,7 @@ export default createTemplate({
 					// TODO better
 					...(options.type === 'unplugin'
 						? [
+								'src/bun.ts',
 								'src/esbuild.ts',
 								'src/farm.ts',
 								'src/index.ts',
@@ -88,8 +89,7 @@ export default createTemplate({
 								'src/rspack.ts',
 								'src/vite.ts',
 								'src/webpack.ts',
-								'src/webpack.ts',
-								'tests/__snapshots__/rollup.test.ts.snap',
+								'test/__snapshots__/rollup.test.ts.snap',
 							]
 						: []),
 				)),

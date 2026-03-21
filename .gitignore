@@ -21,3 +21,4 @@ vendor/
 
 # Customizations
 templates/**/pnpm-lock.yaml
+/.claude

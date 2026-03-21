@@ -1,5 +1,5 @@
 import { knipConfig } from '@kitschpatrol/knip-config'
 
 export default knipConfig({
-	ignore: ['tests/fixtures/**'],
+	ignore: ['test/fixtures/**'],
 })
