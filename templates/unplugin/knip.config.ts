@@ -1,7 +1,7 @@
 import { knipConfig } from '@kitschpatrol/knip-config'
 
 export default knipConfig({
-	ignore: ['test/fixtures/**'],
+	ignore: ['test/fixtures/**', 'playground/env.d.ts'],
 	ignoreDependencies: [
 		'@farmfe/core',
 		'@kitschpatrol/aphex',

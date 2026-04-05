@@ -50,7 +50,7 @@ describe('Template Generation and Build Tests', () => {
 				if (tempDirectory && fs.existsSync(tempDirectory)) {
 					fs.rmSync(tempDirectory, { force: true, recursive: true })
 				}
-			})
+			}, 60_000) // 1 minute timeout for cleanup (Windows is slow deleting node_modules)
 
 			it('should generate project successfully', () => {
 				// Verify package.json exists
@@ -63,9 +63,14 @@ describe('Template Generation and Build Tests', () => {
 			})
 
 			it('should build without errors', () => {
-				// Run build
+				// For the electron template, only run vite build (skip electron-builder
+				// packaging, which downloads large platform-specific tools and is too
+				// slow for CI).
+				const buildCommand =
+					templateType === 'electron' ? 'pnpm exec vite build' : 'pnpm run build'
+
 				try {
-					const output = execSync('pnpm run build', {
+					const output = execSync(buildCommand, {
 						cwd: tempDirectory,
 						encoding: 'utf8',
 						stdio: 'pipe',
