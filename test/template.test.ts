@@ -50,7 +50,7 @@ describe('Template Generation and Build Tests', () => {
 				if (tempDirectory && fs.existsSync(tempDirectory)) {
 					fs.rmSync(tempDirectory, { force: true, recursive: true })
 				}
-			})
+			}, 60_000) // 1 minute timeout for cleanup (Windows is slow deleting node_modules)
 
 			it('should generate project successfully', () => {
 				// Verify package.json exists
