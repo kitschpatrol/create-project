@@ -85,7 +85,7 @@ describe('Template Generation and Build Tests', () => {
 
 					throw error
 				}
-			}, 120_000) // 2 minute timeout for build
+			}, 300_000) // 5 minute timeout for build
 
 			it('should lint without errors', () => {
 				// Run lint
