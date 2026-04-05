@@ -16,6 +16,8 @@ export const TEMPLATE_TYPES = [
 	'unplugin',
 ] as const
 
+const LOCK_FILES_REGEX = /node_modules|pnpm-lock\.yaml/
+
 export default createTemplate({
 	about: {
 		description:
@@ -71,7 +73,7 @@ export default createTemplate({
 		return {
 			files: {
 				...(await intakeDirectory(path.join(import.meta.dirname, `../templates/${options.type}`), {
-					exclude: /node_modules|pnpm-lock\.yaml/,
+					exclude: LOCK_FILES_REGEX,
 				})),
 				...(await handlebarsHelper(
 					'license.txt',

@@ -1,5 +1,7 @@
 packages:
+  - '.'
   - templates/*
+  - templates/unplugin/playground
 
 onlyBuiltDependencies:
   - electron

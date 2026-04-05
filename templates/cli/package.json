@@ -37,19 +37,19 @@
 	"dependencies": {
 		"@types/node": "~20.19.37",
 		"@types/yargs": "^17.0.35",
-		"lognow": "^0.5.2",
+		"lognow": "^0.6.0",
 		"yargs": "^18.0.0"
 	},
 	"devDependencies": {
-		"@kitschpatrol/shared-config": "^6.0.3",
+		"@kitschpatrol/shared-config": "^7.1.0",
 		"bumpp": "^11.0.1",
-		"mdat-plugin-cli-help": "^1.0.7",
+		"mdat-plugin-cli-help": "^2.0.2",
 		"publint": "^0.3.18",
-		"tsdown": "^0.21.4",
+		"tsdown": "^0.21.7",
 		"typescript": "~5.9.3",
-		"vitest": "^4.1.0"
+		"vitest": "^4.1.2"
 	},
-	"packageManager": "pnpm@10.32.1",
+	"packageManager": "pnpm@10.33.0",
 	"engines": {
 		"node": ">=20.19.0"
 	},

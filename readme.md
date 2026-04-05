@@ -8,6 +8,7 @@
 
 [![NPM Package @kitschpatrol/create-project](https://img.shields.io/npm/v/@kitschpatrol/create-project.svg)](https://npmjs.com/package/@kitschpatrol/create-project)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![CI](https://github.com/kitschpatrol/create-project/actions/workflows/ci.yml/badge.svg)](https://github.com/kitschpatrol/create-project/actions/workflows/ci.yml)
 
 <!-- /badges -->
 

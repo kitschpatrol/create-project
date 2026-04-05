@@ -4,10 +4,6 @@ import { TEMPLATE_TYPES } from './src/template'
 
 export default eslintConfig(
 	{
-		// Enable as needed:
-		// astro: true,
-		// react: true,
-		// svelte: true,
 		// No other way around "Unused eslint-disable directive"
 		ignores: ['templates/electron/electron/electron-env.d.ts'],
 		type: 'lib',
@@ -22,8 +18,10 @@ function templateOverrides(): TypedFlatConfigItem[] {
 		basePath: `templates/${type}`,
 		rules: {
 			'import/no-unresolved': 'off',
+			'json-package/require-author': 'off',
 			'json-package/valid-author': 'off',
 			'json-package/valid-name': 'off',
+			'json-package/valid-repository': 'off',
 			'mdx/remark': 'off',
 			'ts/consistent-type-definitions': 'off',
 			'unicorn/no-abusive-eslint-disable': 'off',

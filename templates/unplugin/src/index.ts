@@ -17,8 +17,8 @@ export const starter: UnpluginInstance<Options | undefined, false> = createUnplu
 			transform: {
 				filter: {
 					id: {
-						include: options.include,
 						exclude: options.exclude,
+						include: options.include,
 					},
 				},
 				handler(code, _id) {
