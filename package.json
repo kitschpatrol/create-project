@@ -26,7 +26,7 @@
 		"dist",
 		"templates",
 		"templates/**/.gitignore",
-		"templates/**/.npmrc"
+		"!**/node_modules"
 	],
 	"scripts": {
 		"build": "tsdown",

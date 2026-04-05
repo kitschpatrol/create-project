@@ -82,6 +82,7 @@ export default createTemplate({
 					// TODO better
 					...(options.type === 'unplugin'
 						? [
+								'playground/package.json',
 								'src/bun.ts',
 								'src/esbuild.ts',
 								'src/farm.ts',
