@@ -24,7 +24,7 @@
 	"scripts": {
 		"bench": "vitest bench --run --compare test/benchmarks/baseline.json",
 		"bench:baseline": "vitest bench --run --outputJson test/benchmarks/baseline.json",
-		"build": "vite build && electron-builder --publish never",
+		"build": "vite build && electron-builder",
 		"clean": "git rm -f pnpm-lock.yaml ; git clean -fdX",
 		"dev": "vite",
 		"fix": "ksc fix",

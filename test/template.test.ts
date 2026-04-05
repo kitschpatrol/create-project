@@ -63,9 +63,14 @@ describe('Template Generation and Build Tests', () => {
 			})
 
 			it('should build without errors', () => {
-				// Run build
+				// For the electron template, only run vite build (skip electron-builder
+				// packaging, which downloads large platform-specific tools and is too
+				// slow for CI).
+				const buildCommand =
+					templateType === 'electron' ? 'pnpm exec vite build' : 'pnpm run build'
+
 				try {
-					const output = execSync('pnpm run build', {
+					const output = execSync(buildCommand, {
 						cwd: tempDirectory,
 						encoding: 'utf8',
 						stdio: 'pipe',
@@ -85,7 +90,7 @@ describe('Template Generation and Build Tests', () => {
 
 					throw error
 				}
-			}, 300_000) // 5 minute timeout for build
+			}, 120_000) // 2 minute timeout for build
 
 			it('should lint without errors', () => {
 				// Run lint
