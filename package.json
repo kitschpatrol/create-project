@@ -32,7 +32,7 @@
 		"build": "tsdown",
 		"clean": "git rm -f pnpm-lock.yaml ; git clean -fdX",
 		"fix": "ksc fix",
-		"lint": "ksc-repo lint ; mdat readme check readme.md ; ksc-typescript lint ; ksc-eslint lint ; ksc-stylelint lint ; ksc-cspell lint ; ksc-knip lint ; ksc-prettier lint",
+		"lint": "ksc-repo lint ; mdat check readme.md ; ksc-typescript lint ; ksc-eslint lint ; ksc-stylelint lint ; ksc-cspell lint ; ksc-knip lint ; ksc-prettier lint",
 		"release": "bumpp --commit 'Release: %s' && pnpm run build && NPM_AUTH_TOKEN=$(op read 'op://Personal/npm/token') && pnpm publish",
 		"test": "vitest run",
 		"update-templates": "for dir in ./templates/*; do taze -w --cwd \"$dir\"; done",

@@ -1,7 +1,11 @@
 onlyBuiltDependencies:
+  - core-js
   - esbuild
   - unrs-resolver
-
+ignoreWorkspaceRootCheck: true
+packages:
+  - '.'
+  - playground
 publicHoistPattern:
   - '@kitschpatrol/repo-config'
   - '@kitschpatrol/typescript-config'
