@@ -63,11 +63,11 @@ describe('Template Generation and Build Tests', () => {
 			})
 
 			it('should build without errors', () => {
-				// For the electron template, only run vite build (skip electron-builder
-				// packaging, which downloads large platform-specific tools and is too
-				// slow for CI).
+				// For the electron template in CI, only run vite build (skip
+				// electron-builder packaging, which downloads large platform-specific
+				// tools and is too slow for CI).
 				const buildCommand =
-					templateType === 'electron' ? 'pnpm exec vite build' : 'pnpm run build'
+					templateType === 'electron' && process.env.CI ? 'pnpm exec vite build' : 'pnpm run build'
 
 				try {
 					const output = execSync(buildCommand, {
