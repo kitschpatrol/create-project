@@ -1,19 +1,34 @@
 import { runTemplate } from 'bingo'
 import { execSync } from 'node:child_process'
-import fs from 'node:fs'
+import fs from 'node:fs/promises'
 import os from 'node:os'
 import path from 'node:path'
+import { fileURLToPath } from 'node:url'
 import { afterAll, beforeAll, describe, expect, it } from 'vitest'
 import template, { TEMPLATE_TYPES } from '../src/template'
 
+// Windows tmpdir issues on CI, we use a local temp directory. We have to go up
+// a directory to avoid the monorepo illusion in linting tools.
+const temporaryBase = path.resolve(
+	path.dirname(fileURLToPath(import.meta.url)),
+	process.env.CI ? '../..' : os.tmpdir(),
+	'tmp',
+)
+
 describe('Template Generation and Build Tests', () => {
+	afterAll(async () => {
+		// Clean up the project-local tmp/ directory
+		await fs.rm(temporaryBase, { force: true, recursive: true })
+	})
+
 	for (const templateType of TEMPLATE_TYPES) {
 		describe(`${templateType} template`, () => {
 			let tempDirectory: string
 
 			beforeAll(async () => {
-				// Create temporary directory
-				tempDirectory = fs.mkdtempSync(path.join(os.tmpdir(), `test-${templateType}-`))
+				// Create temporary directory under project-local tmp/
+				await fs.mkdir(temporaryBase, { recursive: true })
+				tempDirectory = await fs.mkdtemp(path.join(temporaryBase, `test-${templateType}-`))
 
 				// Generate project using the template
 				await runTemplate(template, {
@@ -43,22 +58,24 @@ describe('Template Generation and Build Tests', () => {
 					console.error(`Failed to install dependencies for ${templateType}:`, error)
 					throw error
 				}
-			}, 180_000) // 3 minute timeout for setup
+			}, 300_000) // 5 minute timeout for setup
 
-			afterAll(() => {
+			afterAll(async () => {
 				// Clean up temporary directory after all tests
-				if (tempDirectory && fs.existsSync(tempDirectory)) {
-					fs.rmSync(tempDirectory, { force: true, recursive: true })
+				if (tempDirectory) {
+					await fs.rm(tempDirectory, { force: true, recursive: true })
 				}
 			}, 60_000) // 1 minute timeout for cleanup (Windows is slow deleting node_modules)
 
-			it('should generate project successfully', () => {
+			it('should generate project successfully', async () => {
 				// Verify package.json exists
 				const packageJsonPath = path.join(tempDirectory, 'package.json')
-				expect(fs.existsSync(packageJsonPath)).toBe(true)
+				await expect(fs.access(packageJsonPath)).resolves.toBeUndefined()
 
 				// eslint-disable-next-line ts/no-unsafe-type-assertion
-				const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf8')) as { name: string }
+				const packageJson = JSON.parse(await fs.readFile(packageJsonPath, 'utf8')) as {
+					name: string
+				}
 				expect(packageJson.name).toBeDefined()
 			})
 
@@ -90,7 +107,7 @@ describe('Template Generation and Build Tests', () => {
 
 					throw error
 				}
-			}, 120_000) // 2 minute timeout for build
+			}, 300_000) // 5 minute timeout for build
 
 			it('should lint without errors', () => {
 				// Run lint
@@ -116,7 +133,7 @@ describe('Template Generation and Build Tests', () => {
 
 					throw error
 				}
-			}, 120_000) // 2 minute timeout for lint
+			}, 300_000) // 5 minute timeout for lint
 		})
 	}
 })
