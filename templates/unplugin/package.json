@@ -60,12 +60,12 @@
 		"bench": "vitest bench --run --compare test/benchmarks/baseline.json",
 		"bench:baseline": "vitest bench --run --outputJson test/benchmarks/baseline.json",
 		"build": "tsdown",
-		"clean": "git rm -f pnpm-lock.yaml ; git clean -fdX",
+		"clean": "shx rm -f pnpm-lock.yaml && git clean -fdX -e !.claude/",
 		"dev": "tsdown --watch",
 		"fix": "ksc fix",
 		"lint": "ksc lint",
-		"play": "poptab ; pnpm -C playground run dev",
-		"release": "bumpp --commit 'Release: %s' && pnpm run build && NPM_AUTH_TOKEN=$({{{npm-auth-command}}}) && pnpm publish",
+		"play": "poptab && pnpm -C playground run dev",
+		"release": "bumpp --commit 'Release: %s' && pnpm build && NPM_AUTH_TOKEN=$({{{npm-auth-command}}}) && pnpm publish",
 		"test": "vitest run"
 	},
 	"dependencies": {
@@ -74,18 +74,19 @@
 	},
 	"devDependencies": {
 		"@farmfe/core": ">=1.7.11",
-		"@kitschpatrol/shared-config": "^7.1.0",
+		"@kitschpatrol/shared-config": "^7.2.0",
 		"@sxzz/test-utils": "^0.5.16",
-		"@vitest/browser-playwright": "^4.1.2",
+		"@vitest/browser-playwright": "^4.1.4",
 		"bumpp": "^11.0.1",
 		"esbuild": "*",
-		"poptab": "^1.0.4",
+		"poptab": "^1.1.0",
 		"rollup": "^4.60.1",
+		"shx": "^0.4.0",
 		"tsdown": "^0.21.7",
 		"typescript": "~5.9.3",
-		"vite": "^7.3.1",
-		"vitest": "^4.1.2",
-		"webpack": "^5.105.4"
+		"vite": "^7.3.2",
+		"vitest": "^4.1.4",
+		"webpack": "^5.106.0"
 	},
 	"peerDependencies": {
 		"@farmfe/core": ">=1",

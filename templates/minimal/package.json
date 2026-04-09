@@ -22,7 +22,7 @@
 	"type": "module",
 	"scripts": {
 		"build": "tsx script.ts",
-		"clean": "git rm -f pnpm-lock.yaml ; git clean -fdX",
+		"clean": "shx rm -f pnpm-lock.yaml && git clean -fdX -e !.claude/",
 		"dev": "tsx --watch script.ts",
 		"fix": "ksc fix",
 		"lint": "ksc lint",
@@ -30,11 +30,12 @@
 		"test": "echo \"Error: no test specified\" && exit 1"
 	},
 	"dependencies": {
-		"@types/node": "~20.19.37"
+		"@types/node": "~20.19.39"
 	},
 	"devDependencies": {
-		"@kitschpatrol/shared-config": "^7.1.0",
+		"@kitschpatrol/shared-config": "^7.2.0",
 		"bumpp": "^11.0.1",
+		"shx": "^0.4.0",
 		"tsx": "^4.21.0",
 		"typescript": "~5.9.3"
 	},

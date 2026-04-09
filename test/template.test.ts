@@ -17,7 +17,7 @@ const temporaryBase = path.resolve(
 
 describe('Template Generation and Build Tests', () => {
 	afterAll(async () => {
-		// Clean up the project-local tmp/ directory
+		// Clean up temp files
 		await fs.rm(temporaryBase, { force: true, recursive: true })
 	})
 

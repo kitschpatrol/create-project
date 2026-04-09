@@ -30,10 +30,10 @@
 	],
 	"scripts": {
 		"build": "tsdown",
-		"clean": "git rm -f pnpm-lock.yaml ; git clean -fdX",
+		"clean": "shx rm -f pnpm-lock.yaml && git clean -fdX -e !.claude/",
 		"fix": "ksc fix --skip mdat && mdat readme.md",
 		"lint": "ksc fix --skip mdat",
-		"release": "bumpp --commit 'Release: %s' && pnpm run build && NPM_AUTH_TOKEN=$(op read 'op://Personal/npm/token') && pnpm publish",
+		"release": "bumpp --commit 'Release: %s' && pnpm build && NPM_AUTH_TOKEN=$(op read 'op://Personal/npm/token') && pnpm publish",
 		"test": "vitest run",
 		"update-templates": "for dir in ./templates/*; do taze -w --cwd \"$dir\"; done",
 		"update-templates-major": "for dir in ./templates/*; do taze major -w --cwd \"$dir\" --exclude @types/node,typescript,zod,vite; done"
@@ -45,14 +45,15 @@
 		"zod": "^3.25.76"
 	},
 	"devDependencies": {
-		"@kitschpatrol/shared-config": "^7.1.0",
+		"@kitschpatrol/shared-config": "^7.2.0",
 		"@types/node": "~20.19.39",
 		"bumpp": "^11.0.1",
-		"mdat": "^2.2.0",
+		"mdat": "^2.2.1",
+		"shx": "^0.4.0",
 		"taze": "^19.11.0",
 		"tsdown": "^0.21.7",
 		"typescript": "~5.9.3",
-		"vitest": "^4.1.2"
+		"vitest": "^4.1.4"
 	},
 	"packageManager": "pnpm@10.33.0",
 	"engines": {

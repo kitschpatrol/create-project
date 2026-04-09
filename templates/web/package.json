@@ -24,25 +24,26 @@
 		"bench": "vitest bench --run --compare test/benchmarks/baseline.json",
 		"bench:baseline": "vitest bench --run --outputJson test/benchmarks/baseline.json",
 		"build": "vite build",
-		"clean": "git rm -f pnpm-lock.yaml ; git clean -fdX",
-		"dev": "poptab ; vite",
+		"clean": "shx rm -f pnpm-lock.yaml && git clean -fdX -e !.claude/",
+		"dev": "poptab && vite",
 		"fix": "ksc fix",
 		"lint": "ksc lint",
-		"preview": "poptab ; vite preview",
+		"preview": "poptab && vite preview",
 		"release": "bumpp --commit 'Release: %s'",
 		"test": "vitest run"
 	},
 	"dependencies": {
-		"@types/node": "~20.19.37"
+		"@types/node": "~20.19.39"
 	},
 	"devDependencies": {
-		"@kitschpatrol/shared-config": "^7.1.0",
+		"@kitschpatrol/shared-config": "^7.2.0",
 		"bumpp": "^11.0.1",
-		"poptab": "^1.0.4",
+		"poptab": "^1.1.0",
+		"shx": "^0.4.0",
 		"typescript": "~5.9.3",
-		"vite": "^7.3.1",
-		"vite-plugin-mkcert": "^1.17.10",
-		"vitest": "^4.1.2"
+		"vite": "^7.3.2",
+		"vite-plugin-mkcert": "^1.17.12",
+		"vitest": "^4.1.4"
 	},
 	"packageManager": "pnpm@10.33.0",
 	"engines": {
