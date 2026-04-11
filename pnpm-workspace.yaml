@@ -3,6 +3,8 @@ packages:
   - templates/*
   - templates/unplugin/playground
 
+ignoreWorkspaceRootCheck: true
+
 onlyBuiltDependencies:
   - core-js
   - electron

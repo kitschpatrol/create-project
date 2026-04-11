@@ -16,6 +16,14 @@ export default eslintConfig(
 function templateOverrides(): TypedFlatConfigItem[] {
 	return TEMPLATE_TYPES.map((type) => ({
 		basePath: `templates/${type}`,
+		// Force linting template projects with the root tsconfig
+		// languageOptions: {
+		// 	parserOptions: {
+		// 		project: './tsconfig.json',
+		// 		projectService: false,
+		// 	},
+		// },
+		// Packages are invalid because of template placeholders
 		rules: {
 			'import/no-unresolved': 'off',
 			'json-package/require-author': 'off',
@@ -23,8 +31,6 @@ function templateOverrides(): TypedFlatConfigItem[] {
 			'json-package/valid-name': 'off',
 			'json-package/valid-repository': 'off',
 			'mdx/remark': 'off',
-			'ts/consistent-type-definitions': 'off',
-			'unicorn/no-abusive-eslint-disable': 'off',
 			'unicorn/no-null': 'off',
 			'unicorn/no-process-exit': 'off',
 		},
