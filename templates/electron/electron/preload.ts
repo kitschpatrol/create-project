@@ -61,8 +61,7 @@ const safeDOM = {
 }
 
 /**
- * https://tobiasahlin.com/spinkit
- * https://connoratherton.com/loaders
+ * https://tobiasahlin.com/spinkit https://connoratherton.com/loaders
  * https://projects.lukehaas.me/css-loaders
  * https://matejkustec.github.io/SpinThatShit
  */

@@ -1,5 +1,6 @@
 /**
  * This entry file is for Bun plugin.
+ *
  * @module
  */
 
@@ -7,13 +8,14 @@ import { starter } from './index'
 
 /**
  * Bun plugin
- * @example
- * ```ts
- * // Build with Bun
- * import starter from '{{{github-repository}}}/bun'
  *
- * Bun.build({ plugins: [starter()] })
- * ```
+ * @example
+ * 	;```ts
+ * 	// Build with Bun
+ * 	import starter from '{{{github-repository}}}/bun'
+ *
+ * 	Bun.build({ plugins: [starter()] })
+ * 	```
  */
 const { bun } = starter
 export default bun

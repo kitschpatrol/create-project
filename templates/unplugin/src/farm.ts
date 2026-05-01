@@ -1,5 +1,6 @@
 /**
  * This entry file is for Farm plugin.
+ *
  * @module
  */
 
@@ -7,15 +8,16 @@ import { starter } from './index'
 
 /**
  * Farm plugin
- * @example
- * ```ts
- * // farm.config.js
- * import starter from '{{{github-repository}}}/farm'
  *
- * export default {
- *   plugins: [starter()],
- * }
- * ```
+ * @example
+ * 	;```ts
+ * 	// farm.config.js
+ * 	import starter from '{{{github-repository}}}/farm'
+ *
+ * 	export default {
+ * 	  plugins: [starter()],
+ * 	}
+ * 	```
  */
 const { farm } = starter
 export default farm

@@ -33,13 +33,13 @@
 		"@types/node": "~20.19.39"
 	},
 	"devDependencies": {
-		"@kitschpatrol/shared-config": "^7.3.0",
+		"@kitschpatrol/shared-config": "^7.5.2",
 		"bumpp": "^11.0.1",
 		"shx": "^0.4.0",
 		"tsx": "^4.21.0",
-		"typescript": "~6.0.2"
+		"typescript": "~6.0.3"
 	},
-	"packageManager": "pnpm@10.33.0",
+	"packageManager": "pnpm@10.33.2",
 	"engines": {
 		"node": ">=20.19.0"
 	},

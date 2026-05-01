@@ -1,5 +1,6 @@
 /**
  * This entry file is for webpack plugin.
+ *
  * @module
  */
 
@@ -9,15 +10,16 @@ import { starter } from './index'
 
 /**
  * Webpack plugin
- * @example
- * ```js
- * // webpack.config.js
- * import starter from '{{{github-repository}}}/webpack'
  *
- * export default {
- *   plugins: [starter()],
- * }
- * ```
+ * @example
+ * 	;```js
+ * 	// webpack.config.js
+ * 	import starter from '{{{github-repository}}}/webpack'
+ *
+ * 	export default {
+ * 	  plugins: [starter()],
+ * 	}
+ * 	```
  */
 const { webpack } = starter
 export default webpack

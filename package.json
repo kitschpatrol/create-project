@@ -45,17 +45,17 @@
 		"zod": "^3.25.76"
 	},
 	"devDependencies": {
-		"@kitschpatrol/shared-config": "^7.3.0",
+		"@kitschpatrol/shared-config": "^7.5.2",
 		"@types/node": "~20.19.39",
 		"bumpp": "^11.0.1",
-		"mdat": "^2.2.1",
+		"mdat": "^2.3.2",
 		"shx": "^0.4.0",
 		"taze": "^19.11.0",
-		"tsdown": "^0.21.7",
-		"typescript": "~6.0.2",
-		"vitest": "^4.1.4"
+		"tsdown": "^0.21.10",
+		"typescript": "~6.0.3",
+		"vitest": "^4.1.5"
 	},
-	"packageManager": "pnpm@10.33.0",
+	"packageManager": "pnpm@10.33.2",
 	"engines": {
 		"node": ">=20.19.0"
 	},

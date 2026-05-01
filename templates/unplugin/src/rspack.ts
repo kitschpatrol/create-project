@@ -1,5 +1,6 @@
 /**
  * This entry file is for Rspack plugin.
+ *
  * @module
  */
 
@@ -7,15 +8,16 @@ import { starter } from './index'
 
 /**
  * Rspack plugin
- * @example
- * ```js
- * // rspack.config.js
- * import starter from '{{{github-repository}}}/rspack'
  *
- * export default {
- *   plugins: [starter()],
- * }
- * ```
+ * @example
+ * 	;```js
+ * 	// rspack.config.js
+ * 	import starter from '{{{github-repository}}}/rspack'
+ *
+ * 	export default {
+ * 	  plugins: [starter()],
+ * 	}
+ * 	```
  */
 const { rspack } = starter
 export default rspack

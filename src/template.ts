@@ -67,6 +67,7 @@ export default createTemplate({
 					extraOptions,
 				)
 			}
+
 			return result
 		}
 
