@@ -19,5 +19,5 @@ export default eslintConfig({
 			'unicorn/no-process-exit': 'off',
 		},
 	},
-	type: 'lib',
+	type: 'app',
 })

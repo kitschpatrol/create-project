@@ -17,5 +17,5 @@ export default eslintConfig({
 			],
 		},
 	},
-	type: 'lib',
+	type: 'app',
 })
