@@ -32,8 +32,6 @@ async function createWindow() {
 		await win.loadURL(process.env.VITE_DEV_SERVER_URL)
 		win.webContents.openDevTools()
 	} else {
-		//
-		// win.loadFile('dist/index.html')
 		await win.loadFile(path.join(process.env.DIST, 'index.html'))
 	}
 

@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 
+import { log, setDefaultLogOptions } from 'lognow'
 import yargs from 'yargs'
 import { hideBin } from 'yargs/helpers'
-import { version, bin } from '../../package.json'
-import { log, setDefaultLogOptions } from 'lognow'
+import { bin, version } from '../../package.json' with { type: 'json' }
 import { doSomething, doSomethingElse, setLogger } from '../lib'
 
 setLogger(log)
@@ -11,11 +11,11 @@ setLogger(log)
 const cliCommandName = Object.keys(bin).at(0)!
 const yargsInstance = yargs(hideBin(process.argv))
 
-// yes
 await yargsInstance
 	.scriptName(cliCommandName)
 	.usage('$0 [command]', `Run a ${cliCommandName} command.`)
 	.option('verbose', {
+		default: false,
 		description: 'Run with verbose logging',
 		type: 'boolean',
 	})

@@ -8,7 +8,6 @@ import { bin, version } from '../package.json' with { type: 'json' }
 const cliCommandName = Object.keys(bin).at(0)!
 const yargsInstance = yargs(hideBin(process.argv))
 
-// Yes
 await yargsInstance
 	.scriptName(cliCommandName)
 	.usage('$0 [command]', `Run a ${cliCommandName} command.`)
