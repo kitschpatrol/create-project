@@ -36,6 +36,6 @@ describe('cli', () => {
 	it('should run the default command', async () => {
 		const { code, stdout } = await run()
 		expect(code).toBe(0)
-		expect(stdout.trim()).toBe('Did something!')
+		expect(stdout.trim()).toBe('Something happened')
 	})
 })
