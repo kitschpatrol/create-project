@@ -81,9 +81,7 @@ export default createTemplate({
 					'package.json',
 					// Per-template handlebars file expansion. Add any file that
 					// contains {{{...}}} placeholders here.
-					...(options.type === 'electron' || options.type === 'web'
-						? ['index.html']
-						: []),
+					...(options.type === 'electron' || options.type === 'web' ? ['index.html'] : []),
 					...(options.type === 'unplugin'
 						? [
 								'playground/index.html',

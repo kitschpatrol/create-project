@@ -134,6 +134,30 @@ describe('Template Generation and Build Tests', () => {
 					throw error
 				}
 			}, 300_000) // 5 minute timeout for lint
+
+			it('should test without errors', () => {
+				try {
+					const output = execSync('pnpm run test', {
+						cwd: tempDirectory,
+						encoding: 'utf8',
+						stdio: 'pipe',
+					})
+					expect(output).toBeDefined()
+				} catch (error) {
+					console.error(`Test failed for ${templateType}:`)
+					if (error instanceof Error && 'stdout' in error) {
+						// eslint-disable-next-line ts/no-unsafe-type-assertion
+						console.error('stdout:', (error as { stdout: string }).stdout)
+					}
+
+					if (error instanceof Error && 'stderr' in error) {
+						// eslint-disable-next-line ts/no-unsafe-type-assertion
+						console.error('stderr:', (error as { stderr: string }).stderr)
+					}
+
+					throw error
+				}
+			}, 300_000) // 5 minute timeout for test
 		})
 	}
 })
