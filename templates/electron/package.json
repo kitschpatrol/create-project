@@ -33,11 +33,11 @@
 		"test": "vitest run"
 	},
 	"dependencies": {
-		"@types/node": "~22.19.17",
 		"lognow": "^0.6.1"
 	},
 	"devDependencies": {
 		"@kitschpatrol/shared-config": "^7.5.2",
+		"@types/node": "~22.19.17",
 		"bumpp": "^11.0.1",
 		"electron": "^41.4.0",
 		"electron-builder": "^26.8.1",

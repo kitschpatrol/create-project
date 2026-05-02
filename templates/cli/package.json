@@ -37,13 +37,13 @@
 		"test": "vitest run"
 	},
 	"dependencies": {
-		"@types/node": "~20.19.39",
 		"@types/yargs": "^17.0.35",
 		"lognow": "^0.6.1",
 		"yargs": "^18.0.0"
 	},
 	"devDependencies": {
 		"@kitschpatrol/shared-config": "^7.5.2",
+		"@types/node": "~20.19.39",
 		"bumpp": "^11.0.1",
 		"mdat-plugin-cli-help": "^3.0.0",
 		"publint": "^0.3.18",

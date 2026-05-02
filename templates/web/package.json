@@ -32,11 +32,9 @@
 		"release": "bumpp --commit 'Release: %s'",
 		"test": "vitest run"
 	},
-	"dependencies": {
-		"@types/node": "~20.19.39"
-	},
 	"devDependencies": {
 		"@kitschpatrol/shared-config": "^7.5.2",
+		"@types/node": "~20.19.39",
 		"bumpp": "^11.0.1",
 		"poptab": "^1.1.0",
 		"shx": "^0.4.0",

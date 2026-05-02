@@ -30,7 +30,7 @@ The templates use [tsdown](https://tsdown.dev/) for building TypeScript librarie
 
 ### Dependencies
 
-[Node.js](https://nodejs.org/) 20.19.0 or higher and [pnpm](https://pnpm.io/) are required.
+[Node.js](https://nodejs.org/) 20.19.0 or higher and [pnpm](https://pnpm.io/) are required. The generated `electron` and `unplugin` templates require Node.js 22.18.0 or higher.
 
 ## Usage
 

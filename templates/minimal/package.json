@@ -27,13 +27,11 @@
 		"fix": "ksc fix",
 		"lint": "ksc lint",
 		"release": "bumpp --commit 'Release: %s'",
-		"test": "echo \"Error: no test specified\" && exit 1"
-	},
-	"dependencies": {
-		"@types/node": "~20.19.39"
+		"test": "echo 'No tests configured'"
 	},
 	"devDependencies": {
 		"@kitschpatrol/shared-config": "^7.5.2",
+		"@types/node": "~20.19.39",
 		"bumpp": "^11.0.1",
 		"shx": "^0.4.0",
 		"tsx": "^4.21.0",
