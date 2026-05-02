@@ -1,5 +1,3 @@
 import { cspellConfig } from '@kitschpatrol/cspell-config'
 
-export default cspellConfig({
-	words: ['nsis'],
-})
+export default cspellConfig()
