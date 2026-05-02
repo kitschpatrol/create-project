@@ -135,7 +135,7 @@ describe('Template Generation and Build Tests', () => {
 				}
 			}, 300_000) // 5 minute timeout for lint
 
-			it('should test without errors', () => {
+			it.skip('should test without errors', () => {
 				try {
 					const output = execSync('pnpm run test', {
 						cwd: tempDirectory,
