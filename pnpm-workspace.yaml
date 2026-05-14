@@ -5,13 +5,6 @@ packages:
 
 ignoreWorkspaceRootCheck: true
 
-onlyBuiltDependencies:
-  - core-js
-  - electron
-  - electron-winstaller
-  - esbuild
-  - unrs-resolver
-
 publicHoistPattern:
   - '@kitschpatrol/repo-config'
   - '@kitschpatrol/typescript-config'
@@ -23,3 +16,9 @@ publicHoistPattern:
   - '*prettier*'
   - '*remark*'
   - '*stylelint*'
+allowBuilds:
+  core-js: true
+  electron: true
+  electron-winstaller: true
+  esbuild: true
+  unrs-resolver: true
