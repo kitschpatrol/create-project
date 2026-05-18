@@ -30,7 +30,7 @@ The templates use [tsdown](https://tsdown.dev/) for building TypeScript librarie
 
 ### Dependencies
 
-[Node.js](https://nodejs.org/) 22.19+ and [pnpm](https://pnpm.io/) 11+ are required for development. (Most templates generate packages with _lower_ Node.js version requirements, except for the `unplugin` template which requires require package consumers to have Node.js 22.18.0 or higher.
+[Node.js](https://nodejs.org/) 22.19+ and [pnpm](https://pnpm.io/) 11+ are required for development. (Most templates generate packages with _lower_ Node.js version requirements, except for the `unplugin` template which requires require package consumers to have Node.js 22.22.2 or higher.
 
 ## Usage
 

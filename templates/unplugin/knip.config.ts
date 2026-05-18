@@ -5,8 +5,6 @@ export default knipConfig({
 	ignoreDependencies: [
 		'@farmfe/core',
 		'@kitschpatrol/aphex',
-		'@nuxt/kit',
-		'@nuxt/schema',
 		'@sxzz/test-utils',
 		'esbuild',
 		'rollup',
