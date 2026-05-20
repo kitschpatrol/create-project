@@ -2,9 +2,7 @@ packages:
   - '.'
   - templates/*
   - templates/unplugin/playground
-
 ignoreWorkspaceRootCheck: true
-
 publicHoistPattern:
   - '@kitschpatrol/repo-config'
   - '@kitschpatrol/typescript-config'

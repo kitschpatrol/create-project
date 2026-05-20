@@ -71,11 +71,22 @@ export default createTemplate({
 			return result
 		}
 
+		const templateFiles = await intakeDirectory(
+			path.join(import.meta.dirname, `../templates/${options.type}`),
+			{ exclude: LOCK_FILES_REGEX },
+		)
+
+		// `npm-packlist` hardcodes `.gitignore` to be excluded from published
+		// packages, so the source files are stored as `_gitignore` and renamed back
+		// here.
+		if (templateFiles._gitignore) {
+			templateFiles['.gitignore'] = templateFiles._gitignore
+			delete templateFiles._gitignore
+		}
+
 		return {
 			files: {
-				...(await intakeDirectory(path.join(import.meta.dirname, `../templates/${options.type}`), {
-					exclude: LOCK_FILES_REGEX,
-				})),
+				...templateFiles,
 				...(await handlebarsHelper(
 					'license.txt',
 					'package.json',
