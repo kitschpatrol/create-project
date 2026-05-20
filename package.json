@@ -1,6 +1,6 @@
 {
 	"name": "@kitschpatrol/create-project",
-	"version": "1.5.0",
+	"version": "1.5.1",
 	"description": "Kitschpatrol's TypeScript project templates.",
 	"keywords": [
 		"cli",
