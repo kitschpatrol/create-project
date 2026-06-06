@@ -52,17 +52,17 @@
 		"yargs": "^18.0.0"
 	},
 	"devDependencies": {
-		"@arethetypeswrong/core": "^0.18.2",
-		"@kitschpatrol/shared-config": "^7.6.2",
+		"@arethetypeswrong/core": "^0.18.3",
+		"@kitschpatrol/shared-config": "^7.6.3",
 		"bumpp": "^11.1.0",
 		"mdat-plugin-cli-help": "^3.0.1",
 		"publint": "^0.3.21",
 		"shx": "^0.4.0",
-		"tsdown": "^0.22.0",
+		"tsdown": "^0.22.1",
 		"typescript": "~5.9.3",
-		"vitest": "^4.1.6"
+		"vitest": "^4.1.7"
 	},
-	"packageManager": "pnpm@11.1.2",
+	"packageManager": "pnpm@11.5.0",
 	"engines": {
 		"node": ">=20.19.0"
 	},

@@ -73,6 +73,26 @@ Create Kitschpatrol Project options:
   --npm-auth-command (string): A shell command that sets the NPM_AUTH_TOKEN env variable with a granular token for publishing to npm.
 ```
 
+### NPM Publishing configuration
+
+I publish most of my packages via a local command instead of through CI.
+
+Most template projects include a `release` script for this purpose.
+
+The default `--npm-auth-command` template value expects you to have the [1Password CLI installed](https://1password.com/downloads/command-line), [NPM access token](https://docs.npmjs.com/about-access-tokens) configured and stored at a specific path in 1Password, and for your global configuration to look a certain way.
+
+This requires some one-time global configuration on the deploy machine.
+
+```sh
+pnpm config set '//registry.npmjs.org/:_authToken' '${NPM_AUTH_TOKEN}'
+```
+
+Check who pnpm thinks you are to confirm everything works:
+
+```sh
+NPM_AUTH_TOKEN=$(op read 'op://Personal/npm/token') pnpm whoami
+```
+
 ## Development Notes
 
 ```sh

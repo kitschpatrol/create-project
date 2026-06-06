@@ -12,3 +12,5 @@ publicHoistPattern:
 allowBuilds:
   esbuild: true
   unrs-resolver: true
+minimumReleaseAgeExclude:
+  - '@kitschpatrol/*'
