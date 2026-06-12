@@ -19,3 +19,8 @@ allowBuilds:
   unrs-resolver: true
 minimumReleaseAgeExclude:
   - '@kitschpatrol/*'
+  - 'lognow'
+  - 'mdat'
+  - 'mdat-plugin-cli-help'
+  - 'poptab'
+  - 'remark-mdat'

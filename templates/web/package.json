@@ -33,17 +33,17 @@
 		"test": "vitest run"
 	},
 	"devDependencies": {
-		"@kitschpatrol/shared-config": "^7.6.3",
+		"@kitschpatrol/shared-config": "^7.6.4",
 		"@types/node": "~20.19.41",
 		"bumpp": "^11.1.0",
 		"poptab": "^1.1.1",
 		"shx": "^0.4.0",
 		"typescript": "~5.9.3",
-		"vite": "^8.0.14",
-		"vite-plugin-mkcert": "~2.0.0",
-		"vitest": "^4.1.7"
+		"vite": "^8.0.16",
+		"vite-plugin-mkcert": "~2.1.0",
+		"vitest": "^4.1.8"
 	},
-	"packageManager": "pnpm@11.5.0",
+	"packageManager": "pnpm@11.5.2",
 	"devEngines": {
 		"runtime": {
 			"name": "node",

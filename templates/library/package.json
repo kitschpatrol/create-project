@@ -46,15 +46,15 @@
 	},
 	"devDependencies": {
 		"@arethetypeswrong/core": "^0.18.3",
-		"@kitschpatrol/shared-config": "^7.6.3",
+		"@kitschpatrol/shared-config": "^7.6.4",
 		"bumpp": "^11.1.0",
 		"publint": "^0.3.21",
 		"shx": "^0.4.0",
-		"tsdown": "^0.22.1",
+		"tsdown": "^0.22.2",
 		"typescript": "~5.9.3",
-		"vitest": "^4.1.7"
+		"vitest": "^4.1.8"
 	},
-	"packageManager": "pnpm@11.5.0",
+	"packageManager": "pnpm@11.5.2",
 	"engines": {
 		"node": ">=20.19.0"
 	},

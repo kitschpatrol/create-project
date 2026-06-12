@@ -74,18 +74,18 @@
 	},
 	"devDependencies": {
 		"@farmfe/core": ">=1.7.11",
-		"@kitschpatrol/shared-config": "^7.6.3",
+		"@kitschpatrol/shared-config": "^7.6.4",
 		"@sxzz/test-utils": "^0.5.18",
-		"@vitest/browser-playwright": "^4.1.7",
+		"@vitest/browser-playwright": "^4.1.8",
 		"bumpp": "^11.1.0",
 		"esbuild": "*",
 		"poptab": "^1.1.1",
-		"rollup": "^4.60.4",
+		"rollup": "^4.61.1",
 		"shx": "^0.4.0",
-		"tsdown": "^0.22.1",
+		"tsdown": "^0.22.2",
 		"typescript": "~5.9.3",
-		"vite": "^7.3.3",
-		"vitest": "^4.1.7",
+		"vite": "^7.3.5",
+		"vitest": "^4.1.8",
 		"webpack": "^5.107.2"
 	},
 	"peerDependencies": {
@@ -112,7 +112,7 @@
 			"optional": true
 		}
 	},
-	"packageManager": "pnpm@11.5.0",
+	"packageManager": "pnpm@11.5.2",
 	"engines": {
 		"node": "^22.22.2 || >=24.0.0"
 	}
