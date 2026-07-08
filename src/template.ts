@@ -16,7 +16,7 @@ export const TEMPLATE_TYPES = [
 	'unplugin',
 ] as const
 
-const LOCK_FILES_REGEX = /node_modules|pnpm-lock\.yaml/
+const LOCK_FILES_REGEX = /node_modules|pnpm-lock\.yaml/v
 
 export default createTemplate({
 	about: {

@@ -30,21 +30,21 @@
 		"test": "echo 'No tests configured'"
 	},
 	"devDependencies": {
-		"@kitschpatrol/shared-config": "^7.6.4",
-		"@types/node": "~20.19.41",
+		"@kitschpatrol/shared-config": "^8.0.0",
+		"@types/node": "~20.19.43",
 		"bumpp": "^11.1.0",
 		"shx": "^0.4.0",
 		"tsx": "^4.22.4",
 		"typescript": "~6.0.3"
 	},
-	"packageManager": "pnpm@11.5.2",
+	"packageManager": "pnpm@11.10.0",
 	"engines": {
 		"node": ">=20.19.0"
 	},
 	"devEngines": {
 		"runtime": {
 			"name": "node",
-			"version": "^22.22.2 || >=24.0.0"
+			"version": ">=24.16.0"
 		}
 	}
 }

@@ -18,7 +18,7 @@ async function run(...args: string[]): Promise<{ code: number; stderr: string; s
 	})
 }
 
-const VERSION_REGEX = /\d+\.\d+\.\d+/
+const VERSION_REGEX = /\d+\.\d+\.\d+/v
 describe('cli', () => {
 	it('should print version with --version', async () => {
 		const { code, stdout } = await run('--version')

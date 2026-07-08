@@ -28,8 +28,10 @@ async function createWindow() {
 		win?.webContents.send('main-process-message', new Date().toLocaleString())
 	})
 
-	if (process.env.VITE_DEV_SERVER_URL) {
-		await win.loadURL(process.env.VITE_DEV_SERVER_URL)
+	// Typed as string, but undefined at runtime in packaged builds
+	const devServerUrl = process.env.VITE_DEV_SERVER_URL
+	if (typeof devServerUrl === 'string' && devServerUrl !== '') {
+		await win.loadURL(devServerUrl)
 		win.webContents.openDevTools()
 	} else {
 		await win.loadFile(path.join(process.env.DIST, 'index.html'))

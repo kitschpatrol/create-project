@@ -4,7 +4,7 @@ export default defineConfig([
 	// CLI tool
 	{
 		deps: {
-			alwaysBundle: /.+/,
+			alwaysBundle: /.+/v,
 		},
 		dts: false,
 		entry: 'src/bin/cli.ts',

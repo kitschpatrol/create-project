@@ -11,7 +11,7 @@ import template, { TEMPLATE_TYPES } from '../src/template'
 // a directory to avoid the monorepo illusion in linting tools.
 const temporaryBase = path.resolve(
 	path.dirname(fileURLToPath(import.meta.url)),
-	process.env.CI ? '../..' : os.tmpdir(),
+	process.env.CI === undefined ? os.tmpdir() : '../..',
 	'tmp',
 )
 
@@ -23,7 +23,7 @@ describe('Template Generation and Build Tests', () => {
 
 	for (const templateType of TEMPLATE_TYPES) {
 		describe(`${templateType} template`, () => {
-			let tempDirectory: string
+			let tempDirectory = ''
 
 			beforeAll(async () => {
 				// Create temporary directory under project-local tmp/
@@ -62,7 +62,7 @@ describe('Template Generation and Build Tests', () => {
 
 			afterAll(async () => {
 				// Clean up temporary directory after all tests
-				if (tempDirectory) {
+				if (tempDirectory !== '') {
 					await fs.rm(tempDirectory, { force: true, recursive: true })
 				}
 			}, 60_000) // 1 minute timeout for cleanup (Windows is slow deleting node_modules)
@@ -72,7 +72,6 @@ describe('Template Generation and Build Tests', () => {
 				const packageJsonPath = path.join(tempDirectory, 'package.json')
 				await expect(fs.access(packageJsonPath)).resolves.toBeUndefined()
 
-				// eslint-disable-next-line ts/no-unsafe-type-assertion
 				const packageJson = JSON.parse(await fs.readFile(packageJsonPath, 'utf8')) as {
 					name: string
 				}
@@ -84,7 +83,9 @@ describe('Template Generation and Build Tests', () => {
 				// electron-builder packaging, which downloads large platform-specific
 				// tools and is too slow for CI).
 				const buildCommand =
-					templateType === 'electron' && process.env.CI ? 'pnpm exec vite build' : 'pnpm run build'
+					templateType === 'electron' && process.env.CI !== undefined
+						? 'pnpm exec vite build'
+						: 'pnpm run build'
 
 				try {
 					const output = execSync(buildCommand, {
@@ -96,12 +97,10 @@ describe('Template Generation and Build Tests', () => {
 				} catch (error) {
 					console.error(`Build failed for ${templateType}:`)
 					if (error instanceof Error && 'stdout' in error) {
-						// eslint-disable-next-line ts/no-unsafe-type-assertion
 						console.error('stdout:', (error as { stdout: string }).stdout)
 					}
 
 					if (error instanceof Error && 'stderr' in error) {
-						// eslint-disable-next-line ts/no-unsafe-type-assertion
 						console.error('stderr:', (error as { stderr: string }).stderr)
 					}
 
@@ -122,12 +121,10 @@ describe('Template Generation and Build Tests', () => {
 				} catch (error) {
 					console.error(`Lint failed for ${templateType}:`)
 					if (error instanceof Error && 'stdout' in error) {
-						// eslint-disable-next-line ts/no-unsafe-type-assertion
 						console.error('stdout:', (error as { stdout: string }).stdout)
 					}
 
 					if (error instanceof Error && 'stderr' in error) {
-						// eslint-disable-next-line ts/no-unsafe-type-assertion
 						console.error('stderr:', (error as { stderr: string }).stderr)
 					}
 
@@ -146,12 +143,10 @@ describe('Template Generation and Build Tests', () => {
 				} catch (error) {
 					console.error(`Test failed for ${templateType}:`)
 					if (error instanceof Error && 'stdout' in error) {
-						// eslint-disable-next-line ts/no-unsafe-type-assertion
 						console.error('stdout:', (error as { stdout: string }).stdout)
 					}
 
 					if (error instanceof Error && 'stderr' in error) {
-						// eslint-disable-next-line ts/no-unsafe-type-assertion
 						console.error('stderr:', (error as { stderr: string }).stderr)
 					}
 

@@ -15,7 +15,7 @@
 	"license": "MIT",
 	"author": {
 		"name": "{{{author-name}}}",
-		"email": "{{{author-email}}}",
+		"email": "eric@ericmika.com",
 		"url": "{{{author-url}}}"
 	},
 	"sideEffects": false,
@@ -33,17 +33,17 @@
 		"test": "vitest run"
 	},
 	"devDependencies": {
-		"@kitschpatrol/shared-config": "^7.6.4",
-		"@types/node": "~20.19.41",
+		"@kitschpatrol/shared-config": "^8.0.0",
+		"@types/node": "~20.19.43",
 		"bumpp": "^11.1.0",
 		"poptab": "^1.1.1",
 		"shx": "^0.4.0",
-		"typescript": "~5.9.3",
-		"vite": "^8.0.16",
+		"typescript": "~6.0.3",
+		"vite": "^8.1.2",
 		"vite-plugin-mkcert": "~2.1.0",
-		"vitest": "^4.1.8"
+		"vitest": "^4.1.9"
 	},
-	"packageManager": "pnpm@11.5.2",
+	"packageManager": "pnpm@11.10.0",
 	"devEngines": {
 		"runtime": {
 			"name": "node",

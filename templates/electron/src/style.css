@@ -17,15 +17,18 @@ a {
 	text-decoration: inherit;
 }
 
-a:hover {
-	color: #535bf2;
+@media (hover: hover) {
+	a:hover {
+		color: #535bf2;
+	}
 }
 
 body {
 	display: flex;
+	flex-wrap: wrap;
 	place-items: center;
 	min-width: 320px;
-	min-height: 100vh;
+	min-height: 100dvh;
 	margin: 0;
 }
 
@@ -48,12 +51,14 @@ h1 {
 	transition: filter 300ms;
 }
 
-.logo:hover {
-	filter: drop-shadow(0 0 2em #646cffaa);
-}
+@media (hover: hover) {
+	.logo:hover {
+		filter: drop-shadow(0 0 2em #646cffaa);
+	}
 
-.logo.vanilla:hover {
-	filter: drop-shadow(0 0 2em #3178c6aa);
+	.logo.vanilla:hover {
+		filter: drop-shadow(0 0 2em #3178c6aa);
+	}
 }
 
 .card {
@@ -76,8 +81,10 @@ button {
 	transition: border-color 0.25s;
 }
 
-button:hover {
-	border-color: #646cff;
+@media (hover: hover) {
+	button:hover {
+		border-color: #646cff;
+	}
 }
 
 button:focus,
@@ -91,11 +98,13 @@ button:focus-visible {
 		background-color: #ffffff;
 	}
 
-	a:hover {
-		color: #747bff;
-	}
-
 	button {
 		background-color: #f9f9f9;
+	}
+
+	@media (hover: hover) {
+		a:hover {
+			color: #747bff;
+		}
 	}
 }

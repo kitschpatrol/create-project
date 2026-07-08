@@ -16,8 +16,8 @@ type Overwrite<T, U> = Pick<T, Exclude<keyof T, keyof U>> & U
  */
 export type OptionsResolved = Overwrite<Required<Options>, Pick<Options, 'enforce'>>
 
-const NODE_MODULES_REGEX = /node_modules/
-const CODE_EXTENSIONS_REGEX = /\.[cm]?[jt]sx?$/
+const NODE_MODULES_REGEX = /node_modules/v
+const CODE_EXTENSIONS_REGEX = /\.[cm]?[jt]sx?$/v
 /**
  * Resolve and normalize user options.
  */

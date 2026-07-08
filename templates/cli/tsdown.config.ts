@@ -2,7 +2,7 @@ import { defineConfig } from 'tsdown'
 
 export default defineConfig({
 	deps: {
-		alwaysBundle: /.+/,
+		alwaysBundle: /.+/v,
 	},
 	dts: false,
 	fixedExtension: false,

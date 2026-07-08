@@ -17,9 +17,9 @@ contextBridge.exposeInMainWorld('ipcRenderer', {
 	},
 	on(...args: Parameters<typeof ipcRenderer.on>) {
 		const [channel, listener] = args
-		return ipcRenderer.on(channel, (event, ...args) => {
+		return ipcRenderer.on(channel, (event, ...eventArgs) => {
 			// eslint-disable-next-line ts/no-unsafe-argument
-			listener(event, ...args)
+			listener(event, ...eventArgs)
 		})
 	},
 	send(...args: Parameters<typeof ipcRenderer.send>) {
@@ -117,13 +117,20 @@ function useLoading() {
 // ----------------------------------------------------------------------
 
 const { appendLoading, removeLoading } = useLoading()
-// eslint-disable-next-line ts/no-floating-promises, unicorn/prefer-top-level-await
-domReady().then(appendLoading)
 
-// eslint-disable-next-line unicorn/prefer-add-event-listener
-window.onmessage = (event) => {
-	// eslint-disable-next-line ts/no-unused-expressions, ts/no-unsafe-member-access
-	event.data.payload === 'removeLoading' && removeLoading()
+async function showLoadingWhenReady() {
+	await domReady()
+	appendLoading()
 }
+
+// eslint-disable-next-line unicorn/prefer-top-level-await
+void showLoadingWhenReady()
+
+window.addEventListener('message', (event) => {
+	// eslint-disable-next-line ts/no-unsafe-member-access
+	if (event.data.payload === 'removeLoading') {
+		removeLoading()
+	}
+})
 
 setTimeout(removeLoading, 4999)
