@@ -18,6 +18,17 @@ export const TEMPLATE_TYPES = [
 
 const LOCK_FILES_REGEX = /node_modules|pnpm-lock\.yaml/v
 
+/**
+ * Removes line ranges delimited by `Template-dev-only-start` and
+ * `Template-dev-only-end` comments, inclusive of the marker lines.
+ */
+function stripTemplateDevOnlyBlocks(source: string): string {
+	return source.replaceAll(
+		/^[ \t]*\/\/ Template-dev-only-start.*?Template-dev-only-end[^\n]*\n/gmsv,
+		'',
+	)
+}
+
 export default createTemplate({
 	about: {
 		description:
@@ -82,6 +93,14 @@ export default createTemplate({
 		if (templateFiles._gitignore) {
 			templateFiles['.gitignore'] = templateFiles._gitignore
 			delete templateFiles._gitignore
+		}
+
+		// Lint rule overrides between `Template-dev-only` markers silence
+		// placeholder-value errors when the templates are linted inside this repo,
+		// and must not ship in generated projects.
+		const eslintConfigEntry = templateFiles['eslint.config.ts']
+		if (Array.isArray(eslintConfigEntry) && typeof eslintConfigEntry[0] === 'string') {
+			eslintConfigEntry[0] = stripTemplateDevOnlyBlocks(eslintConfigEntry[0])
 		}
 
 		return {

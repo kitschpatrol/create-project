@@ -80,6 +80,7 @@
 		"bumpp": "^11.1.0",
 		"esbuild": "*",
 		"poptab": "^1.1.1",
+		"rolldown": "^1.1.4",
 		"rollup": "^4.62.2",
 		"shx": "^0.4.0",
 		"tsdown": "^0.22.3",
@@ -91,6 +92,7 @@
 	"peerDependencies": {
 		"@farmfe/core": ">=1",
 		"esbuild": "*",
+		"rolldown": "^1",
 		"rollup": "^4.1",
 		"vite": ">=3",
 		"webpack": "^4 || ^5"
@@ -100,6 +102,9 @@
 			"optional": true
 		},
 		"esbuild": {
+			"optional": true
+		},
+		"rolldown": {
 			"optional": true
 		},
 		"rollup": {

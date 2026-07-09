@@ -76,6 +76,10 @@ describe('Template Generation and Build Tests', () => {
 					name: string
 				}
 				expect(packageJson.name).toBeDefined()
+
+				// Dev-only lint overrides must be stripped from generated projects
+				const eslintConfig = await fs.readFile(path.join(tempDirectory, 'eslint.config.ts'), 'utf8')
+				expect(eslintConfig).not.toContain('Template-dev-only')
 			})
 
 			it('should build without errors', () => {
