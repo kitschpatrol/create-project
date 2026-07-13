@@ -1,10 +1,8 @@
 import { defineConfig } from 'vite'
 import mkcert from 'vite-plugin-mkcert'
 
-process.env.BROWSER = 'chromium'
-
 export default defineConfig({
-	plugins: [mkcert()],
+	plugins: [process.env.CI === undefined ? mkcert() : undefined],
 	server: {
 		open: true,
 	},

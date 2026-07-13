@@ -10,12 +10,8 @@ publicHoistPattern:
   - '*remark*'
   - '*stylelint*'
 allowBuilds:
-  esbuild: true
   unrs-resolver: true
 minimumReleaseAgeExclude:
   - '@kitschpatrol/*'
-  - 'lognow'
-  - 'mdat'
-  - 'mdat-plugin-cli-help'
-  - 'poptab'
-  - 'remark-mdat'
+  - rolldown-plugin-dts
+  - tsdown

@@ -12,13 +12,12 @@ publicHoistPattern:
 allowBuilds:
   electron: true
   electron-winstaller: true
-  esbuild: true
   puppeteer: true
   unrs-resolver: true
 minimumReleaseAgeExclude:
   - '@kitschpatrol/*'
-  - 'lognow'
-  - 'mdat'
-  - 'mdat-plugin-cli-help'
-  - 'poptab'
-  - 'remark-mdat'
+  - '@types/node'
+  - electron
+  - rolldown-plugin-dts
+  - tsdown
+  - vite

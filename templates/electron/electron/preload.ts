@@ -49,14 +49,10 @@ async function domReady(condition: DocumentReadyState[] = ['complete', 'interact
 
 const safeDOM = {
 	append(parent: HTMLElement, child: HTMLElement) {
-		if (![...parent.children].includes(child)) {
-			return parent.appendChild(child)
-		}
+		return [...parent.children].includes(child) ? child : parent.appendChild(child)
 	},
 	remove(parent: HTMLElement, child: HTMLElement) {
-		if ([...parent.children].includes(child)) {
-			return parent.removeChild(child)
-		}
+		return [...parent.children].includes(child) ? parent.removeChild(child) : child
 	},
 }
 
