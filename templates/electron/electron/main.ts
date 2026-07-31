@@ -1,5 +1,5 @@
 import { app, BrowserWindow } from 'electron'
-import { log } from 'lognow/electron'
+import { log } from 'lognow'
 import path from 'node:path'
 
 process.env.ELECTRON_DISABLE_SECURITY_WARNINGS = 'true'

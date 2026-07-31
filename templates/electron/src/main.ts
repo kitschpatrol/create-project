@@ -1,5 +1,5 @@
 import './style.css'
-import { log } from 'lognow/electron'
+import { log } from 'lognow'
 import { setupCounter } from './counter.ts'
 import typescriptLogo from './typescript.svg'
 import viteLogo from '/vite.svg'
