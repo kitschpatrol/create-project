@@ -6,8 +6,8 @@
 
 <!-- badges -->
 
-[![NPM Package @kitschpatrol/create-project](https://img.shields.io/npm/v/@kitschpatrol/create-project.svg)](https://npmjs.com/package/@kitschpatrol/create-project)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/license/mit/)
+[![NPM Package @kitschpatrol/create-project](https://img.shields.io/npm/v/@kitschpatrol/create-project.svg)](https://www.npmjs.com/package/@kitschpatrol/create-project)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/license/mit)
 [![CI](https://github.com/kitschpatrol/create-project/actions/workflows/ci.yml/badge.svg)](https://github.com/kitschpatrol/create-project/actions/workflows/ci.yml)
 
 <!-- /badges -->
@@ -26,11 +26,23 @@ The lint tools and rules that come along with [@kitschpatrol/shared-config](http
 
 The templates use [tsdown](https://tsdown.dev/) for building TypeScript libraries and Node-based CLI tools, and [Vite](https://vite.dev/) for web projects. [Bingo](https://www.create.bingo/) is used for the project templating system itself.
 
+Seven template types are available:
+
+| Template      | Description                                                                                                                                                                          |
+| ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `minimal`     | Bare TypeScript scratch project, run with [tsx](https://tsx.is/) — no build step.                                                                                                    |
+| `web`         | [Vite](https://vite.dev/) web app with [Vitest](https://vitest.dev/) tests.                                                                                                          |
+| `cli`         | Node.js command-line tool using [yargs](https://yargs.js.org/), bundled with [tsdown](https://tsdown.dev/) for publication to npm.                                                   |
+| `library`     | ESM npm library with type declarations, bundled with [tsdown](https://tsdown.dev/).                                                                                                  |
+| `cli+library` | Combined npm library and CLI in a single package.                                                                                                                                    |
+| `electron`    | [Electron](https://www.electronjs.org/) app using [vite-plugin-electron](https://github.com/electron-vite/vite-plugin-electron) and [electron-builder](https://www.electron.build/). |
+| `unplugin`    | Universal bundler plugin via [unplugin](https://unplugin.unjs.io/), targeting Vite, Rollup, Rolldown, webpack, Rspack, esbuild, Farm, and Bun.                                       |
+
 ## Getting started
 
 ### Dependencies
 
-[Node.js](https://nodejs.org/) 22.19+ and [pnpm](https://pnpm.io/) 11+ are required for development. (Most templates generate packages with _lower_ Node.js version requirements, except for the `unplugin` template which requires require package consumers to have Node.js 22.22.2 or higher.
+[Node.js](https://nodejs.org/) 24.16+ and [pnpm](https://pnpm.io/) 11+ are required to develop this project, and to work on the projects it generates (a requirement inherited from [@kitschpatrol/shared-config](https://github.com/kitschpatrol/shared-config)). Templates that publish npm packages declare more permissive runtime `engines` requirements for their consumers (Node.js 22.12+).
 
 ## Usage
 
@@ -63,7 +75,7 @@ Bingo template options:
 
 Create Kitschpatrol Project options:
 
-  --type (enum): The type of project to create.
+  --type (enum): The type of project to create (minimal, web, cli, library, cli+library, electron, unplugin).
   --author-name (string): The name of the author.
   --author-email (string): The email of the author.
   --author-url (string): The URL of the author.
@@ -95,9 +107,20 @@ NPM_AUTH_TOKEN=$(op read 'op://Personal/npm/token') pnpm whoami
 
 ## Development Notes
 
+Build and run the CLI locally:
+
 ```sh
+pnpm build
 ./dist/index.js --directory ~/Desktop/test
 ```
+
+Update dependencies in every template:
+
+```sh
+pnpm update-templates
+```
+
+The templates are pnpm workspace members of this repository, so they are linted (with their own `eslint.config.ts` files) by the root `pnpm lint`. Lint rule overrides between `Template-dev-only` markers silence placeholder-value errors during template development and are stripped from generated projects.
 
 ## Maintainers
 

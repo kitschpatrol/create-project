@@ -19,6 +19,7 @@ allowBuilds:
   electron: true
   electron-winstaller: true
   esbuild: true
+  oxc-resolver: true
   unrs-resolver: true
 minimumReleaseAgeExclude:
   - '@kitschpatrol/*'

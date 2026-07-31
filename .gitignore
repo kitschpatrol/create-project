@@ -10,6 +10,7 @@
 .eslint-config-inspector
 .pnpm-store/
 .svelte-kit/
+.worktrees/
 {tmp,temp}/
 **/*.min.js
 /scratch/
@@ -22,4 +23,5 @@ vendor/
 
 # Customizations
 .claude/
+!/templates/*/.claude/
 templates/**/pnpm-lock.yaml

@@ -122,6 +122,16 @@ describe('Template Generation and Build Tests', () => {
 				// Dev-only lint overrides must be stripped from generated projects
 				const eslintConfig = await fs.readFile(path.join(tempDirectory, 'eslint.config.ts'), 'utf8')
 				expect(eslintConfig).not.toContain('Template-dev-only')
+
+				// Dot-directory boilerplate must make it into generated projects
+				for (const dotFile of [
+					'.claude/skills/ksc/SKILL.md',
+					'.github/workflows/check-links.yml',
+					'.gitignore',
+					'.vscode/tasks.json',
+				]) {
+					await expect(fs.access(path.join(tempDirectory, dotFile))).resolves.toBeUndefined()
+				}
 			})
 
 			it('should build without errors', () => {
