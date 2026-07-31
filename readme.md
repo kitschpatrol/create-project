@@ -30,7 +30,7 @@ Eight template types are available:
 
 | Template        | Description                                                                                                                                                                                                                                                                              |
 | --------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `minimal`       | Bare TypeScript scratch project, run with [tsx](https://tsx.is/) — no build step.                                                                                                                                                                                                        |
+| `minimal`       | Bare TypeScript scratch project, run with [tsx](https://tsx.hirok.io) — no build step.                                                                                                                                                                                                   |
 | `web`           | [Vite](https://vite.dev/) web app with [Vitest](https://vitest.dev/) tests.                                                                                                                                                                                                              |
 | `cli`           | Node.js command-line tool using [yargs](https://yargs.js.org/), bundled with [tsdown](https://tsdown.dev/) for publication to npm.                                                                                                                                                       |
 | `library`       | ESM npm library with type declarations, bundled with [tsdown](https://tsdown.dev/).                                                                                                                                                                                                      |
@@ -92,7 +92,7 @@ I publish most of my packages via a local command instead of through CI.
 
 Most template projects include a `release` script for this purpose.
 
-The default `--npm-auth-command` template value expects you to have the [1Password CLI installed](https://1password.com/downloads/command-line), [NPM access token](https://docs.npmjs.com/about-access-tokens) configured and stored at a specific path in 1Password, and for your global configuration to look a certain way.
+The default `--npm-auth-command` template value expects you to have the [1Password CLI installed](https://1password.com/downloads/command-line), [NPM access token](https://docs.npmjs.com/about-access-tokens/) configured and stored at a specific path in 1Password, and for your global configuration to look a certain way.
 
 This requires some one-time global configuration on the deploy machine.
 

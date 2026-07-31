@@ -6,7 +6,7 @@
 
 ## Overview
 
-Based on [electron-vite](https://github.com/caoxiemeihao/electron-vite-samples/tree/main/quick-start).
+Based on [vite-plugin-electron](https://github.com/electron-vite/vite-plugin-electron)'s [quick-start sample](https://github.com/caoxiemeihao/electron-vite-samples/tree/main/quick-start).
 
 ## Getting started
 
