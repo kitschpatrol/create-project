@@ -3,6 +3,6 @@
 	"compilerOptions": {
 		"types": ["node", "vite/client", "vite-plugin-electron/electron-env"]
 	},
-	"include": ["**/*", "**/**.*"],
+	"include": ["**/**.*"],
 	"exclude": ["**/bin/", "**/dist/", "**/dist-electron/"]
 }
