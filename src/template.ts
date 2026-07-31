@@ -1,5 +1,3 @@
-/* eslint-disable node/no-unsupported-features/node-builtins */
-
 import { createTemplate } from 'bingo'
 import { intakeDirectory } from 'bingo-fs'
 import { handlebars } from 'bingo-handlebars'

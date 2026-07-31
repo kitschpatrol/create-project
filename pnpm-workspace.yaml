@@ -23,6 +23,9 @@ allowBuilds:
   unrs-resolver: true
 minimumReleaseAgeExclude:
   - '@kitschpatrol/*'
+  - '@pnpm/*'
+  - execa
+  - mdat-plugin-cli-help
   - rolldown-plugin-dts
   - tsdown
   - vite

@@ -16,6 +16,7 @@ publicHoistPattern:
 allowBuilds:
   core-js: true
   esbuild: true
+  oxc-resolver: true
   unrs-resolver: true
 minimumReleaseAgeExclude:
   - '@kitschpatrol/*'

@@ -24,7 +24,7 @@
 	"license": "MIT",
 	"author": {
 		"name": "{{{author-name}}}",
-		"email": "eric@ericmika.com",
+		"email": "{{{author-email}}}",
 		"url": "{{{author-url}}}"
 	},
 	"sideEffects": false,
@@ -69,25 +69,25 @@
 		"test": "vitest run"
 	},
 	"dependencies": {
-		"@types/node": "~22.16.5",
+		"@types/node": "~24.13.3",
 		"unplugin": "^3.3.0"
 	},
 	"devDependencies": {
 		"@farmfe/core": ">=1.7.11",
-		"@kitschpatrol/shared-config": "^8.1.0",
+		"@kitschpatrol/shared-config": "^8.6.0",
 		"@sxzz/test-utils": "^0.5.18",
 		"@vitest/browser-playwright": "^4.1.10",
-		"bumpp": "^11.1.0",
+		"bumpp": "^12.1.1",
 		"esbuild": "*",
-		"poptab": "^1.1.1",
-		"rolldown": "^1.1.4",
-		"rollup": "^4.62.2",
+		"poptab": "^1.1.2",
+		"rolldown": "^1.2.1",
+		"rollup": "^4.62.3",
 		"shx": "^0.4.0",
-		"tsdown": "^0.22.7",
+		"tsdown": "^0.22.14",
 		"typescript": "~6.0.3",
-		"vite": "^8.1.4",
+		"vite": "^8.2.0",
 		"vitest": "^4.1.10",
-		"webpack": "^5.108.4"
+		"webpack": "^5.109.2"
 	},
 	"peerDependencies": {
 		"@farmfe/core": ">=1",
@@ -117,14 +117,8 @@
 			"optional": true
 		}
 	},
-	"packageManager": "pnpm@11.11.0",
+	"packageManager": "pnpm@11.17.0",
 	"engines": {
-		"node": "^22.22.2 || >=24.0.0"
-	},
-	"devEngines": {
-		"runtime": {
-			"name": "node",
-			"version": ">=24.16.0"
-		}
+		"node": "^24.16.0 || >=26.3.0"
 	}
 }

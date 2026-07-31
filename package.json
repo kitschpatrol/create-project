@@ -44,9 +44,9 @@
 		"zod": "^3.25.76"
 	},
 	"devDependencies": {
-		"@kitschpatrol/shared-config": "^8.5.0",
+		"@kitschpatrol/shared-config": "^8.6.0",
 		"@types/node": "~24.13.3",
-		"bumpp": "^12.0.0",
+		"bumpp": "^12.1.1",
 		"mdat": "^3.0.0",
 		"shx": "^0.4.0",
 		"taze": "^19.16.0",
@@ -56,13 +56,7 @@
 	},
 	"packageManager": "pnpm@11.17.0",
 	"engines": {
-		"node": ">=22.12.0"
-	},
-	"devEngines": {
-		"runtime": {
-			"name": "node",
-			"version": "^24.16.0 || >=26.3.0"
-		}
+		"node": "^24.16.0 || >=26.3.0"
 	},
 	"publishConfig": {
 		"access": "public"

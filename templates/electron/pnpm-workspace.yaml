@@ -12,7 +12,6 @@ publicHoistPattern:
 allowBuilds:
   electron: true
   electron-winstaller: true
-  puppeteer: true
   unrs-resolver: true
 minimumReleaseAgeExclude:
   - '@kitschpatrol/*'

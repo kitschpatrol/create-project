@@ -119,7 +119,6 @@ async function showLoadingWhenReady() {
 	appendLoading()
 }
 
-// eslint-disable-next-line unicorn/prefer-top-level-await
 void showLoadingWhenReady()
 
 window.addEventListener('message', (event) => {

@@ -10,7 +10,7 @@ publicHoistPattern:
   - '*remark*'
   - '*stylelint*'
 allowBuilds:
-  puppeteer: true
+  oxc-resolver: true
   unrs-resolver: true
 minimumReleaseAgeExclude:
   - '@kitschpatrol/*'

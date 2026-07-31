@@ -42,7 +42,7 @@ Seven template types are available:
 
 ### Dependencies
 
-[Node.js](https://nodejs.org/) 24.16+ and [pnpm](https://pnpm.io/) 11+ are required to develop this project, and to work on the projects it generates (a requirement inherited from [@kitschpatrol/shared-config](https://github.com/kitschpatrol/shared-config)). Templates that publish npm packages declare more permissive runtime `engines` requirements for their consumers (Node.js 22.12+).
+[Node.js](https://nodejs.org/) 24.16+ and [pnpm](https://pnpm.io/) 11+ are required to develop this project and to work on the projects it generates (a requirement inherited from [@kitschpatrol/shared-config](https://github.com/kitschpatrol/shared-config)). Generated packages declare the same floor in their `engines` field: `^24.16.0 || >=26.3.0`.
 
 ## Usage
 
