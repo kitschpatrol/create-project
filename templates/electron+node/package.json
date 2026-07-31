@@ -1,0 +1,54 @@
+{
+	"name": "{{{github-repository}}}",
+	"version": "0.0.0",
+	"private": true,
+	"description": "An {{{type}}} project.",
+	"keywords": [
+		"{{{type}}}"
+	],
+	"homepage": "https://github.com/{{{github-owner}}}/{{{github-repository}}}",
+	"bugs": "https://github.com/{{{github-owner}}}/{{{github-repository}}}/issues",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/{{{github-owner}}}/{{{github-repository}}}.git"
+	},
+	"license": "MIT",
+	"author": {
+		"name": "{{{author-name}}}",
+		"email": "{{{author-email}}}",
+		"url": "{{{author-url}}}"
+	},
+	"sideEffects": false,
+	"type": "module",
+	"main": "./out/main/main.js",
+	"scripts": {
+		"bench": "vitest bench --run --compare test/benchmarks/baseline.json",
+		"bench:baseline": "vitest bench --run --outputJson test/benchmarks/baseline.json",
+		"build": "electron-vite build && electron-builder",
+		"clean": "shx rm -f pnpm-lock.yaml && git clean -fdX -e !.claude/",
+		"dev": "electron-vite dev",
+		"fix": "ksc fix",
+		"lint": "ksc lint",
+		"release": "bumpp --commit 'Release: %s' && pnpm build && electron-builder build --publish always",
+		"test": "vitest run"
+	},
+	"dependencies": {
+		"lognow": "^0.8.0"
+	},
+	"devDependencies": {
+		"@kitschpatrol/electron-vite": "^6.0.0-beta.4",
+		"@kitschpatrol/shared-config": "^8.6.0",
+		"@types/node": "~24.13.3",
+		"bumpp": "^12.1.1",
+		"electron": "^43.2.0",
+		"electron-builder": "^26.15.3",
+		"shx": "^0.4.0",
+		"typescript": "~6.0.3",
+		"vite": "^8.2.0",
+		"vitest": "^4.1.10"
+	},
+	"packageManager": "pnpm@11.17.0",
+	"engines": {
+		"node": "^24.18.0 || >=26.3.0"
+	}
+}

@@ -23,6 +23,5 @@ vendor/
 
 # Customizations
 .claude/
-!/templates/*/.claude/
-templates/**/pnpm-lock.yaml
-/templates/electron+node/out/
+out/
+release/

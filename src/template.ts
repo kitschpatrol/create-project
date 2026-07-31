@@ -11,6 +11,7 @@ export const TEMPLATE_TYPES = [
 	'library',
 	'cli+library',
 	'electron',
+	'electron+node',
 	'unplugin',
 ] as const
 
@@ -112,7 +113,7 @@ export default createTemplate({
 					'package.json',
 					// Per-template handlebars file expansion. Add any file that
 					// contains {{{...}}} placeholders here.
-					...(options.type === 'electron' || options.type === 'web' ? ['index.html'] : []),
+					...(['electron', 'electron+node', 'web'].includes(options.type) ? ['index.html'] : []),
 					...(options.type === 'unplugin'
 						? [
 								'playground/index.html',
@@ -134,7 +135,7 @@ export default createTemplate({
 			scripts: [
 				{
 					commands:
-						options.type === 'electron'
+						options.type === 'electron' || options.type === 'electron+node'
 							? ['pnpm install', 'pnpm run fix']
 							: ['pnpm install', 'pnpm run build', 'pnpm run fix'],
 					phase: 0,

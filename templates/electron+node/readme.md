@@ -1,0 +1,27 @@
+<!-- title -->
+
+<!-- badges -->
+
+<!-- short-description -->
+
+## Overview
+
+Based on [electron-vite](https://electron-vite.org) via the [@kitschpatrol/electron-vite](https://github.com/kitschpatrol/electron-vite) fork.
+
+## Getting started
+
+### Dependencies
+
+### Deployment
+
+## Maintainers
+
+_List maintainer(s) for a repository, along with one way of contacting them (e.g. GitHub link or email)._
+
+## Acknowledgments
+
+_State anyone or anything that significantly helped with the development of your project. State public contact hyper-links if applicable._
+
+<!-- contributing -->
+
+<!-- license -->

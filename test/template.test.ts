@@ -67,11 +67,11 @@ describe('Template Generation and Build Tests', () => {
 	})
 
 	for (const templateType of TEMPLATE_TYPES) {
-		// The electron template pulls electron-builder's large binary dependency
+		// The electron templates pull electron-builder's large binary dependency
 		// tree, whose `pnpm install` deterministically hangs on CI runners (it's
 		// fine locally, even with a cold store). electron-builder also can't
-		// package on CI, so there's little to validate there — skip it on CI.
-		const skipOnCI = templateType === 'electron' && process.env.CI !== undefined
+		// package on CI, so there's little to validate there — skip them on CI.
+		const skipOnCI = templateType.startsWith('electron') && process.env.CI !== undefined
 
 		describe.skipIf(skipOnCI)(`${templateType} template`, () => {
 			let tempDirectory = ''
