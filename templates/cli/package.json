@@ -44,7 +44,7 @@
 	"devDependencies": {
 		"@kitschpatrol/shared-config": "^8.6.0",
 		"@types/node": "~24.13.3",
-		"bumpp": "^12.1.1",
+		"bumpp": "^12.2.0",
 		"mdat-plugin-cli-help": "^3.1.0",
 		"publint": "^0.3.22",
 		"shx": "^0.4.0",
@@ -52,7 +52,7 @@
 		"typescript": "~6.0.3",
 		"vitest": "^4.1.10"
 	},
-	"packageManager": "pnpm@11.17.0",
+	"packageManager": "pnpm@11.18.0",
 	"engines": {
 		"node": "^24.16.0 || >=26.3.0"
 	}
