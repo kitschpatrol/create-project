@@ -53,6 +53,12 @@ Eight template types are available:
 pnpm create @kitschpatrol/project@latest
 ```
 
+If you have pnpm's [minimumReleaseAge](https://pnpm.io/settings/dependency-resolution#minimumreleaseage) option enabled, you might need to disable it if you trust this repository and really want the _latest_ latest:
+
+```sh
+pnpm --config.minimum-release-age=0 create @kitschpatrol/project@latest
+```
+
 ### CLI options
 
 ```txt
