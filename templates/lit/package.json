@@ -1,0 +1,71 @@
+{
+	"name": "{{{github-repository}}}",
+	"version": "0.0.0",
+	"description": "A {{{type}}} project.",
+	"keywords": [
+		"lit",
+		"web-component",
+		"custom-element"
+	],
+	"homepage": "https://github.com/{{{github-owner}}}/{{{github-repository}}}",
+	"bugs": "https://github.com/{{{github-owner}}}/{{{github-repository}}}/issues",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/{{{github-owner}}}/{{{github-repository}}}.git"
+	},
+	"license": "MIT",
+	"author": {
+		"name": "{{{author-name}}}",
+		"email": "{{{author-email}}}",
+		"url": "{{{author-url}}}"
+	},
+	"sideEffects": [
+		"./dist/index.js"
+	],
+	"type": "module",
+	"exports": {
+		".": {
+			"types": "./dist/index.d.ts",
+			"import": "./dist/index.js"
+		}
+	},
+	"main": "./dist/index.js",
+	"module": "./dist/index.js",
+	"files": [
+		"dist/*"
+	],
+	"scripts": {
+		"bench": "vitest bench --run --compare test/benchmarks/baseline.json",
+		"bench:baseline": "vitest bench --run --outputJson test/benchmarks/baseline.json",
+		"build": "tsdown",
+		"clean": "shx rm -f pnpm-lock.yaml && git clean -fdX -e !.claude/",
+		"dev": "poptab && vite",
+		"fix": "ksc fix",
+		"lint": "ksc lint",
+		"preview": "poptab && vite preview",
+		"release": "bumpp --commit 'Release: %s' && pnpm build && NPM_AUTH_TOKEN=$({{{npm-auth-command}}}) && pnpm publish",
+		"test": "vitest run"
+	},
+	"devDependencies": {
+		"@arethetypeswrong/core": "^0.18.5",
+		"@kitschpatrol/shared-config": "^8.6.0",
+		"@types/node": "~24.13.3",
+		"bumpp": "^12.2.0",
+		"happy-dom": "^20.11.1",
+		"lit": "^3.3.3",
+		"poptab": "^1.1.2",
+		"publint": "^0.3.22",
+		"shx": "^0.4.0",
+		"tsdown": "^0.22.14",
+		"typescript": "~6.0.3",
+		"vite": "^8.2.0",
+		"vitest": "^4.1.10"
+	},
+	"peerDependencies": {
+		"lit": "^3.0.0"
+	},
+	"packageManager": "pnpm@11.18.0",
+	"engines": {
+		"node": "^24.16.0 || >=26.3.0"
+	}
+}

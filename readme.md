@@ -26,7 +26,7 @@ The lint tools and rules that come along with [@kitschpatrol/shared-config](http
 
 The templates use [tsdown](https://tsdown.dev/) for building TypeScript libraries and Node-based CLI tools, and [Vite](https://vite.dev/) for web projects. [Bingo](https://www.create.bingo/) is used for the project templating system itself.
 
-Eight template types are available:
+Nine template types are available:
 
 | Template        | Description                                                                                                                                                                                                                                                                              |
 | --------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -35,6 +35,7 @@ Eight template types are available:
 | `cli`           | Node.js command-line tool using [yargs](https://yargs.js.org/), bundled with [tsdown](https://tsdown.dev/) for publication to npm.                                                                                                                                                       |
 | `library`       | ESM npm library with type declarations, bundled with [tsdown](https://tsdown.dev/).                                                                                                                                                                                                      |
 | `cli+library`   | Combined npm library and CLI in a single package.                                                                                                                                                                                                                                        |
+| `lit`           | Single [Lit](https://lit.dev/) web component published as an ESM npm package, with a [Vite](https://vite.dev/) development playground.                                                                                                                                                   |
 | `electron`      | [Electron](https://www.electronjs.org/) app using [vite-plugin-electron](https://github.com/electron-vite/vite-plugin-electron) and [electron-builder](https://www.electron.build/).                                                                                                     |
 | `electron+node` | [Electron](https://www.electronjs.org/) app with Node-targeted main and preload builds via [electron-vite](https://electron-vite.org) (using the [@kitschpatrol/electron-vite](https://github.com/kitschpatrol/electron-vite) fork) and [electron-builder](https://www.electron.build/). |
 | `unplugin`      | Universal bundler plugin via [unplugin](https://unplugin.unjs.io/), targeting Vite, Rollup, Rolldown, webpack, Rspack, esbuild, Farm, and Bun.                                                                                                                                           |
@@ -82,7 +83,7 @@ Bingo template options:
 
 Create Kitschpatrol Project options:
 
-  --type (enum): The type of project to create (minimal, web, cli, library, cli+library, electron, electron+node, unplugin).
+  --type (enum): The type of project to create (minimal, web, cli, library, cli+library, lit, electron, electron+node, unplugin).
   --author-name (string): The name of the author.
   --author-email (string): The email of the author.
   --author-url (string): The URL of the author.

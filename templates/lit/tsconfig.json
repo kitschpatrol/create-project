@@ -1,0 +1,18 @@
+{
+	"extends": "@kitschpatrol/typescript-config",
+	"compilerOptions": {
+		// Required by Lit so decorated fields stay accessors rather than being
+		// redefined as own properties on construction.
+		"useDefineForClassFields": false,
+		// Lit's publishing guidance: use legacy experimental decorators for the
+		// widest toolchain compatibility. Oxc transforms experimental decorators,
+		// but not TC39 standard decorators.
+		"experimentalDecorators": true,
+		"types": ["vite/client"],
+		// Decorators are not erasable syntax, so the shared base's
+		// `erasableSyntaxOnly: true` has to be relaxed.
+		"erasableSyntaxOnly": false
+	},
+	"include": ["**/**.*"],
+	"exclude": ["**/dist/"]
+}

@@ -10,6 +10,7 @@ export const TEMPLATE_TYPES = [
 	'cli',
 	'library',
 	'cli+library',
+	'lit',
 	'electron',
 	'electron+node',
 	'unplugin',
@@ -113,7 +114,9 @@ export default createTemplate({
 					'package.json',
 					// Per-template handlebars file expansion. Add any file that
 					// contains {{{...}}} placeholders here.
-					...(['electron', 'electron+node', 'web'].includes(options.type) ? ['index.html'] : []),
+					...(['electron', 'electron+node', 'lit', 'web'].includes(options.type)
+						? ['index.html']
+						: []),
 					...(options.type === 'unplugin'
 						? [
 								'playground/index.html',
