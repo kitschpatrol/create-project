@@ -62,34 +62,35 @@ pnpm --config.minimum-release-age=0 create @kitschpatrol/project@latest
 
 ### CLI options
 
+<!-- cli-help-trimmed -->
+
 ```txt
 Bingo template options:
-│
-│  --directory (string): What local directory path to run under
-│      npx @kitschpatrol/create-project --directory my-fancy-project
-│
-│  --help (string): Prints help text.
-│      npx @kitschpatrol/create-project --help
-│
-│  --mode ("setup" | "transition"): Which mode to run in.
-│      npx @kitschpatrol/create-project --mode setup
-│      npx @kitschpatrol/create-project --mode transition
-│
-│  --offline (boolean): Whether to run in an "offline" mode that skips network requests.
-│      npx @kitschpatrol/create-project --offline
-│
-│  --remote (boolean): Whether to create a remote repository on GitHub if one does not already exist.
-│      npx @kitschpatrol/create-project --remote
-│
-│  --skip-files (boolean): Whether to skip creating files on disk.
-│      npx @kitschpatrol/create-project --skip-files
-│
-│  --skip-requests (boolean): Whether to skip sending network requests as specified by templates.
-│      npx @kitschpatrol/create-project --skip-requests
-│
-│  --version (boolean): Prints package versions.
-│      npx @kitschpatrol/create-project --version
-│
+
+  --directory (string): What local directory path to run under
+      npx @kitschpatrol/create-project --directory my-fancy-project
+
+  --help (string): Prints help text.
+      npx @kitschpatrol/create-project --help
+
+  --mode ("setup" | "transition"): Which mode to run in.
+      npx @kitschpatrol/create-project --mode setup
+      npx @kitschpatrol/create-project --mode transition
+
+  --offline (boolean): Whether to run in an "offline" mode that skips network requests.
+      npx @kitschpatrol/create-project --offline
+
+  --remote (boolean): Whether to create a remote repository on GitHub if one does not already exist.
+      npx @kitschpatrol/create-project --remote
+
+  --skip-files (boolean): Whether to skip creating files on disk.
+      npx @kitschpatrol/create-project --skip-files
+
+  --skip-requests (boolean): Whether to skip sending network requests as specified by templates.
+      npx @kitschpatrol/create-project --skip-requests
+
+  --version (boolean): Prints package versions.
+      npx @kitschpatrol/create-project --version
 
 
 Create Kitschpatrol Project options:
@@ -104,6 +105,8 @@ Create Kitschpatrol Project options:
   --npm-token-command (string): A shell command that returns a granular token for publishing to the npm registry.
   --npm-otp-command (string): A shell command that returns a one-time password for publishing to the npm registry.
 ```
+
+<!-- /cli-help-trimmed -->
 
 ### npm Publishing configuration
 

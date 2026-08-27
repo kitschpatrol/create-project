@@ -23,3 +23,4 @@ allowBuilds:
   unrs-resolver: true
 minimumReleaseAgeExclude:
   - '@kitschpatrol/*'
+  - mdat-plugin-cli-help@3.2.0
