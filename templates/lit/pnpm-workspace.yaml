@@ -14,6 +14,3 @@ allowBuilds:
   unrs-resolver: true
 minimumReleaseAgeExclude:
   - '@kitschpatrol/*'
-  - rolldown-plugin-dts
-  - tsdown
-  - vite
