@@ -64,22 +64,33 @@ pnpm --config.minimum-release-age=0 create @kitschpatrol/project@latest
 
 ```txt
 Bingo template options:
+│
+│  --directory (string): What local directory path to run under
+│      npx @kitschpatrol/create-project --directory my-fancy-project
+│
+│  --help (string): Prints help text.
+│      npx @kitschpatrol/create-project --help
+│
+│  --mode ("setup" | "transition"): Which mode to run in.
+│      npx @kitschpatrol/create-project --mode setup
+│      npx @kitschpatrol/create-project --mode transition
+│
+│  --offline (boolean): Whether to run in an "offline" mode that skips network requests.
+│      npx @kitschpatrol/create-project --offline
+│
+│  --remote (boolean): Whether to create a remote repository on GitHub if one does not already exist.
+│      npx @kitschpatrol/create-project --remote
+│
+│  --skip-files (boolean): Whether to skip creating files on disk.
+│      npx @kitschpatrol/create-project --skip-files
+│
+│  --skip-requests (boolean): Whether to skip sending network requests as specified by templates.
+│      npx @kitschpatrol/create-project --skip-requests
+│
+│  --version (boolean): Prints package versions.
+│      npx @kitschpatrol/create-project --version
+│
 
-  --directory (string): What local directory path to run under
-      npx @kitschpatrol/create-project --directory my-fancy-project
-
-  --help (string): Prints help text.
-      npx @kitschpatrol/create-project --help
-
-  --mode ("setup" | "transition"): Which mode to run in.
-      npx @kitschpatrol/create-project --mode setup
-      npx @kitschpatrol/create-project --mode transition
-
-  --offline (boolean): Whether to run in an "offline" mode that skips network requests.
-      npx @kitschpatrol/create-project --offline
-
-  --version (boolean): Prints package versions.
-      npx @kitschpatrol/create-project --version
 
 Create Kitschpatrol Project options:
 
@@ -90,28 +101,47 @@ Create Kitschpatrol Project options:
   --cli-command-name (string): CLI command name (if applicable).
   --github-owner (string): The owner of the repository.
   --github-repository (string): The name of the repository / package.
-  --npm-auth-command (string): A shell command that sets the NPM_AUTH_TOKEN env variable with a granular token for publishing to npm.
+  --npm-token-command (string): A shell command that returns a granular token for publishing to the npm registry.
+  --npm-otp-command (string): A shell command that returns a one-time password for publishing to the npm registry.
 ```
 
-### NPM Publishing configuration
+### npm Publishing configuration
 
 I publish most of my packages via a local command instead of through CI.
 
 Most template projects include a `release` script for this purpose.
 
-The default `--npm-auth-command` template value expects you to have the [1Password CLI installed](https://1password.com/downloads/command-line), [NPM access token](https://docs.npmjs.com/about-access-tokens/) configured and stored at a specific path in 1Password, and for your global configuration to look a certain way.
+Two credentials are passed at the last minute to the `pnpm publish` command in the `release` script. The template must define how to fetch these.
+
+#### npm token
+
+> [!WARNING]
+>
+> This is currently broken pending resolution of [pnpm/issues/12828](https://github.com/pnpm/pnpm/issues/12828).
+>
+> The call to `--npm-token-command` won't actually populate the token, so you will need to provide the token in your environment in a different way.
+
+As of November 2025, [granular access tokens](https://docs.npmjs.com/about-access-tokens#about-granular-access-tokens) are required for publishing packages to npm.
+
+The default `--npm-token-command` template value expects you to have the [1Password CLI installed](https://1password.com/downloads/command-line), [npm access token](https://docs.npmjs.com/about-access-tokens/) configured and stored at a specific path in 1Password, and for your global configuration to look a certain way.
 
 This requires some one-time global configuration on the deploy machine.
 
 ```sh
-pnpm config set '//registry.npmjs.org/:_authToken' '${NPM_AUTH_TOKEN}'
+pnpm config set '//registry.npmjs.org/:_authToken' '${NPM_TOKEN}'
 ```
 
 Check who pnpm thinks you are to confirm everything works:
 
 ```sh
-NPM_AUTH_TOKEN=$(op read 'op://Personal/npm/token') pnpm whoami
+NPM_TOKEN=$(op read 'op://Personal/npm/token') pnpm whoami
 ```
+
+#### npm one-time password
+
+As of August 2026, [2fa is required](https://docs.npmjs.com/about-access-tokens#account-identity-actions-require-an-interactive-2fa-challenge) alongside the token for publishing packages to npm.
+
+The default `--npm-otp-command` template value expects you to have the [1Password CLI installed](https://1password.com/downloads/command-line), with your npm OTP configured and stored at a specific path in 1Password.
 
 ## Development Notes
 

@@ -32,7 +32,7 @@
 		"clean": "shx rm -f pnpm-lock.yaml && git clean -fdX -e !.claude/",
 		"fix": "ksc fix --skip mdat && mdat readme.md",
 		"lint": "ksc lint --skip mdat && mdat check readme.md",
-		"release": "bumpp --commit 'Release: %s' && pnpm build && NPM_AUTH_TOKEN=$(op read 'op://Personal/npm/token') pnpm publish",
+		"release": "bumpp --commit 'Release: %s' && pnpm build && NPM_TOKEN=$(op read 'op://Personal/npm/token') pnpm publish --otp $(op item get npm --otp)",
 		"test": "vitest run",
 		"update-templates": "for dir in ./templates/*; do taze -w --cwd \"$dir\"; done",
 		"update-templates-major": "for dir in ./templates/*; do taze major -w --cwd \"$dir\" --exclude @types/node,typescript,zod,vite; done"

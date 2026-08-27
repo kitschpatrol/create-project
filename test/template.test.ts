@@ -93,7 +93,8 @@ describe('Template Generation and Build Tests', () => {
 						'cli-command-name': 'test-cli',
 						'github-owner': 'test-owner',
 						'github-repository': `test-${templateType.replace('+', '-')}`,
-						'npm-auth-command': "echo 'test-auth'",
+						'npm-otp-command': "echo 'test-otp'",
+						'npm-token-command': "echo 'test-auth'",
 						type: templateType,
 					},
 				})

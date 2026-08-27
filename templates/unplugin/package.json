@@ -65,7 +65,7 @@
 		"fix": "ksc fix",
 		"lint": "ksc lint",
 		"play": "poptab && pnpm -C playground run dev",
-		"release": "bumpp --commit 'Release: %s' && pnpm build && NPM_AUTH_TOKEN=$({{{npm-auth-command}}}) && pnpm publish",
+		"release": "bumpp --commit 'Release: %s' && pnpm build && NPM_TOKEN=$({{{npm-token-command}}}) pnpm publish --otp $({{{npm-otp-command}}})",
 		"test": "vitest run"
 	},
 	"dependencies": {

@@ -58,11 +58,15 @@ export default createTemplate({
 			.string()
 			.default(`new-project`)
 			.describe('The name of the repository / package'),
-		'npm-auth-command': z
+		'npm-token-command': z
 			.string()
 			.default("op read 'op://Personal/npm/token'")
+			.describe('A shell command that returns a granular token for publishing to the npm registry'),
+		'npm-otp-command': z
+			.string()
+			.default('op item get npm --otp')
 			.describe(
-				'A shell command that sets the NPM_AUTH_TOKEN env variable with a granular token for publishing to npm',
+				'A shell command that returns a one-time password for publishing to the npm registry',
 			),
 		/* eslint-enable perfectionist/sort-objects */
 	},
