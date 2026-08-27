@@ -4,6 +4,10 @@ import cliHelpPlugin from 'mdat-plugin-cli-help'
 const { cli } = cliHelpPlugin
 
 const BOX_GUTTER_REGEX = /^│ {0,2}/v
+// Clack colors its frame when the CI environment variable is set (picocolors
+// treats CI as color support), so escapes must be stripped before matching │
+// eslint-disable-next-line no-control-regex
+const ANSI_SGR_REGEX = /\u{1B}\[[\d;]*m/gv
 
 /**
  * Strip Clack's box-drawing frame from raw CLI help output, keeping only the
@@ -15,6 +19,7 @@ const BOX_GUTTER_REGEX = /^│ {0,2}/v
  */
 function trimClackFrame(helpText: string): string {
 	const lines = helpText
+		.replaceAll(ANSI_SGR_REGEX, '')
 		.split('\n')
 		.filter((line) => line.startsWith('│'))
 		.map((line) => line.replace(BOX_GUTTER_REGEX, '').trimEnd())
