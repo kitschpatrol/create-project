@@ -32,9 +32,13 @@ describe('cli', () => {
 		expect(stdout).toContain('--help')
 	})
 
-	it('should run the default command', async () => {
-		const { code, stdout } = await run()
+	it.each([
+		[[], 'Something happened'],
+		[['do-something'], 'Something happened'],
+		[['do-something-else'], 'Something else happened'],
+	])('should run command %j', async (args, expected) => {
+		const { code, stdout } = await run(...args)
 		expect(code).toBe(0)
-		expect(stdout.trim()).toBe('Something happened')
+		expect(stdout.trim()).toBe(expected)
 	})
 })

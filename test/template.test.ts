@@ -23,6 +23,9 @@ const temporaryBase = path.resolve(
 // spurious ENOBUFS failures from verbose install logs.
 const COMMAND_TIMEOUT_MS = 240_000
 const COMMAND_MAX_BUFFER = 64 * 1024 * 1024
+const NODE_SHEBANG_REGEX = /^#!\/usr\/bin\/env node\n/v
+const YARGS_IMPORT_REGEX = /from ['"]yargs['"]/v
+const LOGNOW_IMPORT_REGEX = /from ['"]lognow['"]/v
 
 /**
  * Run a command in a generated project, failing fast with captured output.
@@ -139,6 +142,56 @@ describe('Template Generation and Build Tests', () => {
 				const output = runCommand('pnpm run build', tempDirectory, `Build for ${templateType}`)
 				expect(output).toBeDefined()
 			}, 300_000) // 5 minute timeout for build
+
+			if (templateType === 'cli+library') {
+				it('should clean and package CLI and library outputs', async () => {
+					const staleFiles = ['dist/bin/stale.js', 'dist/lib/stale.js']
+					for (const file of staleFiles) {
+						await fs.writeFile(path.join(tempDirectory, file), '// Stale build output\n')
+					}
+
+					runCommand('pnpm run build', tempDirectory, 'Rebuild CLI and library')
+					for (const file of staleFiles) {
+						await expect(fs.access(path.join(tempDirectory, file))).rejects.toThrow()
+					}
+
+					const cli = await fs.readFile(path.join(tempDirectory, 'dist/bin/cli.js'), 'utf8')
+					const library = await fs.readFile(path.join(tempDirectory, 'dist/lib/index.js'), 'utf8')
+					expect(cli).toMatch(NODE_SHEBANG_REGEX)
+
+					expect(cli).toMatch(YARGS_IMPORT_REGEX)
+					expect(library).toMatch(LOGNOW_IMPORT_REGEX)
+
+					const packed = JSON.parse(
+						runCommand('pnpm pack --json --loglevel error', tempDirectory, 'Pack CLI and library'),
+					) as {
+						files: Array<{ path: string }>
+					}
+					const packedFiles = packed.files.map((file) => file.path)
+					const outputFiles = await fs.readdir(path.join(tempDirectory, 'dist'), {
+						recursive: true,
+					})
+					const builtFiles = outputFiles.filter(
+						(file) => file.endsWith('.js') || file.endsWith('.d.ts'),
+					)
+					for (const file of builtFiles) {
+						expect(packedFiles).toContain(`dist/${file.split(path.sep).join('/')}`)
+					}
+
+					expect(packedFiles).toContain('dist/lib/index.d.ts')
+					await fs.writeFile(
+						path.join(tempDirectory, 'check-library.mjs'),
+						`import assert from 'node:assert/strict'
+import { doSomething, doSomethingElse, setLogger } from 'test-cli-library'
+setLogger()
+assert.equal(doSomething(), 'Something happened')
+assert.equal(doSomethingElse(), 'Something else happened')
+`,
+					)
+					runCommand('node check-library.mjs', tempDirectory, 'Import built library')
+					await fs.rm(path.join(tempDirectory, 'check-library.mjs'))
+				}, 300_000)
+			}
 
 			it('should lint without errors', () => {
 				const output = runCommand('pnpm run lint', tempDirectory, `Lint for ${templateType}`)
