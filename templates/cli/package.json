@@ -24,13 +24,13 @@
 		"{{{cli-command-name}}}": "dist/index.js"
 	},
 	"files": [
-		"dist/*"
+		"dist"
 	],
 	"scripts": {
-		"bench": "vitest bench --run --compare test/benchmarks/baseline.json",
-		"bench:baseline": "vitest bench --run --outputJson test/benchmarks/baseline.json",
+		"bench": "vitest bench --run",
+		"bench:baseline": "vitest bench --run",
 		"build": "tsdown",
-		"clean": "shx rm -f pnpm-lock.yaml && git clean -fdX -e !.claude/",
+		"clean-deep": "shx rm -f pnpm-lock.yaml && git clean -fdX -e !.claude/",
 		"fix": "ksc fix",
 		"lint": "ksc lint",
 		"release": "bumpp --commit 'Release: %s' && pnpm build && NPM_TOKEN=$({{{npm-token-command}}}) pnpm publish --otp $({{{npm-otp-command}}})",
@@ -38,21 +38,21 @@
 	},
 	"dependencies": {
 		"@types/yargs": "^17.0.35",
-		"lognow": "^0.8.0",
+		"lognow": "^0.8.2",
 		"yargs": "^18.1.0"
 	},
 	"devDependencies": {
-		"@kitschpatrol/shared-config": "^8.7.0",
-		"@types/node": "~24.13.3",
-		"bumpp": "^12.2.2",
-		"mdat-plugin-cli-help": "^3.1.0",
+		"@kitschpatrol/shared-config": "^8.9.0",
+		"@types/node": "~24.13.4",
+		"bumpp": "^12.3.0",
+		"mdat-plugin-cli-help": "^3.2.0",
 		"publint": "^0.3.24",
 		"shx": "^0.4.0",
-		"tsdown": "^0.22.14",
+		"tsdown": "^0.23.0",
 		"typescript": "~6.0.3",
-		"vitest": "^4.1.11"
+		"vitest": "^5.0.1"
 	},
-	"packageManager": "pnpm@11.24.0",
+	"packageManager": "pnpm@12.4.0",
 	"engines": {
 		"node": "^24.16.0 || >=26.3.0"
 	}

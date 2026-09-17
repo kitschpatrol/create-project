@@ -1,3 +1,5 @@
+import type { BaselineData } from 'vitest'
+import type { JsonTestResults } from 'vitest/node'
 import { runTemplate } from 'bingo'
 import { execSync } from 'node:child_process'
 import fs from 'node:fs/promises'
@@ -24,8 +26,8 @@ const temporaryBase = path.resolve(
 const COMMAND_TIMEOUT_MS = 240_000
 const COMMAND_MAX_BUFFER = 64 * 1024 * 1024
 const NODE_SHEBANG_REGEX = /^#!\/usr\/bin\/env node\n/v
-const YARGS_IMPORT_REGEX = /from ['"]yargs['"]/v
-const LOGNOW_IMPORT_REGEX = /from ['"]lognow['"]/v
+const YARGS_IMPORT_REGEX = /\bfrom\s*['"]yargs['"]/v
+const LOGNOW_IMPORT_REGEX = /\bfrom\s*['"]lognow['"]/v
 
 /**
  * Run a command in a generated project, failing fast with captured output.
@@ -203,6 +205,42 @@ assert.equal(doSomethingElse(), 'Something else happened')
 				const output = runCommand('pnpm run test', tempDirectory, `Test for ${templateType}`)
 				expect(output).toBeDefined()
 			}, 300_000) // 5 minute timeout for test
+
+			if (templateType !== 'minimal') {
+				it('should run benchmarks and preserve a saved baseline', async () => {
+					const baselinePath = path.join(tempDirectory, 'test/benchmarks/baseline.json')
+					await expect(fs.access(baselinePath)).rejects.toThrow()
+					runCommand('pnpm run bench', tempDirectory, `Benchmark for ${templateType}`)
+					await expect(fs.access(baselinePath)).rejects.toThrow()
+
+					runCommand('pnpm run bench:baseline', tempDirectory, `Baseline for ${templateType}`)
+					const baseline = await fs.readFile(baselinePath, 'utf8')
+					const result = JSON.parse(baseline) as BaselineData
+					expect(result.throughput.mean).toBeGreaterThan(0)
+
+					runCommand(
+						'pnpm run bench --reporter=json --outputFile=test/benchmarks/comparison.json',
+						tempDirectory,
+						`Compare for ${templateType}`,
+					)
+					const report = JSON.parse(
+						await fs.readFile(path.join(tempDirectory, 'test/benchmarks/comparison.json'), 'utf8'),
+					) as JsonTestResults
+					const benchmarks = report.testResults
+						.flatMap((file) => file.assertionResults)
+						.flatMap((test) => test.benchmarks)
+						.flatMap((group) => group.tasks)
+					expect(report.success).toBe(true)
+					expect(benchmarks).toHaveLength(2)
+					expect(benchmarks).toEqual(
+						expect.arrayContaining([
+							expect.objectContaining({ name: 'current' }),
+							expect.objectContaining({ fromStore: true, name: 'baseline' }),
+						]),
+					)
+					expect(await fs.readFile(baselinePath, 'utf8')).toBe(baseline)
+				}, 300_000)
+			}
 		})
 	}
 })

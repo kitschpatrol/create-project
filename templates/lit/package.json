@@ -32,13 +32,13 @@
 	"main": "./dist/index.js",
 	"module": "./dist/index.js",
 	"files": [
-		"dist/*"
+		"dist"
 	],
 	"scripts": {
-		"bench": "vitest bench --run --compare test/benchmarks/baseline.json",
-		"bench:baseline": "vitest bench --run --outputJson test/benchmarks/baseline.json",
+		"bench": "vitest bench --run",
+		"bench:baseline": "vitest bench --run",
 		"build": "tsdown",
-		"clean": "shx rm -f pnpm-lock.yaml && git clean -fdX -e !.claude/",
+		"clean-deep": "shx rm -f pnpm-lock.yaml && git clean -fdX -e !.claude/",
 		"dev": "poptab && vite",
 		"fix": "ksc fix",
 		"lint": "ksc lint",
@@ -48,23 +48,23 @@
 	},
 	"devDependencies": {
 		"@arethetypeswrong/core": "^0.18.5",
-		"@kitschpatrol/shared-config": "^8.7.0",
-		"@types/node": "~24.13.3",
-		"bumpp": "^12.2.2",
-		"happy-dom": "^20.11.6",
+		"@kitschpatrol/shared-config": "^8.9.0",
+		"@types/node": "~24.13.4",
+		"bumpp": "^12.3.0",
+		"happy-dom": "^20.14.5",
 		"lit": "^3.3.3",
-		"poptab": "^1.1.2",
+		"poptab": "^1.2.0",
 		"publint": "^0.3.24",
 		"shx": "^0.4.0",
-		"tsdown": "^0.22.14",
+		"tsdown": "^0.23.0",
 		"typescript": "~6.0.3",
-		"vite": "^8.2.2",
-		"vitest": "^4.1.11"
+		"vite": "^8.3.0",
+		"vitest": "^5.0.1"
 	},
 	"peerDependencies": {
 		"lit": "^3.0.0"
 	},
-	"packageManager": "pnpm@11.24.0",
+	"packageManager": "pnpm@12.4.0",
 	"engines": {
 		"node": "^24.16.0 || >=26.3.0"
 	}

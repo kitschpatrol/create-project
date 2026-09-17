@@ -1,16 +1,32 @@
-import { rollupBuild, testFixtures } from '@sxzz/test-utils'
+import { globSync } from 'node:fs'
 import path from 'node:path'
-import { describe } from 'vitest'
+import { rollup } from 'rollup'
+import { describe, expect, it } from 'vitest'
 import starter from '../src/rollup'
 
-describe('rollup', async () => {
-	const { dirname } = import.meta
-	await testFixtures(
-		'*.js',
-		async (_args, id) => {
-			const { snapshot } = await rollupBuild(id, [starter()])
-			return snapshot
-		},
-		{ cwd: path.resolve(dirname, 'fixtures'), promise: true },
-	)
+const fixturesDirectory = path.resolve(import.meta.dirname, 'fixtures')
+const fixtures = globSync('*.js', { cwd: fixturesDirectory })
+
+describe('rollup', () => {
+	for (const fixture of fixtures) {
+		it(fixture, async () => {
+			const bundle = await rollup({
+				input: path.join(fixturesDirectory, fixture),
+				plugins: [starter()],
+			})
+			try {
+				const { output } = await bundle.generate({ format: 'es' })
+				const snapshot = output
+					.map((file) => {
+						const content = file.type === 'chunk' ? file.code : '[BINARY]'
+						return `// ${file.fileName}\n${content}`
+					})
+					.toSorted()
+					.join('\n')
+				expect(snapshot).toMatchSnapshot()
+			} finally {
+				await bundle.close()
+			}
+		})
+	}
 })

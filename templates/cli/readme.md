@@ -20,6 +20,15 @@
 
 ### Examples
 
+### Benchmarks
+
+Run `pnpm bench` to measure the example in `test/index.bench.ts`. Run
+`pnpm bench:baseline` to save or replace `test/benchmarks/baseline.json`;
+subsequent `pnpm bench` runs compare against it without overwriting it.
+Use a separate result file for each benchmark you add, and generate baselines
+in a consistent environment. Vitest 4 benchmark JSON files must be regenerated
+with Vitest 5.
+
 ## Background
 
 ### Motivation

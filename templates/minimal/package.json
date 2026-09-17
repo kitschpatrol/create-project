@@ -22,7 +22,7 @@
 	"type": "module",
 	"scripts": {
 		"build": "tsx script.ts",
-		"clean": "shx rm -f pnpm-lock.yaml && git clean -fdX -e !.claude/",
+		"clean-deep": "shx rm -f pnpm-lock.yaml && git clean -fdX -e !.claude/",
 		"dev": "tsx --watch script.ts",
 		"fix": "ksc fix",
 		"lint": "ksc lint",
@@ -30,18 +30,18 @@
 		"test": "echo 'No tests configured'"
 	},
 	"devDependencies": {
-		"@kitschpatrol/shared-config": "^8.7.0",
-		"@types/node": "~24.13.3",
-		"bumpp": "^12.2.2",
+		"@kitschpatrol/shared-config": "^8.9.0",
+		"@types/node": "~24.13.4",
+		"bumpp": "^12.3.0",
 		"shx": "^0.4.0",
-		"tsx": "^4.23.12",
+		"tsx": "^4.23.13",
 		"typescript": "~6.0.3"
 	},
-	"packageManager": "pnpm@11.24.0",
+	"packageManager": "pnpm@12.4.0",
 	"devEngines": {
 		"runtime": {
 			"name": "node",
-			"version": "^24.16.0 || >=26.3.0"
+			"version": "^26.8.2"
 		}
 	}
 }

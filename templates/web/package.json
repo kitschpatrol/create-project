@@ -21,10 +21,10 @@
 	"sideEffects": false,
 	"type": "module",
 	"scripts": {
-		"bench": "vitest bench --run --compare test/benchmarks/baseline.json",
-		"bench:baseline": "vitest bench --run --outputJson test/benchmarks/baseline.json",
+		"bench": "vitest bench --run",
+		"bench:baseline": "vitest bench --run",
 		"build": "vite build",
-		"clean": "shx rm -f pnpm-lock.yaml && git clean -fdX -e !.claude/",
+		"clean-deep": "shx rm -f pnpm-lock.yaml && git clean -fdX -e !.claude/",
 		"dev": "poptab && vite",
 		"fix": "ksc fix",
 		"lint": "ksc lint",
@@ -33,21 +33,21 @@
 		"test": "vitest run"
 	},
 	"devDependencies": {
-		"@kitschpatrol/shared-config": "^8.7.0",
-		"@types/node": "~24.13.3",
-		"bumpp": "^12.2.2",
-		"poptab": "^1.1.2",
+		"@kitschpatrol/shared-config": "^8.9.0",
+		"@types/node": "~24.13.4",
+		"bumpp": "^12.3.0",
+		"poptab": "^1.2.0",
 		"shx": "^0.4.0",
 		"typescript": "~6.0.3",
-		"vite": "^8.2.2",
+		"vite": "^8.3.0",
 		"vite-plugin-mkcert": "~2.1.0",
-		"vitest": "^4.1.11"
+		"vitest": "^5.0.1"
 	},
-	"packageManager": "pnpm@11.24.0",
+	"packageManager": "pnpm@12.4.0",
 	"devEngines": {
 		"runtime": {
 			"name": "node",
-			"version": "^24.16.0 || >=26.3.0"
+			"version": "^26.8.2"
 		}
 	}
 }

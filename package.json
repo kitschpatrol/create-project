@@ -29,7 +29,7 @@
 	],
 	"scripts": {
 		"build": "tsdown",
-		"clean": "shx rm -f pnpm-lock.yaml && git clean -fdX -e !.claude/",
+		"clean-deep": "shx rm -f pnpm-lock.yaml && git clean -fdX -e !.claude/",
 		"fix": "ksc fix --skip mdat && mdat readme.md",
 		"lint": "ksc lint --skip mdat && mdat check readme.md",
 		"release": "bumpp --commit 'Release: %s' && pnpm build && NPM_TOKEN=$(op read 'op://Personal/npm/token') pnpm publish --otp $(op item get npm --otp)",
@@ -44,18 +44,18 @@
 		"zod": "^3.25.76"
 	},
 	"devDependencies": {
-		"@kitschpatrol/shared-config": "^8.7.0",
+		"@kitschpatrol/shared-config": "^8.9.0",
 		"@types/node": "~24.13.3",
-		"bumpp": "^12.2.2",
-		"mdat": "^3.1.0",
+		"bumpp": "^12.3.0",
+		"mdat": "^3.2.1",
 		"mdat-plugin-cli-help": "^3.2.0",
 		"shx": "^0.4.0",
 		"taze": "^21.1.0",
-		"tsdown": "^0.22.14",
+		"tsdown": "^0.23.0",
 		"typescript": "~6.0.3",
-		"vitest": "^4.1.11"
+		"vitest": "^5.0.1"
 	},
-	"packageManager": "pnpm@11.24.0",
+	"packageManager": "pnpm@12.4.0",
 	"engines": {
 		"node": "^24.16.0 || >=26.3.0"
 	},

@@ -57,10 +57,10 @@
 		"dist"
 	],
 	"scripts": {
-		"bench": "vitest bench --run --compare test/benchmarks/baseline.json",
-		"bench:baseline": "vitest bench --run --outputJson test/benchmarks/baseline.json",
+		"bench": "vitest bench --run",
+		"bench:baseline": "vitest bench --run",
 		"build": "tsdown",
-		"clean": "shx rm -f pnpm-lock.yaml && git clean -fdX -e !.claude/",
+		"clean-deep": "shx rm -f pnpm-lock.yaml && git clean -fdX -e !.claude/",
 		"dev": "tsdown --watch",
 		"fix": "ksc fix",
 		"lint": "ksc lint",
@@ -69,25 +69,24 @@
 		"test": "vitest run"
 	},
 	"dependencies": {
-		"@types/node": "~24.13.3",
-		"unplugin": "^3.3.0"
+		"@types/node": "~24.13.4",
+		"unplugin": "^3.4.0"
 	},
 	"devDependencies": {
 		"@farmfe/core": ">=1.7.11",
-		"@kitschpatrol/shared-config": "^8.7.0",
-		"@sxzz/test-utils": "^0.5.18",
-		"@vitest/browser-playwright": "^4.1.11",
-		"bumpp": "^12.2.2",
+		"@kitschpatrol/shared-config": "^8.9.0",
+		"@vitest/browser-playwright": "^5.0.1",
+		"bumpp": "^12.3.0",
 		"esbuild": "*",
-		"poptab": "^1.1.2",
-		"rolldown": "^1.2.5",
-		"rollup": "^4.62.5",
+		"poptab": "^1.2.0",
+		"rolldown": "^1.2.9",
+		"rollup": "^4.63.3",
 		"shx": "^0.4.0",
-		"tsdown": "^0.22.14",
+		"tsdown": "^0.23.0",
 		"typescript": "~6.0.3",
-		"vite": "^8.2.2",
-		"vitest": "^4.1.11",
-		"webpack": "^5.109.2"
+		"vite": "^8.3.0",
+		"vitest": "^5.0.1",
+		"webpack": "^5.111.0"
 	},
 	"peerDependencies": {
 		"@farmfe/core": ">=1",
@@ -117,7 +116,7 @@
 			"optional": true
 		}
 	},
-	"packageManager": "pnpm@11.24.0",
+	"packageManager": "pnpm@12.4.0",
 	"engines": {
 		"node": "^24.16.0 || >=26.3.0"
 	}
