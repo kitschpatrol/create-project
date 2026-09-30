@@ -10,7 +10,7 @@ Based on [vite-plugin-electron](https://github.com/electron-vite/vite-plugin-ele
 
 ## Getting started
 
-### Dependencies
+<!-- dependencies -->
 
 ### Deployment
 

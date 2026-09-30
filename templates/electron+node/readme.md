@@ -10,7 +10,7 @@ Based on [electron-vite](https://electron-vite.org) via the [@kitschpatrol/elect
 
 ## Getting started
 
-### Dependencies
+<!-- dependencies -->
 
 ### Deployment
 

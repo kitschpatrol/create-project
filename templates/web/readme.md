@@ -8,7 +8,7 @@
 
 ## Getting started
 
-### Dependencies
+<!-- development-dependencies -->
 
 ### Deployment
 

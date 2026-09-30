@@ -8,9 +8,9 @@
 
 ## Getting started
 
-### Dependencies
+<!-- dependencies -->
 
-### Deployment
+<!-- install -->
 
 ### Benchmarks
 
