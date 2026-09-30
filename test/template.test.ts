@@ -29,6 +29,18 @@ const NODE_SHEBANG_REGEX = /^#!\/usr\/bin\/env node\n/v
 const YARGS_IMPORT_REGEX = /\bfrom\s*['"]yargs['"]/v
 const LOGNOW_IMPORT_REGEX = /\bfrom\s*['"]lognow['"]/v
 
+// These commands run nested inside the outer `pnpm run test`, whose pnpm has
+// already stamped `npm_lifecycle_event` and friends into our environment.
+// pnpm 12 passes those inherited stamps through to the scripts it runs and,
+// on Windows, differently cased spellings collapse at spawn time with an
+// unpredictable winner, so a generated project's script could see the outer
+// `test` value instead of its own. That silently disabled `bench:baseline`
+// (its baseline file was never written). Drop the inherited `npm_*` variables
+// so each command runs as it would from a fresh shell.
+const COMMAND_ENV = Object.fromEntries(
+	Object.entries(process.env).filter(([key]) => !key.toLowerCase().startsWith('npm_')),
+)
+
 /**
  * Run a command in a generated project, failing fast with captured output.
  *
@@ -47,6 +59,7 @@ function runCommand(command: string, cwd: string, label: string): string {
 		return execSync(command, {
 			cwd,
 			encoding: 'utf8',
+			env: COMMAND_ENV,
 			maxBuffer: COMMAND_MAX_BUFFER,
 			stdio: 'pipe',
 			timeout: COMMAND_TIMEOUT_MS,
@@ -213,7 +226,15 @@ assert.equal(doSomethingElse(), 'Something else happened')
 					runCommand('pnpm run bench', tempDirectory, `Benchmark for ${templateType}`)
 					await expect(fs.access(baselinePath)).rejects.toThrow()
 
-					runCommand('pnpm run bench:baseline', tempDirectory, `Baseline for ${templateType}`)
+					const baselineOutput = runCommand(
+						'pnpm run bench:baseline',
+						tempDirectory,
+						`Baseline for ${templateType}`,
+					)
+					await expect(
+						fs.access(baselinePath),
+						`bench:baseline did not write ${baselinePath}. Output:\n${baselineOutput}`,
+					).resolves.toBeUndefined()
 					const baseline = await fs.readFile(baselinePath, 'utf8')
 					const result = JSON.parse(baseline) as BaselineData
 					expect(result.throughput.mean).toBeGreaterThan(0)
