@@ -23,25 +23,28 @@
 	"scripts": {
 		"bench": "vitest bench --run",
 		"bench:baseline": "vitest bench --run",
-		"build": "vite build",
+		"build": "shx rm -rf dist && vite build && tsx ./scripts/versions.ts > ./dist/{{{github-repository}}}/version.json",
 		"clean-deep": "shx rm -f pnpm-lock.yaml && git clean -fdX -e !.claude/",
 		"dev": "poptab && vite",
 		"fix": "ksc fix",
 		"lint": "ksc lint",
-		"preview": "poptab && vite preview",
-		"release": "bumpp --commit 'Release: %s'",
+		"preview": "pnpm build && poptab && tsx ./scripts/preview.ts",
+		"release": "bumpp --commit 'Release: %s' && pnpm build && wrangler deploy",
 		"test": "vitest run"
 	},
 	"devDependencies": {
 		"@kitschpatrol/shared-config": "^8.10.1",
 		"@types/node": "~24.13.6",
 		"bumpp": "^12.3.0",
+		"open": "^11.0.4",
 		"poptab": "^1.2.1",
 		"shx": "^0.4.0",
+		"tsx": "^4.23.15",
 		"typescript": "~6.0.3",
 		"vite": "^8.3.1",
 		"vite-plugin-mkcert": "~2.1.0",
-		"vitest": "^5.0.2"
+		"vitest": "^5.0.2",
+		"wrangler": "^4.145.0"
 	},
 	"packageManager": "pnpm@12.6.0",
 	"devEngines": {

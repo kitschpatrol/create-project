@@ -10,6 +10,8 @@ publicHoistPattern:
   - '*remark*'
   - '*stylelint*'
 allowBuilds:
+  esbuild: true
   unrs-resolver: true
+  workerd: true
 minimumReleaseAgeExclude:
   - '@kitschpatrol/*'

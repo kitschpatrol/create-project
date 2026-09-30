@@ -74,9 +74,12 @@ export default createTemplate({
 	},
 	async produce({ options }) {
 		// Add some calculated options to the template
+		const now = new Date()
 		const extraOptions = {
 			...options,
-			year: new Date().getFullYear(),
+			// ISO calendar date, e.g. for Wrangler's `compatibility_date`
+			date: now.toISOString().slice(0, 10),
+			year: now.getFullYear(),
 		}
 
 		async function handlebarsHelper(...paths: string[]) {
@@ -122,6 +125,9 @@ export default createTemplate({
 					// contains {{{...}}} placeholders here.
 					...(['electron', 'electron+node', 'lit', 'web'].includes(options.type)
 						? ['index.html']
+						: []),
+					...(options.type === 'web'
+						? ['scripts/preview.ts', 'vite.config.ts', 'wrangler.jsonc']
 						: []),
 					...(options.type === 'unplugin'
 						? [

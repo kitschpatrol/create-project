@@ -1,0 +1,16 @@
+{
+	"$schema": "./node_modules/wrangler/config-schema.json",
+	"name": "{{{github-repository}}}",
+	"compatibility_date": "{{{date}}}",
+	"workers_dev": true,
+	"assets": {
+		"directory": "./dist",
+		"html_handling": "drop-trailing-slash",
+		"not_found_handling": "none",
+	},
+	"dev": {
+		"ip": "127.0.0.1",
+		"port": 8787,
+		"local_protocol": "http",
+	},
+}
