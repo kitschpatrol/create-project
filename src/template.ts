@@ -42,10 +42,12 @@ export default createTemplate({
 	},
 	options: {
 		/* eslint-disable perfectionist/sort-objects */
+		// Bingo's CLI parser and select prompt understand unions of literals but
+		// not enums, so `--type` must be modeled this way to work on the CLI.
 		type: z
-			.enum(TEMPLATE_TYPES)
+			.union(TEMPLATE_TYPES.map((type) => z.literal(type)))
 			.default('minimal')
-			.describe(`The type of project to create (${TEMPLATE_TYPES.join(', ')})`),
+			.describe('The type of project to create'),
 		'author-name': z.string().default('Eric Mika').describe('The name of the author'),
 		'author-email': z.string().default('eric@ericmika.com').describe('The email of the author'),
 		'author-url': z.string().default('https://ericmika.com').describe('The URL of the author'),

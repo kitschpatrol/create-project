@@ -70,7 +70,7 @@ Bingo template options:
   --directory (string): What local directory path to run under
       npx @kitschpatrol/create-project --directory my-fancy-project
 
-  --help (string): Prints help text.
+  --help (boolean): Prints help text.
       npx @kitschpatrol/create-project --help
 
   --mode ("setup" | "transition"): Which mode to run in.
@@ -80,8 +80,14 @@ Bingo template options:
   --offline (boolean): Whether to run in an "offline" mode that skips network requests.
       npx @kitschpatrol/create-project --offline
 
+  --owner (string): What GitHub organization or user the repository will be under.
+      npx @kitschpatrol/create-project --owner my-org
+
   --remote (boolean): Whether to create a remote repository on GitHub if one does not already exist.
       npx @kitschpatrol/create-project --remote
+
+  --repository (string): What the repository will be named.
+      npx @kitschpatrol/create-project --repository my-fancy-project
 
   --skip-files (boolean): Whether to skip creating files on disk.
       npx @kitschpatrol/create-project --skip-files
@@ -89,13 +95,16 @@ Bingo template options:
   --skip-requests (boolean): Whether to skip sending network requests as specified by templates.
       npx @kitschpatrol/create-project --skip-requests
 
+  --skip-scripts (boolean): Whether to skip running local scripts as specified by templates.
+      npx @kitschpatrol/create-project --skip-scripts
+
   --version (boolean): Prints package versions.
       npx @kitschpatrol/create-project --version
 
 
 Create Kitschpatrol Project options:
 
-  --type (enum): The type of project to create (minimal, web, cli, library, cli+library, lit, electron, electron+node, unplugin).
+  --type ("minimal" | "web" | "cli" | "library" | "cli+library" | "lit" | "electron" | "electron+node" | "unplugin"): The type of project to create.
   --author-name (string): The name of the author.
   --author-email (string): The email of the author.
   --author-url (string): The URL of the author.
