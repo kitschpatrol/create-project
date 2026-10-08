@@ -42,9 +42,32 @@ Nine template types are available:
 
 ## Getting started
 
+<!-- dependencies -->
+
 ### Dependencies
 
-[Node.js](https://nodejs.org/) 24.16+ and [pnpm](https://pnpm.io/) 11+ are required to develop this project and to work on the projects it generates (a requirement inherited from [@kitschpatrol/shared-config](https://github.com/kitschpatrol/shared-config)). Generated packages declare the same floor in their `engines` field: `^24.16.0 || >=26.3.0`.
+- [Node.js](https://nodejs.org/) 24.16.0 or newer (specifically `^24.16.0 || >=26.3.0`)
+
+<!-- /dependencies -->
+
+<!-- development-dependencies -->
+
+### Development dependencies
+
+- [pnpm](https://pnpm.io/) 12.10.1
+
+<!-- /development-dependencies -->
+
+Generated projects declare their runtime requirements in `engines` or
+`devEngines`, depending on the template. Check the generated `package.json`
+for its requirements.
+
+### Agent skills
+
+`pnpm install` runs `skills experimental_sync -y -f` through the `prepare`
+script in this repository and every generated project. This syncs skills from
+installed dependencies; run `pnpm prepare` to refresh them. Generated agent
+directories and `skills-lock.json` are ignored by Git.
 
 ## Usage
 
@@ -127,17 +150,11 @@ Two credentials are passed at the last minute to the `pnpm publish` command in t
 
 #### npm token
 
-> [!WARNING]
->
-> This is currently broken pending resolution of [pnpm/issues/12828](https://github.com/pnpm/pnpm/issues/12828).
->
-> The call to `--npm-token-command` won't actually populate the token, so you will need to provide the token in your environment in a different way.
-
 As of November 2025, [granular access tokens](https://docs.npmjs.com/about-access-tokens#about-granular-access-tokens) are required for publishing packages to npm.
 
 The default `--npm-token-command` template value expects you to have the [1Password CLI installed](https://1password.com/downloads/command-line), [npm access token](https://docs.npmjs.com/about-access-tokens/) configured and stored at a specific path in 1Password, and for your global configuration to look a certain way.
 
-This requires some one-time global configuration on the deploy machine.
+This requires some one-time global configuration on the deploy machine. pnpm expands the `NPM_TOKEN` environment variable in this trusted user configuration when publishing.
 
 ```sh
 pnpm config set '//registry.npmjs.org/:_authToken' '${NPM_TOKEN}'
@@ -169,6 +186,10 @@ Update dependencies in every template:
 ```sh
 pnpm update-templates
 ```
+
+Template READMEs keep their MDAT placeholders unexpanded until project generation,
+when `pnpm fix` expands them using the generated package metadata. Run `pnpm fix`
+after changing that metadata or updating MDAT.
 
 The templates are pnpm workspace members of this repository, so they are linted (with their own `eslint.config.ts` files) by the root `pnpm lint`. Lint rule overrides between `Template-dev-only` markers silence placeholder-value errors during template development and are stripped from generated projects.
 

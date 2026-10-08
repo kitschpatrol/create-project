@@ -28,25 +28,27 @@
 		"dev": "poptab && vite",
 		"fix": "ksc fix",
 		"lint": "ksc lint",
+		"prepare": "skills experimental_sync -y -f",
 		"preview": "pnpm build && poptab && tsx ./scripts/preview.ts",
 		"release": "bumpp --commit 'Release: %s' && pnpm build && wrangler deploy",
 		"test": "vitest run"
 	},
 	"devDependencies": {
-		"@kitschpatrol/shared-config": "^8.10.1",
+		"@kitschpatrol/shared-config": "^8.13.1",
 		"@types/node": "~24.13.6",
 		"bumpp": "^12.3.0",
 		"open": "^11.0.4",
-		"poptab": "^1.2.1",
+		"poptab": "^1.2.2",
 		"shx": "^0.4.0",
+		"skills": "^1.7.1",
 		"tsx": "^4.23.15",
 		"typescript": "~6.0.3",
-		"vite": "^8.3.1",
+		"vite": "^8.3.3",
 		"vite-plugin-mkcert": "~2.1.0",
-		"vitest": "^5.0.2",
-		"wrangler": "^4.145.0"
+		"vitest": "^5.0.3",
+		"wrangler": "^4.148.0"
 	},
-	"packageManager": "pnpm@12.6.0",
+	"packageManager": "pnpm@12.10.1",
 	"devEngines": {
 		"runtime": {
 			"name": "node",

@@ -10,7 +10,15 @@
 
 <!-- dependencies -->
 
+<!-- development-dependencies -->
+
 <!-- install -->
+
+### Agent skills
+
+`pnpm install` runs the `prepare` script to sync agent skills from installed
+dependencies. Run `pnpm prepare` to refresh them after updating dependencies.
+Generated agent directories and `skills-lock.json` are ignored by Git.
 
 ## Usage
 
@@ -22,9 +30,7 @@
 
 ### CLI
 
-<!-- cli-help -->
-
-#### Commands
+<!-- cli-help({ heading: false, headingLevel: 3 }) -->
 
 #### Examples
 

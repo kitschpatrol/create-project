@@ -1,7 +1,19 @@
+allowBuilds:
+  esbuild: true
+  unrs-resolver: true
+  workerd: true
+overrides:
+  # Remove when Miniflare includes the fix for GHSA-wq5f-xc86-pv6w.
+  miniflare@5.20261006.0-alpha>sharp: 0.35.5
+peerDependencyRules:
+  allowedVersions:
+    # Remove once the installed version declares ESLint 10 support.
+    # https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/issues/1075
+    # https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/pull/1081
+    eslint-plugin-jsx-a11y@6>eslint: ^10.0.0
 publicHoistPattern:
   - '@kitschpatrol/repo-config'
   - '@kitschpatrol/typescript-config'
-  - 'case-police'
   - '*cspell*'
   - '*eslint*'
   - '*knip*'
@@ -9,9 +21,4 @@ publicHoistPattern:
   - '*prettier*'
   - '*remark*'
   - '*stylelint*'
-allowBuilds:
-  esbuild: true
-  unrs-resolver: true
-  workerd: true
-minimumReleaseAgeExclude:
-  - '@kitschpatrol/*'
+  - 'case-police'

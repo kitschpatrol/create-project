@@ -5,7 +5,8 @@
 	"keywords": [
 		"cli",
 		"template",
-		"bingo"
+		"bingo",
+		"npm-package"
 	],
 	"homepage": "https://github.com/kitschpatrol/create-project",
 	"bugs": "https://github.com/kitschpatrol/create-project/issues",
@@ -25,37 +26,42 @@
 	"files": [
 		"dist",
 		"templates",
-		"!**/node_modules"
+		"!**/node_modules",
+		"!**/.agents",
+		"!**/.claude",
+		"!**/skills-lock.json"
 	],
 	"scripts": {
 		"build": "tsdown",
 		"clean-deep": "shx rm -f pnpm-lock.yaml && git clean -fdX -e !.claude/",
 		"fix": "ksc fix --skip mdat && mdat readme.md",
 		"lint": "ksc lint --skip mdat && mdat check readme.md",
+		"prepare": "skills experimental_sync -y -f",
 		"release": "bumpp --commit 'Release: %s' && pnpm build && NPM_TOKEN=$(op read 'op://Personal/npm/token') pnpm publish --otp $(op item get npm --otp)",
 		"test": "vitest run",
 		"update-templates": "for dir in ./templates/*; do taze -w --cwd \"$dir\"; done",
 		"update-templates-major": "for dir in ./templates/*; do taze major -w --cwd \"$dir\" --exclude @types/node,typescript,vite; done"
 	},
 	"dependencies": {
-		"bingo": "^0.13.0",
+		"bingo": "^0.13.2",
 		"bingo-fs": "^0.6.0",
-		"bingo-handlebars": "^0.2.1",
+		"handlebars": "^4.7.10",
 		"zod": "^4.6.5"
 	},
 	"devDependencies": {
-		"@kitschpatrol/shared-config": "^8.10.1",
+		"@kitschpatrol/shared-config": "^8.13.1",
 		"@types/node": "~24.13.6",
 		"bumpp": "^12.3.0",
-		"mdat": "^3.4.1",
-		"mdat-plugin-cli-help": "^3.3.0",
+		"mdat": "^3.6.2",
+		"mdat-plugin-cli-help": "^3.4.1",
 		"shx": "^0.4.0",
-		"taze": "^21.1.0",
+		"skills": "^1.7.1",
+		"taze": "^21.3.0",
 		"tsdown": "^0.23.0",
 		"typescript": "~6.0.3",
-		"vitest": "^5.0.2"
+		"vitest": "^5.0.3"
 	},
-	"packageManager": "pnpm@12.6.0",
+	"packageManager": "pnpm@12.10.1",
 	"engines": {
 		"node": "^24.16.0 || >=26.3.0"
 	},

@@ -10,6 +10,12 @@
 
 <!-- development-dependencies -->
 
+### Agent skills
+
+`pnpm install` runs the `prepare` script to sync agent skills from installed
+dependencies. Run `pnpm prepare` to refresh them after updating dependencies.
+Generated agent directories and `skills-lock.json` are ignored by Git.
+
 ### Deployment
 
 The site is served from a subdirectory matching the repository name. The Vite

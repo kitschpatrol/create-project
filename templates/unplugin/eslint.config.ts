@@ -2,11 +2,6 @@ import { eslintConfig } from '@kitschpatrol/eslint-config'
 
 export default eslintConfig(
 	{
-		html: {
-			overrides: {
-				'html/no-inline-styles': 'off',
-			},
-		},
 		ignores: ['/test/fixtures/**'],
 		// Template-dev-only-start (stripped at generation)
 		json: {
@@ -25,8 +20,6 @@ export default eslintConfig(
 		ts: {
 			overrides: {
 				'jsdoc/require-description': 'off',
-				'jsdoc/require-jsdoc': 'off',
-				'ts/consistent-type-definitions': 'off',
 			},
 		},
 		type: 'lib',

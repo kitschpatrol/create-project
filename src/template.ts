@@ -1,8 +1,8 @@
 import { createTemplate } from 'bingo'
 import { intakeDirectory } from 'bingo-fs'
-import { handlebars } from 'bingo-handlebars'
 import path from 'node:path'
 import { z } from 'zod'
+import { renderTemplateFile } from './render-template-file'
 
 export const TEMPLATE_TYPES = [
 	'minimal',
@@ -16,7 +16,7 @@ export const TEMPLATE_TYPES = [
 	'unplugin',
 ] as const
 
-const LOCK_FILES_REGEX = /node_modules|pnpm-lock\.yaml/v
+const LOCAL_FILES_REGEX = /node_modules|pnpm-lock\.yaml|skills-lock\.json|\.agents|\.claude/v
 
 /**
  * Removes line ranges delimited by `Template-dev-only-start` and
@@ -29,6 +29,8 @@ function stripTemplateDevOnlyBlocks(source: string): string {
 	)
 }
 
+// Bingo's factory defines the template; it does not generate a project on import.
+// eslint-disable-next-line unicorn/no-top-level-side-effects
 export default createTemplate({
 	about: {
 		description:
@@ -83,9 +85,9 @@ export default createTemplate({
 		}
 
 		async function handlebarsHelper(...paths: string[]) {
-			const result: Record<string, Awaited<ReturnType<typeof handlebars>>> = {}
+			const result: Record<string, Awaited<ReturnType<typeof renderTemplateFile>>> = {}
 			for (const filePath of paths) {
-				result[filePath] = await handlebars(
+				result[filePath] = await renderTemplateFile(
 					path.join(import.meta.dirname, `../templates/${options.type}/${filePath}`),
 					extraOptions,
 				)
@@ -96,7 +98,7 @@ export default createTemplate({
 
 		const templateFiles = await intakeDirectory(
 			path.join(import.meta.dirname, `../templates/${options.type}`),
-			{ exclude: LOCK_FILES_REGEX },
+			{ exclude: LOCAL_FILES_REGEX },
 		)
 
 		// `npm-packlist` hardcodes `.gitignore` to be excluded from published

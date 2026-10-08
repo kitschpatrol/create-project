@@ -29,25 +29,27 @@
 		"dev": "electron-vite dev",
 		"fix": "ksc fix",
 		"lint": "ksc lint",
+		"prepare": "skills experimental_sync -y -f",
 		"release": "bumpp --commit 'Release: %s' && pnpm build && electron-builder build --publish always",
 		"test": "vitest run"
 	},
 	"dependencies": {
-		"lognow": "^0.8.4"
+		"lognow": "^0.8.5"
 	},
 	"devDependencies": {
 		"@kitschpatrol/electron-vite": "^6.0.0-beta.4",
-		"@kitschpatrol/shared-config": "^8.10.1",
+		"@kitschpatrol/shared-config": "^8.13.1",
 		"@types/node": "~24.13.6",
 		"bumpp": "^12.3.0",
-		"electron": "^44.4.4",
+		"electron": "^44.7.0",
 		"electron-builder": "^26.15.3",
 		"shx": "^0.4.0",
+		"skills": "^1.7.1",
 		"typescript": "~6.0.3",
-		"vite": "^8.3.1",
-		"vitest": "^5.0.2"
+		"vite": "^8.3.3",
+		"vitest": "^5.0.3"
 	},
-	"packageManager": "pnpm@12.6.0",
+	"packageManager": "pnpm@12.10.1",
 	"engines": {
 		"node": "^24.18.0 || >=26.3.0"
 	}

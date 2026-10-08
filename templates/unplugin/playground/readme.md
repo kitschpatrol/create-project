@@ -1,11 +1,6 @@
 <!-- title -->
 
-# @kitschpatrol/unplugin-aphex
-
-<!-- /title -->
-
 <!-- short-description -->
 
-**Unplugin for module-style image imports from your macOS Photos.app library.**
-
-<!-- /short-description -->
+Run `pnpm dev` from this directory to start the Vite playground. Changes to the
+plugin source restart the development server.

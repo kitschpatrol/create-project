@@ -134,9 +134,16 @@ describe('Template Generation and Build Tests', () => {
 				await expect(fs.access(packageJsonPath)).resolves.toBeUndefined()
 
 				const packageJson = JSON.parse(await fs.readFile(packageJsonPath, 'utf8')) as {
+					devDependencies: { skills: string }
 					name: string
+					scripts: { prepare: string }
 				}
 				expect(packageJson.name).toBeDefined()
+				expect(packageJson.devDependencies.skills).toBeDefined()
+				expect(packageJson.scripts.prepare).toBe('skills experimental_sync -y -f')
+				await expect(
+					fs.access(path.join(tempDirectory, '.agents/skills/ksc/SKILL.md')),
+				).resolves.toBeUndefined()
 
 				// Dev-only lint overrides must be stripped from generated projects
 				const eslintConfig = await fs.readFile(path.join(tempDirectory, 'eslint.config.ts'), 'utf8')
@@ -144,7 +151,6 @@ describe('Template Generation and Build Tests', () => {
 
 				// Dot-directory boilerplate must make it into generated projects
 				for (const dotFile of [
-					'.claude/skills/ksc/SKILL.md',
 					'.github/workflows/check-links.yml',
 					'.gitignore',
 					'.vscode/tasks.json',
@@ -178,7 +184,11 @@ describe('Template Generation and Build Tests', () => {
 					expect(library).toMatch(LOGNOW_IMPORT_REGEX)
 
 					const packed = JSON.parse(
-						runCommand('pnpm pack --json --loglevel error', tempDirectory, 'Pack CLI and library'),
+						runCommand(
+							'pnpm pack --ignore-scripts --json --loglevel error',
+							tempDirectory,
+							'Pack CLI and library',
+						),
 					) as {
 						files: Array<{ path: string }>
 					}
