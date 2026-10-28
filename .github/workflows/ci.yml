@@ -46,6 +46,11 @@ jobs:
 
       - name: Lint
         run: pnpm run lint
+        env:
+          # Typed linting of the root and every template in one ESLint process
+          # needs ~2 GB of heap, which is Node's default limit on the 7 GB macOS
+          # runner. 4 GB matches the default on the 16 GB Linux/Windows runners.
+          NODE_OPTIONS: --max-old-space-size=4096
 
       - name: Test
         run: pnpm run test
