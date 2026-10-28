@@ -40,8 +40,8 @@
 		"bench:baseline": "vitest bench --run",
 		"build": "tsdown",
 		"clean-deep": "shx rm -f pnpm-lock.yaml && git clean -fdX",
-		"fix": "ksc fix",
-		"lint": "ksc lint",
+		"fix": "pnpm build && ksc fix",
+		"lint": "pnpm build && ksc lint",
 		"release": "bumpp --commit 'Release: %s' && pnpm build && NPM_TOKEN=$({{{npm-token-command}}}) pnpm publish --otp $({{{npm-otp-command}}})",
 		"test": "vitest run"
 	},
