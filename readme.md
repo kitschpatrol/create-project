@@ -54,7 +54,7 @@ Nine template types are available:
 
 ### Development dependencies
 
-- [pnpm](https://pnpm.io/) 12.10.1
+- [pnpm](https://pnpm.io/) 12.15.0
 
 <!-- /development-dependencies -->
 
@@ -64,10 +64,10 @@ for its requirements.
 
 ### Agent skills
 
-`pnpm install` runs `skills experimental_sync -y -f` through the `prepare`
-script in this repository and every generated project. This syncs skills from
-installed dependencies; run `pnpm prepare` to refresh them. Generated agent
-directories and `skills-lock.json` are ignored by Git.
+`pnpm install` links agent skills from approved dependencies into
+`.agents/skills` and `.claude/skills`, as configured by the `permissions` and
+`skills` settings in `pnpm-workspace.yaml`. This applies to this repository and
+every generated project. Both directories are ignored by Git.
 
 ## Usage
 

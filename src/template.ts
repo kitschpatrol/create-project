@@ -30,7 +30,7 @@ function stripTemplateDevOnlyBlocks(source: string): string {
 }
 
 // Bingo's factory defines the template; it does not generate a project on import.
-// eslint-disable-next-line unicorn/no-top-level-side-effects
+
 export default createTemplate({
 	about: {
 		description:

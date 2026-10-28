@@ -134,16 +134,23 @@ describe('Template Generation and Build Tests', () => {
 				await expect(fs.access(packageJsonPath)).resolves.toBeUndefined()
 
 				const packageJson = JSON.parse(await fs.readFile(packageJsonPath, 'utf8')) as {
-					devDependencies: { skills: string }
 					name: string
-					scripts: { prepare: string }
 				}
 				expect(packageJson.name).toBeDefined()
-				expect(packageJson.devDependencies.skills).toBeDefined()
-				expect(packageJson.scripts.prepare).toBe('skills experimental_sync -y -f')
-				await expect(
-					fs.access(path.join(tempDirectory, '.agents/skills/ksc/SKILL.md')),
-				).resolves.toBeUndefined()
+
+				// Agent skills are linked by pnpm during install, per the `permissions`
+				// and `skills` settings in the generated pnpm-workspace.yaml
+				for (const skillsDirectory of ['.agents/skills', '.claude/skills']) {
+					await expect(
+						fs.access(
+							path.join(
+								tempDirectory,
+								skillsDirectory,
+								'pnpm-@kitschpatrol+shared-config-ksc/SKILL.md',
+							),
+						),
+					).resolves.toBeUndefined()
+				}
 
 				// Dev-only lint overrides must be stripped from generated projects
 				const eslintConfig = await fs.readFile(path.join(tempDirectory, 'eslint.config.ts'), 'utf8')

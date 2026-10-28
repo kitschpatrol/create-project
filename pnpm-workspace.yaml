@@ -6,64 +6,23 @@ allowBuilds:
   workerd: true
 ignoreWorkspaceRootCheck: true
 minimumReleaseAgeExclude:
-  - '@kitschpatrol/cspell-config@8.13.1'
-  - '@kitschpatrol/eslint-config@8.13.1'
-  - '@kitschpatrol/knip-config@8.13.1'
-  - '@kitschpatrol/mdat-config@8.13.1'
-  - '@kitschpatrol/prettier-config@8.13.1'
-  - '@kitschpatrol/remark-config@8.13.1'
-  - '@kitschpatrol/repo-config@8.13.1'
-  - '@kitschpatrol/shared-config@8.13.1'
-  - '@kitschpatrol/stylelint-config@8.13.1'
-  - '@kitschpatrol/typescript-config@8.13.1'
-  - '@rolldown/binding-android-arm-eabi@1.2.13'
-  - '@rolldown/binding-android-arm64@1.2.13'
-  - '@rolldown/binding-darwin-arm64@1.2.13'
-  - '@rolldown/binding-darwin-x64@1.2.13'
-  - '@rolldown/binding-freebsd-x64@1.2.13'
-  - '@rolldown/binding-linux-arm-gnueabihf@1.2.13'
-  - '@rolldown/binding-linux-arm64-gnu@1.2.13'
-  - '@rolldown/binding-linux-arm64-musl@1.2.13'
-  - '@rolldown/binding-linux-ppc64-gnu@1.2.13'
-  - '@rolldown/binding-linux-s390x-gnu@1.2.13'
-  - '@rolldown/binding-linux-x64-gnu@1.2.13'
-  - '@rolldown/binding-linux-x64-musl@1.2.13'
-  - '@rolldown/binding-openharmony-arm64@1.2.13'
-  - '@rolldown/binding-win32-arm64-msvc@1.2.13'
-  - '@rolldown/binding-win32-x64-msvc@1.2.13'
-  - '@rollup/rollup-android-arm-eabi@4.64.2'
-  - '@rollup/rollup-android-arm64@4.64.2'
-  - '@rollup/rollup-darwin-arm64@4.64.2'
-  - '@rollup/rollup-darwin-x64@4.64.2'
-  - '@rollup/rollup-freebsd-arm64@4.64.2'
-  - '@rollup/rollup-freebsd-x64@4.64.2'
-  - '@rollup/rollup-linux-arm-gnueabihf@4.64.2'
-  - '@rollup/rollup-linux-arm-musleabihf@4.64.2'
-  - '@rollup/rollup-linux-arm64-gnu@4.64.2'
-  - '@rollup/rollup-linux-arm64-musl@4.64.2'
-  - '@rollup/rollup-linux-loong64-gnu@4.64.2'
-  - '@rollup/rollup-linux-loong64-musl@4.64.2'
-  - '@rollup/rollup-linux-ppc64-gnu@4.64.2'
-  - '@rollup/rollup-linux-ppc64-musl@4.64.2'
-  - '@rollup/rollup-linux-riscv64-gnu@4.64.2'
-  - '@rollup/rollup-linux-riscv64-musl@4.64.2'
-  - '@rollup/rollup-linux-s390x-gnu@4.64.2'
-  - '@rollup/rollup-linux-x64-gnu@4.64.2'
-  - '@rollup/rollup-linux-x64-musl@4.64.2'
-  - '@rollup/rollup-openbsd-x64@4.64.2'
-  - '@rollup/rollup-openharmony-arm64@4.64.2'
-  - '@rollup/rollup-win32-arm64-msvc@4.64.2'
-  - '@rollup/rollup-win32-ia32-msvc@4.64.2'
-  - '@rollup/rollup-win32-x64-gnu@4.64.2'
-  - '@rollup/rollup-win32-x64-msvc@4.64.2'
-  - bingo@0.13.2
-  - electron@44.7.0
-  - mdat-plugin-cli-help@3.4.1
-  - rolldown@1.2.13
-  - rollup@4.64.2
+  - '@kitschpatrol/cspell-config@8.14.0'
+  - '@kitschpatrol/eslint-config@8.14.0'
+  - '@kitschpatrol/knip-config@8.14.0'
+  - '@kitschpatrol/mdat-config@8.14.0'
+  - '@kitschpatrol/prettier-config@8.14.0'
+  - '@kitschpatrol/remark-config@8.14.0'
+  - '@kitschpatrol/repo-config@8.14.0'
+  - '@kitschpatrol/shared-config@8.14.0'
+  - '@kitschpatrol/stylelint-config@8.14.0'
+  - '@kitschpatrol/typescript-config@8.14.0'
+  - mdat@3.6.6
+  - remark-mdat@3.1.2
 overrides:
-  # Remove when Miniflare includes the fix for GHSA-wq5f-xc86-pv6w.
-  miniflare@5.20261006.0-alpha>sharp: 0.35.5
+  # Remove once typescript-eslint fixes single-run Program memory use, which
+  # exhausts the default heap when linting all templates at once.
+  # https://github.com/typescript-eslint/typescript-eslint/issues/13109
+  '@typescript-eslint/typescript-estree': 8.72.0
 packages:
   - '.'
   - templates/*
@@ -74,6 +33,13 @@ peerDependencyRules:
     # https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/issues/1075
     # https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/pull/1081
     eslint-plugin-jsx-a11y@6>eslint: ^10.0.0
+permissions:
+  '@kitschpatrol/shared-config':
+    skills: true
+  mdat:
+    skills: false
+  taze:
+    skills: true
 publicHoistPattern:
   - '@kitschpatrol/repo-config'
   - '@kitschpatrol/typescript-config'
@@ -85,3 +51,7 @@ publicHoistPattern:
   - '*remark*'
   - '*stylelint*'
   - 'case-police'
+skills:
+  dirs:
+    - .agents/skills
+    - .claude/skills
