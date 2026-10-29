@@ -72,6 +72,10 @@ export default createTemplate({
 			.describe(
 				'A shell command that returns a one-time password for publishing to the npm registry',
 			),
+		'github-token-command': z
+			.string()
+			.default("op read 'op://Personal/GitHub Mika/PERSONAL_ACCESS_TOKEN'")
+			.describe('A shell command that returns a token for publishing GitHub releases'),
 		/* eslint-enable perfectionist/sort-objects */
 	},
 	async produce({ options }) {

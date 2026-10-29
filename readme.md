@@ -136,6 +136,7 @@ Create Kitschpatrol Project options:
   --github-repository (string): The name of the repository / package.
   --npm-token-command (string): A shell command that returns a granular token for publishing to the npm registry.
   --npm-otp-command (string): A shell command that returns a one-time password for publishing to the npm registry.
+  --github-token-command (string): A shell command that returns a token for publishing GitHub releases.
 ```
 
 <!-- /cli-help-trimmed -->
@@ -171,6 +172,12 @@ NPM_TOKEN=$(op read 'op://Personal/npm/token') pnpm whoami
 As of August 2026, [2fa is required](https://docs.npmjs.com/about-access-tokens#account-identity-actions-require-an-interactive-2fa-challenge) alongside the token for publishing packages to npm.
 
 The default `--npm-otp-command` template value expects you to have the [1Password CLI installed](https://1password.com/downloads/command-line), with your npm OTP configured and stored at a specific path in 1Password.
+
+### GitHub release configuration
+
+The Electron templates' `release` script publishes the app to GitHub Releases with electron-builder, which reads a token from the `GH_TOKEN` environment variable.
+
+The default `--github-token-command` template value expects you to have the [1Password CLI installed](https://1password.com/downloads/command-line), with a [GitHub personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens) that can create releases stored at a specific path in 1Password.
 
 ## Development Notes
 

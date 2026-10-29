@@ -22,6 +22,16 @@ Based on [electron-vite](https://electron-vite.org) via the [@kitschpatrol/elect
 
 ### Deployment
 
+`pnpm release` bumps the version, then builds, signs, notarizes, and publishes the app to GitHub Releases.
+
+macOS signing is off until you delete `identity: null` from the `mac` section of `electron-builder.ts`. electron-builder then signs with the Developer ID Application certificate in your Keychain, and `pnpm release` notarizes the signed app with the `notarytool` Keychain profile. Store your credentials in it once per machine:
+
+```sh
+xcrun notarytool store-credentials notarytool --apple-id <apple-id-email> --team-id <team-id>
+```
+
+The command prompts for an app-specific password, which you can create at [account.apple.com](https://account.apple.com). Your team ID is listed in the [Apple Developer account](https://developer.apple.com/account) membership details.
+
 ### Benchmarks
 
 Run `pnpm bench` to measure the example in `test/index.bench.ts`. Run

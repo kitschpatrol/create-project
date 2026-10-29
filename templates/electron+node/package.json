@@ -29,7 +29,7 @@
 		"dev": "electron-vite dev",
 		"fix": "ksc fix",
 		"lint": "ksc lint",
-		"release": "bumpp --commit 'Release: %s' && pnpm build && electron-builder build --publish always",
+		"release": "bumpp --commit 'Release: %s' && pnpm build && export GH_TOKEN=$({{{github-token-command}}}) && export APPLE_KEYCHAIN_PROFILE=notarytool && electron-builder build --publish always",
 		"test": "vitest run"
 	},
 	"dependencies": {
