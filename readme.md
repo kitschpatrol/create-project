@@ -54,7 +54,7 @@ Nine template types are available:
 
 ### Development dependencies
 
-- [pnpm](https://pnpm.io/) 12.15.0
+- [pnpm](https://pnpm.io/) 12.16.1
 
 <!-- /development-dependencies -->
 
