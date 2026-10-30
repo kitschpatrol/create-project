@@ -10,3 +10,4 @@ skills-lock.json
 
 # Customizations
 test/benchmarks/baseline.json
+/electron/resources/mac/entitlements.mac.plist
