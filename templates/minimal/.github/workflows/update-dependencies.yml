@@ -24,14 +24,14 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
         with:
-          node-version: 24
+          node-version: 26
           cache: 'pnpm'
 
       - name: Install dependencies
         run: pnpm ci
 
       - name: Run ksc-update
-        uses: kitschpatrol/github-action-skill-to-pr@c055b813acd0ea6a5acb25c976e9ae518dcd50e2 # v1.2.0
+        uses: kitschpatrol/github-action-skill-to-pr@48d00903336a00458c6c608cc3f3d6b99d4f69c7 # v1.2.1
         with:
           skill: ksc-update
           title: Update dependencies.

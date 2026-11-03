@@ -2,22 +2,19 @@ allowBuilds:
   core-js: false
   electron-winstaller: true
   esbuild: true
-  unrs-resolver: true
   workerd: true
 ignoreWorkspaceRootCheck: true
 minimumReleaseAgeExclude:
-  - '@kitschpatrol/cspell-config@8.14.0'
-  - '@kitschpatrol/eslint-config@8.14.0'
-  - '@kitschpatrol/knip-config@8.14.0'
-  - '@kitschpatrol/mdat-config@8.14.0'
-  - '@kitschpatrol/prettier-config@8.14.0'
-  - '@kitschpatrol/remark-config@8.14.0'
-  - '@kitschpatrol/repo-config@8.14.0'
-  - '@kitschpatrol/shared-config@8.14.0'
-  - '@kitschpatrol/stylelint-config@8.14.0'
-  - '@kitschpatrol/typescript-config@8.14.0'
-  - mdat@3.6.6
-  - remark-mdat@3.1.2
+  - '@kitschpatrol/cspell-config@8.14.1'
+  - '@kitschpatrol/eslint-config@8.14.1'
+  - '@kitschpatrol/knip-config@8.14.1'
+  - '@kitschpatrol/mdat-config@8.14.1'
+  - '@kitschpatrol/prettier-config@8.14.1'
+  - '@kitschpatrol/remark-config@8.14.1'
+  - '@kitschpatrol/repo-config@8.14.1'
+  - '@kitschpatrol/shared-config@8.14.1'
+  - '@kitschpatrol/stylelint-config@8.14.1'
+  - '@kitschpatrol/typescript-config@8.14.1'
 overrides:
   # Remove once typescript-eslint fixes single-run Program memory use, which
   # exhausts the default heap when linting all templates at once.

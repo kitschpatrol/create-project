@@ -33,14 +33,14 @@
 		"test": "vitest run"
 	},
 	"dependencies": {
-		"lognow": "^0.8.5"
+		"lognow": "^0.8.8"
 	},
 	"devDependencies": {
-		"@kitschpatrol/electron-vite": "^6.0.0-beta.4",
-		"@kitschpatrol/shared-config": "^8.14.0",
+		"@kitschpatrol/electron-vite": "^6.0.0-fork.1",
+		"@kitschpatrol/shared-config": "^8.14.1",
 		"@types/node": "~24.13.6",
 		"bumpp": "^12.3.0",
-		"electron": "^45.0.0",
+		"electron": "^45.2.1",
 		"electron-builder": "^26.18.0",
 		"shx": "^0.4.0",
 		"typescript": "~6.0.3",

@@ -42,20 +42,20 @@
 		"update-templates-major": "for dir in ./templates/*; do taze major -w --cwd \"$dir\" --exclude @types/node,typescript,vite; done"
 	},
 	"dependencies": {
-		"bingo": "^0.13.2",
+		"bingo": "^0.14.0",
 		"bingo-fs": "^0.6.0",
 		"handlebars": "^4.7.10",
 		"zod": "^4.6.7"
 	},
 	"devDependencies": {
-		"@kitschpatrol/shared-config": "^8.14.0",
+		"@kitschpatrol/shared-config": "^8.14.1",
 		"@types/node": "~24.13.6",
 		"bumpp": "^12.3.0",
-		"mdat": "^3.6.6",
-		"mdat-plugin-cli-help": "^3.4.1",
+		"mdat": "^3.6.7",
+		"mdat-plugin-cli-help": "^3.4.2",
 		"shx": "^0.4.0",
 		"taze": "^21.3.0",
-		"tsdown": "^0.23.2",
+		"tsdown": "^0.23.4",
 		"typescript": "~6.0.3",
 		"vitest": "^5.0.5"
 	},

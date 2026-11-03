@@ -147,15 +147,17 @@ I publish most of my packages via a local command instead of through CI.
 
 Most template projects include a `release` script for this purpose.
 
-Two credentials are passed at the last minute to the `pnpm publish` command in the `release` script. The template must define how to fetch these.
+The `release` scripts pass a one-time password to `pnpm publish` and use your
+existing pnpm registry authentication.
 
 #### npm token
 
 As of November 2025, [granular access tokens](https://docs.npmjs.com/about-access-tokens#about-granular-access-tokens) are required for publishing packages to npm.
 
-The default `--npm-token-command` template value expects you to have the [1Password CLI installed](https://1password.com/downloads/command-line), [npm access token](https://docs.npmjs.com/about-access-tokens/) configured and stored at a specific path in 1Password, and for your global configuration to look a certain way.
-
-This requires some one-time global configuration on the deploy machine. pnpm expands the `NPM_TOKEN` environment variable in this trusted user configuration when publishing.
+If you keep your [npm access token](https://docs.npmjs.com/about-access-tokens/)
+in 1Password, install the [1Password CLI](https://1password.com/downloads/command-line)
+and configure pnpm once on the machine you publish from. pnpm expands the
+`NPM_TOKEN` environment variable in this trusted user configuration when publishing.
 
 ```sh
 pnpm config set '//registry.npmjs.org/:_authToken' '${NPM_TOKEN}'
@@ -165,6 +167,12 @@ Check who pnpm thinks you are to confirm everything works:
 
 ```sh
 NPM_TOKEN=$(op read 'op://Personal/npm/token') pnpm whoami
+```
+
+Supply the same environment variable when running the release script:
+
+```sh
+NPM_TOKEN=$(op read 'op://Personal/npm/token') pnpm release
 ```
 
 #### npm one-time password

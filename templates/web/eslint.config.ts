@@ -21,9 +21,6 @@ export default eslintConfig({
 				'error',
 				{
 					ignore: [
-						'^astro:',
-						'^@astrojs',
-						'^virtual:',
 						// Public Vite assets...
 						'^/',
 					],
