@@ -33,7 +33,7 @@
 		"clean-deep": "shx rm -f pnpm-lock.yaml && git clean -fdX",
 		"fix": "pnpm build && ksc fix",
 		"lint": "pnpm build && ksc lint",
-		"release": "bumpp --commit 'Release: %s' && pnpm build && NPM_TOKEN=$({{{npm-token-command}}}) pnpm publish --otp $({{{npm-otp-command}}})",
+		"release": "bumpp --commit 'Release: %s' && pnpm build && pnpm publish --otp $({{{npm-otp-command}}})",
 		"test": "vitest run"
 	},
 	"dependencies": {

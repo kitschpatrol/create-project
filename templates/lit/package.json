@@ -44,7 +44,7 @@
 		"fix": "ksc fix",
 		"lint": "ksc lint",
 		"preview": "poptab && vite preview",
-		"release": "bumpp --commit 'Release: %s' && pnpm build && NPM_TOKEN=$({{{npm-token-command}}}) pnpm publish --otp $({{{npm-otp-command}}})",
+		"release": "bumpp --commit 'Release: %s' && pnpm build && pnpm publish --otp $({{{npm-otp-command}}})",
 		"test": "vitest run"
 	},
 	"devDependencies": {
