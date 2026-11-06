@@ -36,7 +36,7 @@
 		"clean-deep": "shx rm -f pnpm-lock.yaml && git clean -fdX",
 		"fix": "pnpm build && ksc fix --skip mdat && mdat readme.md",
 		"lint": "pnpm build && ksc lint --skip mdat && mdat check readme.md",
-		"release": "bumpp --commit 'Release: %s' && pnpm build && pnpm publish --otp $(op item get npm --otp)",
+		"release": "bumpp --commit 'Release: %s' --all --execute 'chagent --skip-package templates/* templates/unplugin/playground' && pnpm build && pnpm publish --otp $(op item get npm --otp)",
 		"test": "vitest run",
 		"update-templates": "for dir in ./templates/*; do taze -w --cwd \"$dir\"; done",
 		"update-templates-major": "for dir in ./templates/*; do taze major -w --cwd \"$dir\" --exclude @types/node,typescript,vite; done"
@@ -48,6 +48,7 @@
 		"zod": "^4.6.7"
 	},
 	"devDependencies": {
+		"@kitschpatrol/chagent": "0.4.0",
 		"@kitschpatrol/shared-config": "^8.14.1",
 		"@types/node": "~24.13.6",
 		"bumpp": "^12.3.0",

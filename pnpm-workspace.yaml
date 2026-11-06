@@ -5,6 +5,7 @@ allowBuilds:
   workerd: true
 ignoreWorkspaceRootCheck: true
 minimumReleaseAgeExclude:
+  - '@kitschpatrol/chagent@0.4.0'
   - '@kitschpatrol/cspell-config@8.14.1'
   - '@kitschpatrol/eslint-config@8.14.1'
   - '@kitschpatrol/knip-config@8.14.1'
