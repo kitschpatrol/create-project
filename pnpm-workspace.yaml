@@ -1,4 +1,6 @@
 allowBuilds:
+  # Sass uses its JS API; its optional native watcher is not needed.
+  '@parcel/watcher': false
   core-js: false
   electron-winstaller: true
   esbuild: true

@@ -1,0 +1,79 @@
+{
+	"name": "{{{github-repository}}}",
+	"version": "0.0.0",
+	"description": "A Tweakpane 4 plugin.",
+	"keywords": [
+		"tweakpane",
+		"tweakpane-plugin",
+		"npm-package"
+	],
+	"homepage": "https://github.com/{{{github-owner}}}/{{{github-repository}}}",
+	"bugs": "https://github.com/{{{github-owner}}}/{{{github-repository}}}/issues",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/{{{github-owner}}}/{{{github-repository}}}.git"
+	},
+	"license": "MIT",
+	"author": {
+		"name": "{{{author-name}}}",
+		"email": "{{{author-email}}}",
+		"url": "{{{author-url}}}"
+	},
+	"sideEffects": false,
+	"type": "module",
+	"exports": {
+		".": {
+			"types": "./dist/{{{github-repository}}}.d.ts",
+			"default": "./dist/{{{github-repository}}}.js"
+		},
+		"./lite": {
+			"types": "./dist/{{{github-repository}}}.d.ts",
+			"default": "./dist/{{{github-repository}}}.lite.js"
+		},
+		"./package.json": "./package.json"
+	},
+	"main": "./dist/{{{github-repository}}}.js",
+	"module": "./dist/{{{github-repository}}}.js",
+	"types": "./dist/{{{github-repository}}}.d.ts",
+	"files": [
+		"dist"
+	],
+	"scripts": {
+		"build": "tsdown",
+		"clean-deep": "shx rm -f pnpm-lock.yaml && git clean -fdX",
+		"dev": "vite",
+		"fix": "ksc fix",
+		"lint": "ksc lint",
+		"release": "bumpp --commit 'Release: %s' --execute 'chagent' && pnpm build && pnpm publish --otp $({{{npm-otp-command}}})",
+		"test": "vitest run",
+		"watch": "tsdown --watch"
+	},
+	"dependencies": {
+		"@tweakpane/core": "^2.0.5"
+	},
+	"devDependencies": {
+		"@arethetypeswrong/core": "^0.18.5",
+		"@kitschpatrol/chagent": "^0.5.0",
+		"@kitschpatrol/shared-config": "^8.14.1",
+		"@tsdown/css": "^0.23.7",
+		"@types/node": "~24.13.6",
+		"bumpp": "^12.3.0",
+		"happy-dom": "^21.0.4",
+		"publint": "^0.3.25",
+		"sass": "^1.108.1",
+		"shx": "^0.4.0",
+		"stylelint-config-standard-scss": "^17.0.0",
+		"tsdown": "^0.23.7",
+		"tweakpane": "^4.0.5",
+		"typescript": "~6.0.3",
+		"vite": "^8.3.7",
+		"vitest": "^5.1.0"
+	},
+	"peerDependencies": {
+		"tweakpane": "^4.0.0"
+	},
+	"packageManager": "pnpm@12.18.0",
+	"engines": {
+		"node": "^24.16.0 || >=26.3.0"
+	}
+}

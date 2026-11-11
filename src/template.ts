@@ -14,6 +14,7 @@ export const TEMPLATE_TYPES = [
 	'electron',
 	'electron+node',
 	'unplugin',
+	'tweakpane-plugin',
 ] as const
 
 const LOCAL_FILES_REGEX = /node_modules|pnpm-lock\.yaml|skills-lock\.json|\.agents|\.claude/v
@@ -131,6 +132,9 @@ export default createTemplate({
 					// contains {{{...}}} placeholders here.
 					...(['electron', 'electron+node', 'lit', 'web'].includes(options.type)
 						? ['index.html']
+						: []),
+					...(options.type === 'tweakpane-plugin'
+						? ['demo/index.html', 'readme.md', 'src/index.ts', 'tsdown.config.ts']
 						: []),
 					...(options.type === 'web'
 						? ['scripts/preview.ts', 'vite.config.ts', 'wrangler.jsonc']

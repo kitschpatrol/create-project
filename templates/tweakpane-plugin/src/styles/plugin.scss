@@ -1,0 +1,26 @@
+@use '@tweakpane/core/lib/sass/tp';
+
+.#{tp.$prefix}-textinputv {
+	@extend %tp-input;
+
+	&_i {
+		box-sizing: border-box;
+		width: 100%;
+		height: tp.cssVar('container-unit-size');
+		padding: 0 4px;
+		border: 0;
+		border-radius: tp.cssVar('blade-border-radius');
+		font: inherit;
+		color: tp.cssVar('input-fg');
+		background: tp.cssVar('input-bg');
+
+		&:focus-visible {
+			outline: 1px solid tp.cssVar('input-fg');
+			outline-offset: -1px;
+		}
+	}
+
+	&.#{tp.$prefix}-v-disabled {
+		opacity: 0.5;
+	}
+}

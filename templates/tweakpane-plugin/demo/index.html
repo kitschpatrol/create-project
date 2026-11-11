@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>{{{github-repository}}}</title>
+	</head>
+	<body>
+		<h1>Tweakpane plugin playground</h1>
+		<p>Edit the message in the pane to try the custom text input.</p>
+		<script type="module">
+			import { Pane } from 'tweakpane'
+			import * as plugin from '../src/index.ts'
+
+			const pane = new Pane({ title: 'Plugin playground' })
+			pane.registerPlugin(plugin)
+
+			const params = { message: 'Hello, Tweakpane!' }
+			pane.addBinding(params, 'message', {
+				label: 'Message',
+				placeholder: 'Enter a message',
+				view: 'text-input',
+			})
+		</script>
+	</body>
+</html>

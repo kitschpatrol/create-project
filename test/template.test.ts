@@ -1,7 +1,7 @@
 import type { BaselineData } from 'vitest'
 import type { JsonTestResults } from 'vitest/node'
 import { runTemplate } from 'bingo'
-import { execSync } from 'node:child_process'
+import { execSync, spawn } from 'node:child_process'
 import fs from 'node:fs/promises'
 import os from 'node:os'
 import path from 'node:path'
@@ -28,6 +28,7 @@ const COMMAND_MAX_BUFFER = 64 * 1024 * 1024
 const NODE_SHEBANG_REGEX = /^#!\/usr\/bin\/env node\n/v
 const YARGS_IMPORT_REGEX = /\bfrom\s*['"]yargs['"]/v
 const LOGNOW_IMPORT_REGEX = /\bfrom\s*['"]lognow['"]/v
+const TWEAKPANE_CORE_IMPORT_REGEX = /\bfrom\s*['"]@tweakpane\/core['"]/v
 
 // These commands run nested inside the outer `pnpm run test`, whose pnpm has
 // already stamped `npm_lifecycle_event` and friends into our environment.
@@ -75,6 +76,21 @@ function runCommand(command: string, cwd: string, label: string): string {
 		}
 
 		throw error
+	}
+}
+
+// Watch rebuilds briefly remove old chunks, so retry missing files on the next poll.
+async function readBuiltJavaScript(directory: string): Promise<string[]> {
+	try {
+		const files = await fs.readdir(directory)
+		const results = await Promise.allSettled(
+			files
+				.filter((file) => file.endsWith('.js'))
+				.map(async (file) => fs.readFile(path.join(directory, file), 'utf8')),
+		)
+		return results.filter((result) => result.status === 'fulfilled').map((result) => result.value)
+	} catch {
+		return []
 	}
 }
 
@@ -142,15 +158,17 @@ describe('Template Generation and Build Tests', () => {
 				// Agent skills are linked by pnpm during install, per the `permissions`
 				// and `skills` settings in the generated pnpm-workspace.yaml
 				for (const skillsDirectory of ['.agents/skills', '.claude/skills']) {
-					await expect(
-						fs.access(
-							path.join(
-								tempDirectory,
-								skillsDirectory,
-								'pnpm-@kitschpatrol+shared-config-ksc/SKILL.md',
-							),
-						),
-					).resolves.toBeUndefined()
+					// Version 12.18 of pnpm uses the skill's name; 12.16 prefixes it with the package.
+					const skills = await fs.readdir(path.join(tempDirectory, skillsDirectory))
+					const skill = skills.find(
+						(name) => name === 'ksc' || name === 'pnpm-@kitschpatrol+shared-config-ksc',
+					)
+					expect(skill).toBeDefined()
+					const contents = await fs.readFile(
+						path.join(tempDirectory, skillsDirectory, skill!, 'SKILL.md'),
+						'utf8',
+					)
+					expect(contents).toContain('ksc')
 				}
 
 				// Dev-only lint overrides must be stripped from generated projects
@@ -172,7 +190,210 @@ describe('Template Generation and Build Tests', () => {
 				expect(output).toBeDefined()
 			}, 300_000) // 5 minute timeout for build
 
-			if (templateType === 'cli+library') {
+			if (templateType === 'tweakpane-plugin') {
+				const distributions = [
+					'test-tweakpane-plugin.js',
+					'test-tweakpane-plugin.min.js',
+					'test-tweakpane-plugin.lite.js',
+					'test-tweakpane-plugin.lite.min.js',
+				]
+
+				it('should package usable bundled and lite plugin distributions', async () => {
+					const demo = await fs.readFile(path.join(tempDirectory, 'demo/index.html'), 'utf8')
+					expect(demo).toContain('<title>test-tweakpane-plugin</title>')
+					expect(demo).toContain("from '../src/index.ts'")
+					await expect(fs.access(path.join(tempDirectory, 'index.html'))).rejects.toThrow()
+					const outputFiles = await fs.readdir(path.join(tempDirectory, 'dist'), {
+						recursive: true,
+					})
+					expect(outputFiles.some((file) => file.endsWith('.css'))).toBe(false)
+					expect(outputFiles.some((file) => file.endsWith('.map'))).toBe(false)
+					expect(outputFiles.filter((file) => file.endsWith('.js'))).toHaveLength(4)
+					expect(outputFiles.filter((file) => file.endsWith('.d.ts'))).toEqual([
+						'test-tweakpane-plugin.d.ts',
+					])
+					for (const file of distributions) {
+						expect(outputFiles).toContain(file)
+						const source = await fs.readFile(path.join(tempDirectory, 'dist', file), 'utf8')
+						expect(TWEAKPANE_CORE_IMPORT_REGEX.test(source)).toBe(file.includes('.lite.'))
+						expect(source).not.toContain('sourceMappingURL=')
+					}
+
+					expect(outputFiles).not.toContain('lite')
+					const declarations = await fs.readFile(
+						path.join(tempDirectory, 'dist/test-tweakpane-plugin.d.ts'),
+						'utf8',
+					)
+					expect(declarations).toMatch(TWEAKPANE_CORE_IMPORT_REGEX)
+					expect(declarations).toContain('TextInputParams')
+					expect(declarations).not.toContain('?inline')
+
+					const packed = JSON.parse(
+						runCommand(
+							'pnpm pack --ignore-scripts --json --loglevel error',
+							tempDirectory,
+							'Pack Tweakpane plugin',
+						),
+					) as { files: Array<{ path: string }> }
+					const packedFiles = packed.files.map((file) => file.path)
+					const builtFiles = outputFiles.filter(
+						(entry) => entry.endsWith('.js') || entry.endsWith('.d.ts'),
+					)
+					for (const file of builtFiles) {
+						expect(packedFiles).toContain(`dist/${file.split(path.sep).join('/')}`)
+					}
+
+					expect(packedFiles.some((file) => file.startsWith('src/'))).toBe(false)
+					expect(packedFiles.some((file) => file.endsWith('.map'))).toBe(false)
+					const smokePath = path.join(tempDirectory, 'check-plugin.mjs')
+					try {
+						await fs.writeFile(
+							smokePath,
+							`import assert from 'node:assert/strict'
+import { createRequire } from 'node:module'
+// Both public exports must load without a browser or stylesheet loader.
+assert.equal(typeof globalThis.document, 'undefined')
+const bundled = await import('test-tweakpane-plugin')
+const lite = await import('test-tweakpane-plugin/lite')
+const bundledMin = await import('./dist/test-tweakpane-plugin.min.js')
+const liteMin = await import('./dist/test-tweakpane-plugin.lite.min.js')
+const require = createRequire(import.meta.url)
+assert.deepEqual(Object.keys(require('test-tweakpane-plugin/package.json').exports), ['.', './lite', './package.json'])
+assert.throws(() => require.resolve('test-tweakpane-plugin/dist/test-tweakpane-plugin.js'), { code: 'ERR_PACKAGE_PATH_NOT_EXPORTED' })
+assert.equal(require('test-tweakpane-plugin').plugins, bundled.plugins)
+assert.equal(require('test-tweakpane-plugin/lite').plugins, lite.plugins)
+assert.equal(typeof globalThis.document, 'undefined')
+assert.equal(bundled.id, 'test-tweakpane-plugin')
+assert.equal(bundled.css, lite.css)
+assert.equal(typeof bundled.css, 'string')
+assert.ok(bundled.css.includes('.tp-textinputv'))
+assert.ok(!bundled.css.includes('@use'))
+assert.ok(!bundled.css.includes('__css__'))
+const { Window } = await import('happy-dom')
+const window = new Window()
+globalThis.window = window
+globalThis.document = window.document
+globalThis.HTMLElement = window.HTMLElement
+const { Pane } = await import('tweakpane')
+try {
+  for (const plugin of [bundled, bundledMin, lite, liteMin]) {
+    assert.equal(plugin.css, bundled.css)
+    assert.equal(plugin.id, bundled.id)
+    assert.deepEqual(Object.keys(plugin), Object.keys(bundled))
+    const pane = new Pane({ document: window.document })
+    try {
+      pane.registerPlugin(plugin)
+      const params = { message: 'Hello' }
+      const binding = pane.addBinding(params, 'message', { view: 'text-input' })
+      const input = binding.element.querySelector('input')
+      assert.ok(input)
+      assert.equal(input.value, 'Hello')
+      input.value = 'Published plugin works'
+      input.dispatchEvent(new window.Event('input', { bubbles: true }))
+      assert.equal(params.message, 'Published plugin works')
+      assert.ok(window.document.head.textContent.includes('.tp-textinputv'))
+    } finally {
+      pane.dispose()
+    }
+  }
+} finally {
+  await window.happyDOM.close()
+}
+`,
+						)
+						runCommand('node check-plugin.mjs', tempDirectory, 'Import and register built plugins')
+					} finally {
+						await fs.rm(smokePath, { force: true })
+					}
+				}, 300_000)
+
+				it('should rebuild all four distributions when a Sass partial changes', async () => {
+					const stylesheetPath = path.join(tempDirectory, 'src/styles/plugin.scss')
+					const partialPath = path.join(tempDirectory, 'src/styles/_watch-test.scss')
+					const original = await fs.readFile(stylesheetPath, 'utf8')
+					await fs.writeFile(partialPath, '.tp-watch-test { --watch-test: initial-watch-token; }\n')
+					await fs.writeFile(stylesheetPath, `@use './watch-test';\n${original}`)
+
+					// Launch Node directly so cleanup also works on Windows without a shell process tree.
+					const watcher = spawn(
+						process.execPath,
+						[path.join(tempDirectory, 'node_modules/tsdown/dist/run.mjs'), '--watch'],
+						{ cwd: tempDirectory, env: COMMAND_ENV, stdio: ['ignore', 'pipe', 'pipe'] },
+					)
+					let output = ''
+					let spawnError: Error | undefined
+					const capture = (chunk: string) => {
+						output = `${output}${chunk}`.slice(-8000)
+					}
+
+					watcher.stdout.setEncoding('utf8').on('data', capture)
+					watcher.stderr.setEncoding('utf8').on('data', capture)
+					watcher.on('error', (error) => {
+						spawnError = error
+					})
+					const closed = new Promise<void>((resolve) => {
+						watcher.once('close', () => {
+							resolve()
+						})
+					})
+
+					async function hasCssToken(token: string): Promise<boolean> {
+						if (spawnError) {
+							throw spawnError
+						}
+
+						if (watcher.exitCode !== null) {
+							throw new Error(`Watcher exited: ${output}`)
+						}
+
+						const contents = await readBuiltJavaScript(path.join(tempDirectory, 'dist'))
+						return (
+							contents.length === distributions.length &&
+							contents.every((source) => source.includes(token))
+						)
+					}
+
+					try {
+						await expect
+							.poll(async () => hasCssToken('initial-watch-token'), { timeout: 30_000 })
+							.toBe(true)
+						await fs.writeFile(
+							partialPath,
+							'.tp-watch-test { --watch-test: updated-watch-token; }\n',
+						)
+						await expect
+							.poll(async () => hasCssToken('updated-watch-token'), { timeout: 30_000 })
+							.toBe(true)
+						for (const file of [
+							...distributions.map((file) => `dist/${file}`),
+							'dist/test-tweakpane-plugin.d.ts',
+						]) {
+							await expect(fs.access(path.join(tempDirectory, file))).resolves.toBeUndefined()
+						}
+					} catch (error) {
+						throw new Error(`Tweakpane Sass watch failed:\n${output}`, { cause: error })
+					} finally {
+						watcher.kill()
+						const killTimeout = setTimeout(() => {
+							watcher.kill('SIGKILL')
+						}, 5000)
+						killTimeout.unref()
+						try {
+							await closed
+						} finally {
+							clearTimeout(killTimeout)
+							await fs.writeFile(stylesheetPath, original)
+							await fs.rm(partialPath, { force: true })
+						}
+
+						runCommand(
+							'pnpm run build',
+							tempDirectory,
+							'Restore Tweakpane plugin build after watch',
+						)
+					}
+				}, 120_000)
+			} else if (templateType === 'cli+library') {
 				it('should clean and package CLI and library outputs', async () => {
 					const staleFiles = ['dist/bin/stale.js', 'dist/lib/stale.js']
 					for (const file of staleFiles) {
@@ -237,7 +458,8 @@ assert.equal(doSomethingElse(), 'Something else happened')
 				expect(output).toBeDefined()
 			}, 300_000) // 5 minute timeout for test
 
-			if (templateType !== 'minimal') {
+			// The minimal and Tweakpane plugin templates ship no benchmark.
+			if (templateType !== 'minimal' && templateType !== 'tweakpane-plugin') {
 				it('should run benchmarks and preserve a saved baseline', async () => {
 					const baselinePath = path.join(tempDirectory, 'test/benchmarks/baseline.json')
 					await expect(fs.access(baselinePath)).rejects.toThrow()

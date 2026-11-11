@@ -26,19 +26,20 @@ The lint tools and rules that come along with [@kitschpatrol/shared-config](http
 
 The templates use [tsdown](https://tsdown.dev/) for building TypeScript libraries and Node-based CLI tools, and [Vite](https://vite.dev/) for web projects. [Bingo](https://www.create.bingo/) is used for the project templating system itself.
 
-Nine template types are available:
+Ten template types are available:
 
-| Template        | Description                                                                                                                                                                                                                                                                              |
-| --------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `minimal`       | Bare TypeScript scratch project, run with [tsx](https://tsx.hirok.io) — no build step.                                                                                                                                                                                                   |
-| `web`           | [Vite](https://vite.dev/) web app with [Vitest](https://vitest.dev/) tests, deployed to [Cloudflare Workers](https://developers.cloudflare.com/workers/static-assets/) with [Wrangler](https://developers.cloudflare.com/workers/wrangler/).                                             |
-| `cli`           | Node.js command-line tool using [yargs](https://yargs.js.org/), bundled with [tsdown](https://tsdown.dev/) for publication to npm.                                                                                                                                                       |
-| `library`       | ESM npm library with type declarations, bundled with [tsdown](https://tsdown.dev/).                                                                                                                                                                                                      |
-| `cli+library`   | ESM library built for a neutral platform and npm-installed Node.js CLI, with separate builds and an optional shared Node.js build.                                                                                                                                                       |
-| `lit`           | Single [Lit](https://lit.dev/) web component published as an ESM npm package, with a [Vite](https://vite.dev/) development playground.                                                                                                                                                   |
-| `electron`      | [Electron](https://www.electronjs.org/) app using [vite-plugin-electron](https://github.com/electron-vite/vite-plugin-electron) and [electron-builder](https://www.electron.build/).                                                                                                     |
-| `electron+node` | [Electron](https://www.electronjs.org/) app with Node-targeted main and preload builds via [electron-vite](https://electron-vite.org) (using the [@kitschpatrol/electron-vite](https://github.com/kitschpatrol/electron-vite) fork) and [electron-builder](https://www.electron.build/). |
-| `unplugin`      | Universal bundler plugin via [unplugin](https://unplugin.unjs.io/), targeting Vite, Rollup, Rolldown, webpack, Rspack, esbuild, Farm, and Bun.                                                                                                                                           |
+| Template           | Description                                                                                                                                                                                                                                                                              |
+| ------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `minimal`          | Bare TypeScript scratch project, run with [tsx](https://tsx.hirok.io) — no build step.                                                                                                                                                                                                   |
+| `web`              | [Vite](https://vite.dev/) web app with [Vitest](https://vitest.dev/) tests, deployed to [Cloudflare Workers](https://developers.cloudflare.com/workers/static-assets/) with [Wrangler](https://developers.cloudflare.com/workers/wrangler/).                                             |
+| `cli`              | Node.js command-line tool using [yargs](https://yargs.js.org/), bundled with [tsdown](https://tsdown.dev/) for publication to npm.                                                                                                                                                       |
+| `library`          | ESM npm library with type declarations, bundled with [tsdown](https://tsdown.dev/).                                                                                                                                                                                                      |
+| `cli+library`      | ESM library built for a neutral platform and npm-installed Node.js CLI, with separate builds and an optional shared Node.js build.                                                                                                                                                       |
+| `lit`              | Single [Lit](https://lit.dev/) web component published as an ESM npm package, with a [Vite](https://vite.dev/) development playground.                                                                                                                                                   |
+| `electron`         | [Electron](https://www.electronjs.org/) app using [vite-plugin-electron](https://github.com/electron-vite/vite-plugin-electron) and [electron-builder](https://www.electron.build/).                                                                                                     |
+| `electron+node`    | [Electron](https://www.electronjs.org/) app with Node-targeted main and preload builds via [electron-vite](https://electron-vite.org) (using the [@kitschpatrol/electron-vite](https://github.com/kitschpatrol/electron-vite) fork) and [electron-builder](https://www.electron.build/). |
+| `tweakpane-plugin` | [Tweakpane](https://tweakpane.github.io/docs/) 4 plugin with modern build toolchain and improved treeshaking. Alternative to the [official template](https://github.com/tweakpane/plugin-template).                                                                                      |
+| `unplugin`         | Universal bundler plugin via [unplugin](https://unplugin.unjs.io/), targeting Vite, Rollup, Rolldown, webpack, Rspack, esbuild, Farm, and Bun.                                                                                                                                           |
 
 ## Getting started
 
@@ -127,7 +128,7 @@ Bingo template options:
 
 Create Kitschpatrol Project options:
 
-  --type ("minimal" | "web" | "cli" | "library" | "cli+library" | "lit" | "electron" | "electron+node" | "unplugin"): The type of project to create.
+  --type ("minimal" | "web" | "cli" | "library" | "cli+library" | "lit" | "electron" | "electron+node" | "unplugin" | "tweakpane-plugin"): The type of project to create.
   --author-name (string): The name of the author.
   --author-email (string): The email of the author.
   --author-url (string): The URL of the author.
