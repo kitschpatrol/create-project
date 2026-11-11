@@ -55,7 +55,7 @@ Ten template types are available:
 
 ### Development dependencies
 
-- [pnpm](https://pnpm.io/) 12.16.1
+- [pnpm](https://pnpm.io/) 12.18.0
 
 <!-- /development-dependencies -->
 
@@ -66,9 +66,9 @@ for its requirements.
 ### Agent skills
 
 `pnpm install` links agent skills from approved dependencies into
-`.agents/skills` and `.claude/skills`, as configured by the `permissions` and
+`.agents/skills`, as configured by the `permissions` and
 `skills` settings in `pnpm-workspace.yaml`. This applies to this repository and
-every generated project. Both directories are ignored by Git.
+every generated project. The directory is ignored by Git.
 
 ## Usage
 
@@ -78,11 +78,8 @@ every generated project. Both directories are ignored by Git.
 pnpm create @kitschpatrol/project@latest
 ```
 
-If you have pnpm's [minimumReleaseAge](https://pnpm.io/settings/dependency-resolution#minimumreleaseage) option enabled, you might need to disable it if you trust this repository and really want the _latest_ latest:
-
-```sh
-pnpm --config.minimum-release-age=0 create @kitschpatrol/project@latest
-```
+A newly published version may remain unavailable until it passes pnpm's default
+[24-hour release-age check](https://pnpm.io/settings/dependency-resolution#minimumreleaseage).
 
 ### CLI options
 

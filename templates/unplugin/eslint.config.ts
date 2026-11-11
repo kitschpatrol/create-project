@@ -17,11 +17,6 @@ export default eslintConfig(
 			},
 		},
 		// Template-dev-only-end
-		ts: {
-			overrides: {
-				'jsdoc/require-description': 'off',
-			},
-		},
 		type: 'lib',
 	},
 	{

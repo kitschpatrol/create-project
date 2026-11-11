@@ -28,14 +28,8 @@ export default eslintConfig(
 			'e18e/prefer-array-to-reversed': 'off',
 			'e18e/prefer-array-to-sorted': 'off',
 			'e18e/prefer-array-to-spliced': 'off',
-			// Tweakpane uses ClassName() factory
-			'new-cap': ['error', { capIsNewExceptions: ['ClassName'] }],
 			// The default fix adds ES2024's v flag.
 			'require-unicode-regexp': ['error', { requireFlag: 'u' }],
-			// Tweakpane uses null sentinels
-			'ts/no-restricted-types': 'off',
-			// Tweakpane binds methods in constructors
-			'ts/unbound-method': 'off',
 			// These fixes use ES2023's toReversed and toSorted.
 			'unicorn/no-array-reverse': 'off',
 			'unicorn/no-array-sort': 'off',

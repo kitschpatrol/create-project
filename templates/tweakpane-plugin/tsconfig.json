@@ -1,8 +1,10 @@
 {
 	"extends": "@kitschpatrol/typescript-config",
 	"compilerOptions": {
+		// Match the browser bundle's ES2022 syntax and available APIs.
 		"target": "ES2022",
 		"lib": ["ES2022", "DOM"],
+		// Include Vite assets and environment declarations for the demo.
 		"types": ["node", "vite/client"]
 	}
 }

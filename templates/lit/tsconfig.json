@@ -8,11 +8,11 @@
 		// widest toolchain compatibility. Oxc transforms experimental decorators,
 		// but not TC39 standard decorators.
 		"experimentalDecorators": true,
+		// Include Vite assets and environment declarations for the playground.
 		"types": ["vite/client"],
 		// Decorators are not erasable syntax, so the shared base's
 		// `erasableSyntaxOnly: true` has to be relaxed.
 		"erasableSyntaxOnly": false
 	},
-	"include": ["**/**.*"],
 	"exclude": ["**/dist/"]
 }
