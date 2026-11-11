@@ -7,6 +7,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 (Node.js support requirements have sometimes increased in minor or patch releases.)
 
+## [1.13.0] - 2026-11-11
+
+### Added
+
+- Add `--type tweakpane-plugin` for generating Tweakpane 4 plugins with bundled and lite builds.
+
+### Documentation
+
+- Add Tweakpane plugin migration guidance and update CLI help, pnpm installation notes, and agent-skill instructions.
+
+### Maintenance
+
+- Automate changelogs with Chagent, update Bingo to 0.16, bingo-fs to 0.8, and pnpm to 12.18, and refresh build/test tooling, workflow actions, contributor configuration, and template integration tests.
+
 ## [1.12.1] - 2026-11-02
 
 ### Documentation
@@ -421,3 +435,4 @@ No notable changes.
 [1.11.0]: https://github.com/kitschpatrol/create-project/compare/v1.10.0...v1.11.0
 [1.12.0]: https://github.com/kitschpatrol/create-project/compare/v1.11.0...v1.12.0
 [1.12.1]: https://github.com/kitschpatrol/create-project/compare/v1.12.0...v1.12.1
+[1.13.0]: https://github.com/kitschpatrol/create-project/compare/v1.12.1...v1.13.0
