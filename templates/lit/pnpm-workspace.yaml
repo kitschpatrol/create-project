@@ -20,6 +20,8 @@ peerDependencyRules:
 permissions:
   '@kitschpatrol/shared-config':
     skills: true
+  tsdown:
+    skills: true
 publicHoistPattern:
   - '@kitschpatrol/repo-config'
   - '@kitschpatrol/typescript-config'
@@ -34,4 +36,3 @@ publicHoistPattern:
 skills:
   dirs:
     - .agents/skills
-    - .claude/skills
