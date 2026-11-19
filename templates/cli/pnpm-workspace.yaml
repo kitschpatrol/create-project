@@ -1,7 +1,18 @@
 allowBuilds:
   esbuild: true
 minimumReleaseAgeExclude:
-  - '@kitschpatrol/chagent@0.8.0'
+  - '@kitschpatrol/cspell-config@8.15.0'
+  - '@kitschpatrol/eslint-config@8.15.0'
+  - '@kitschpatrol/knip-config@8.15.0'
+  - '@kitschpatrol/mdat-config@8.15.0'
+  - '@kitschpatrol/prettier-config@8.15.0'
+  - '@kitschpatrol/remark-config@8.15.0'
+  - '@kitschpatrol/repo-config@8.15.0'
+  - '@kitschpatrol/shared-config@8.15.0'
+  - '@kitschpatrol/stylelint-config@8.15.0'
+  - '@kitschpatrol/typescript-config@8.15.0'
+  - mdat@3.7.0
+  - remark-mdat@3.1.4
 peerDependencyRules:
   allowedVersions:
     # Remove once the installed version declares ESLint 10 support.
@@ -27,3 +38,4 @@ publicHoistPattern:
 skills:
   dirs:
     - .agents/skills
+    - .claude/skills

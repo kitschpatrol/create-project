@@ -2,11 +2,7 @@ import { eslintConfig } from '@kitschpatrol/eslint-config'
 
 export default eslintConfig(
 	{
-		ignores: [
-			// Chagent generates the changelog.
-			'**/changelog.md',
-			'/test/fixtures/**',
-		],
+		ignores: ['/test/fixtures/**'],
 		// Template-dev-only-start (stripped at generation)
 		json: {
 			overrides: {

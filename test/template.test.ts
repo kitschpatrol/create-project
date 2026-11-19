@@ -157,12 +157,13 @@ describe('Template Generation and Build Tests', () => {
 
 				// Agent skills are linked by pnpm during install, per the `permissions`
 				// and `skills` settings in the generated pnpm-workspace.yaml
-				const skillContents = await fs.readFile(
-					path.join(tempDirectory, '.agents/skills/ksc/SKILL.md'),
-					'utf8',
-				)
-				expect(skillContents).toContain('ksc')
-				await expect(fs.access(path.join(tempDirectory, '.claude/skills'))).rejects.toThrow()
+				for (const skillsDirectory of ['.agents/skills', '.claude/skills']) {
+					const skillContents = await fs.readFile(
+						path.join(tempDirectory, skillsDirectory, 'ksc/SKILL.md'),
+						'utf8',
+					)
+					expect(skillContents).toContain('ksc')
+				}
 
 				// Dev-only lint overrides must be stripped from generated projects
 				const eslintConfig = await fs.readFile(path.join(tempDirectory, 'eslint.config.ts'), 'utf8')

@@ -5,6 +5,5 @@ import { eslintConfig } from '@kitschpatrol/eslint-config'
 // `Template-dev-only` overrides (stripped at generation) to silence
 // placeholder-value errors.
 export default eslintConfig({
-	ignores: ['**/changelog.md'],
 	type: 'lib',
 })

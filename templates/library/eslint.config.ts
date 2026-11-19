@@ -1,8 +1,6 @@
 import { eslintConfig } from '@kitschpatrol/eslint-config'
 
 export default eslintConfig({
-	// Chagent generates the changelog.
-	ignores: ['**/changelog.md'],
 	// Template-dev-only-start (stripped at generation)
 	json: {
 		overrides: {

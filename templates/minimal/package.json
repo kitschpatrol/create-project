@@ -31,18 +31,18 @@
 	},
 	"devDependencies": {
 		"@kitschpatrol/chagent": "^0.8.0",
-		"@kitschpatrol/shared-config": "^8.14.1",
+		"@kitschpatrol/shared-config": "^8.15.0",
 		"@types/node": "~26.6.6",
 		"bumpp": "^12.3.0",
 		"shx": "^0.4.0",
 		"tsx": "^4.23.15",
 		"typescript": "~6.0.3"
 	},
-	"packageManager": "pnpm@12.18.0",
+	"packageManager": "pnpm@12.21.0",
 	"devEngines": {
 		"runtime": {
 			"name": "node",
-			"version": ">=26.12.1"
+			"version": ">=26.13.1"
 		}
 	}
 }

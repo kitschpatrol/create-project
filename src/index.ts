@@ -16,5 +16,4 @@ process.stdout.write = ((...args: Parameters<typeof process.stdout.write>) => {
 	return originalWrite(...args)
 }) as typeof process.stdout.write
 
-// @ts-expect-error - Bingo's runTemplateCLI should be generic like runTemplate?
 process.exitCode = await runTemplateCLI(template)

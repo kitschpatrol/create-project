@@ -1,16 +1,10 @@
 import { eslintConfig } from '@kitschpatrol/eslint-config'
 
 export default eslintConfig({
-	ignores: [
-		// Chagent generates the changelog.
-		'**/changelog.md',
-		// Template-dev-only-start (stripped at generation)
-		// In generated projects `out/` is excluded via .gitignore, but the template's
-		// `_gitignore` isn't seen by ESLint during in-repo development
-		'out/**',
-		// Template-dev-only-end
-	],
 	// Template-dev-only-start (stripped at generation)
+	// In generated projects `out/` is excluded via .gitignore, but the template's
+	// `_gitignore` isn't seen by ESLint during in-repo development
+	ignores: ['out/**'],
 	json: {
 		overrides: {
 			'json-package/valid-author': 'off',
