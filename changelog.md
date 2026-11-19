@@ -7,6 +7,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 (Node.js support requirements have sometimes increased in minor or patch releases.)
 
+Entries are drafted with LLM assistance via [Chagent](https://github.com/kitschpatrol/chagent).
+
+## [1.14.0] - 2026-11-19
+
+### Added
+
+- Generate a starter `changelog.md` that records which template was used, and run Chagent before the release commit in every generated project.
+
+### Documentation
+
+- Document how to draft release notes with Codex or Claude and why to start releases from a clean working tree. Update pnpm and contributor guidance.
+
+### Maintenance
+
+- Update Bingo to 0.16.2, Chagent to 0.8, ksc to 8.15, and pnpm to 12.21. Refresh lint and test tooling, give dependency-update CI the full Git history, and link approved skills in both `.agents/skills` and `.claude/skills`, including `modern-web-guidance` for the `web` template.
+
 ## [1.13.0] - 2026-11-11
 
 ### Added
@@ -436,3 +452,4 @@ No notable changes.
 [1.12.0]: https://github.com/kitschpatrol/create-project/compare/v1.11.0...v1.12.0
 [1.12.1]: https://github.com/kitschpatrol/create-project/compare/v1.12.0...v1.12.1
 [1.13.0]: https://github.com/kitschpatrol/create-project/compare/v1.12.1...v1.13.0
+[1.14.0]: https://github.com/kitschpatrol/create-project/compare/v1.13.0...v1.14.0
