@@ -26,10 +26,11 @@
 		"dev": "tsx --watch script.ts",
 		"fix": "ksc fix",
 		"lint": "ksc lint",
-		"release": "bumpp --commit 'Release: %s'",
+		"release": "bumpp --commit 'Release: %s' --all --execute 'chagent'",
 		"test": "echo 'No tests configured'"
 	},
 	"devDependencies": {
+		"@kitschpatrol/chagent": "^0.8.0",
 		"@kitschpatrol/shared-config": "^8.14.1",
 		"@types/node": "~26.6.6",
 		"bumpp": "^12.3.0",

@@ -29,13 +29,14 @@
 		"dev": "electron-vite dev",
 		"fix": "ksc fix",
 		"lint": "ksc lint",
-		"release": "bumpp --commit 'Release: %s' && pnpm build && export GH_TOKEN=$({{{github-token-command}}}) && export APPLE_KEYCHAIN_PROFILE=notarytool && electron-builder build --publish always",
+		"release": "bumpp --commit 'Release: %s' --all --execute 'chagent' && pnpm build && export GH_TOKEN=$({{{github-token-command}}}) && export APPLE_KEYCHAIN_PROFILE=notarytool && electron-builder build --publish always",
 		"test": "vitest run"
 	},
 	"dependencies": {
 		"lognow": "^0.8.8"
 	},
 	"devDependencies": {
+		"@kitschpatrol/chagent": "^0.8.0",
 		"@kitschpatrol/electron-vite": "^6.0.0-fork.1",
 		"@kitschpatrol/shared-config": "^8.14.1",
 		"@types/node": "~24.13.6",

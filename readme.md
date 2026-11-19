@@ -139,6 +139,19 @@ Create Kitschpatrol Project options:
 
 <!-- /cli-help-trimmed -->
 
+### Changelogs
+
+Generated projects start with a `changelog.md` whose `Unreleased` section
+records the template the project was created from. Chagent keeps that entry and
+moves it into the first release.
+
+Every template's `release` script runs
+[chagent](https://github.com/kitschpatrol/chagent) through bumpp's `--execute`
+option to update `changelog.md` before the release commit. Chagent drafts
+entries with the Codex CLI by default, so install Codex or add
+`--agent claude` to the script. Start a release from a clean working tree,
+since bumpp's `--all` flag commits every pending change.
+
 ### npm Publishing configuration
 
 I publish most of my packages via a local command instead of through CI.

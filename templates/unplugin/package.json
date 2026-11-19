@@ -65,7 +65,7 @@
 		"fix": "pnpm build && ksc fix",
 		"lint": "pnpm build && ksc lint",
 		"play": "poptab && pnpm -C playground run dev",
-		"release": "bumpp --commit 'Release: %s' && pnpm build && pnpm publish --otp $({{{npm-otp-command}}})",
+		"release": "bumpp --commit 'Release: %s' --all --execute 'chagent --root-changelog package --skip-package playground' && pnpm build && pnpm publish --otp $({{{npm-otp-command}}})",
 		"test": "vitest run"
 	},
 	"dependencies": {
@@ -74,6 +74,7 @@
 	},
 	"devDependencies": {
 		"@farmfe/core": ">=1.7.11",
+		"@kitschpatrol/chagent": "^0.8.0",
 		"@kitschpatrol/shared-config": "^8.14.1",
 		"@vitest/browser-playwright": "^5.1.0",
 		"bumpp": "^12.3.0",

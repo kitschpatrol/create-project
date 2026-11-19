@@ -33,7 +33,7 @@
 		"clean-deep": "shx rm -f pnpm-lock.yaml && git clean -fdX",
 		"fix": "pnpm build && ksc fix",
 		"lint": "pnpm build && ksc lint",
-		"release": "bumpp --commit 'Release: %s' && pnpm build && pnpm publish --otp $({{{npm-otp-command}}})",
+		"release": "bumpp --commit 'Release: %s' --all --execute 'chagent' && pnpm build && pnpm publish --otp $({{{npm-otp-command}}})",
 		"test": "vitest run"
 	},
 	"dependencies": {
@@ -42,6 +42,7 @@
 		"yargs": "^18.2.0"
 	},
 	"devDependencies": {
+		"@kitschpatrol/chagent": "^0.8.0",
 		"@kitschpatrol/shared-config": "^8.14.1",
 		"@types/node": "~24.13.6",
 		"bumpp": "^12.3.0",

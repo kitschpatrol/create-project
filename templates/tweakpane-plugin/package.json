@@ -44,7 +44,7 @@
 		"dev": "vite",
 		"fix": "ksc fix",
 		"lint": "ksc lint",
-		"release": "bumpp --commit 'Release: %s' --execute 'chagent' && pnpm build && pnpm publish --otp $({{{npm-otp-command}}})",
+		"release": "bumpp --commit 'Release: %s' --all --execute 'chagent' && pnpm build && pnpm publish --otp $({{{npm-otp-command}}})",
 		"test": "vitest run",
 		"watch": "tsdown --watch"
 	},
@@ -53,7 +53,7 @@
 	},
 	"devDependencies": {
 		"@arethetypeswrong/core": "^0.18.5",
-		"@kitschpatrol/chagent": "^0.5.0",
+		"@kitschpatrol/chagent": "^0.8.0",
 		"@kitschpatrol/shared-config": "^8.14.1",
 		"@tsdown/css": "^0.23.7",
 		"@types/node": "~24.13.6",

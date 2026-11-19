@@ -126,6 +126,7 @@ export default createTemplate({
 			files: {
 				...templateFiles,
 				...(await handlebarsHelper(
+					'changelog.md',
 					'license.txt',
 					'package.json',
 					// Per-template handlebars file expansion. Add any file that

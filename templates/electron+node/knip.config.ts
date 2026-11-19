@@ -7,4 +7,7 @@ export default knipConfig({
 		'electron/main.ts',
 		'electron/preload.ts',
 	],
+	ignoreDependencies: [
+		'@kitschpatrol/chagent', // Invoked through bumpp's --execute argument.
+	],
 })

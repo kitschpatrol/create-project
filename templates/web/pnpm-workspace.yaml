@@ -1,6 +1,8 @@
 allowBuilds:
   esbuild: true
   workerd: true
+minimumReleaseAgeExclude:
+  - '@kitschpatrol/chagent@0.8.0'
 overrides:
   # Remove when Miniflare updates its Undici pin to include these security fixes.
   # https://github.com/nodejs/undici/releases/tag/v7.30.2

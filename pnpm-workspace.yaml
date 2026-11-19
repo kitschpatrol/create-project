@@ -6,6 +6,8 @@ allowBuilds:
   esbuild: true
   workerd: true
 ignoreWorkspaceRootCheck: true
+minimumReleaseAgeExclude:
+  - '@kitschpatrol/chagent@0.8.0'
 overrides:
   # Remove once typescript-eslint fixes single-run Program memory use, which
   # exhausts the default heap when linting all templates at once.

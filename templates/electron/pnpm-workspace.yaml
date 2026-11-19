@@ -1,6 +1,8 @@
 allowBuilds:
   electron-winstaller: true
   esbuild: true
+minimumReleaseAgeExclude:
+  - '@kitschpatrol/chagent@0.8.0'
 peerDependencyRules:
   allowedVersions:
     # Remove once the installed version declares ESLint 10 support.
