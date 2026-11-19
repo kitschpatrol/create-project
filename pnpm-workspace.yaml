@@ -29,6 +29,8 @@ permissions:
     skills: true
   mdat:
     skills: false
+  modern-web-guidance:
+    skills: [modern-web-guidance]
   taze:
     skills: true
   tsdown:
